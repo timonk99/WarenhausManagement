@@ -10,11 +10,23 @@ using System.Windows.Forms;
 
 namespace WarenhausManagement.GUI
 {
-    public partial class Einbuchung : Form
+    public partial class Buchung : Form
     {
-        public Einbuchung()
+        public Buchung(bool Einbuchung)
         {
             InitializeComponent();
+            if (Einbuchung==true)
+            {
+                btn_Ausbuchen.Visible = false;
+            }
+            else
+            {
+                btn_Einbuchen.Visible = false;
+                txtbx_Bezeichnung.ReadOnly = true;
+                txtbx_Hersteller.ReadOnly = true;
+                txtbx_Lagerplatz.ReadOnly = true;
+                txtbx_Speicher.ReadOnly = true;
+            }
         }
     }
 }

@@ -28,30 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtbx_Username = new System.Windows.Forms.TextBox();
+            this.txtbx_Password = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_Login = new System.Windows.Forms.Button();
+            this.lbl_Status = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtbx_Username
             // 
-            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(23, 121);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(179, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtbx_Username.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtbx_Username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbx_Username.Location = new System.Drawing.Point(23, 121);
+            this.txtbx_Username.Name = "txtbx_Username";
+            this.txtbx_Username.Size = new System.Drawing.Size(179, 20);
+            this.txtbx_Username.TabIndex = 0;
             // 
-            // textBox2
+            // txtbx_Password
             // 
-            this.textBox2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Location = new System.Drawing.Point(23, 192);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(179, 20);
-            this.textBox2.TabIndex = 1;
+            this.txtbx_Password.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtbx_Password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbx_Password.Location = new System.Drawing.Point(23, 192);
+            this.txtbx_Password.Name = "txtbx_Password";
+            this.txtbx_Password.Size = new System.Drawing.Size(179, 20);
+            this.txtbx_Password.TabIndex = 1;
             // 
             // label1
             // 
@@ -79,17 +80,27 @@
             this.btn_Login.TabIndex = 4;
             this.btn_Login.Text = "Login";
             this.btn_Login.UseVisualStyleBackColor = true;
+            this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
+            // 
+            // lbl_Status
+            // 
+            this.lbl_Status.AutoSize = true;
+            this.lbl_Status.Location = new System.Drawing.Point(23, 223);
+            this.lbl_Status.Name = "lbl_Status";
+            this.lbl_Status.Size = new System.Drawing.Size(0, 13);
+            this.lbl_Status.TabIndex = 5;
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(236, 285);
+            this.Controls.Add(this.lbl_Status);
             this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtbx_Password);
+            this.Controls.Add(this.txtbx_Username);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -101,11 +112,12 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtbx_Username;
+        private System.Windows.Forms.TextBox txtbx_Password;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_Login;
+        private System.Windows.Forms.Label lbl_Status;
     }
 }
 
