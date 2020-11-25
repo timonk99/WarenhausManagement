@@ -12,17 +12,19 @@ namespace WarenhausManagement.GUI
 {
     public partial class Mainmenu : Form
     {
+        private string _Username;
         private bool Einbuchen;
-        public Mainmenu()
+        public Mainmenu(string Username)
         {
             InitializeComponent();
+            _Username = Username;
+            lbl_User.Text = _Username;
         }
 
         private void btn_Einbuchen_Click(object sender, EventArgs e)
         {
             Einbuchen = true;
             Buchung buchung = new Buchung(Einbuchen);
-            this.Hide();
             buchung.Show();
         }
 
@@ -30,8 +32,14 @@ namespace WarenhausManagement.GUI
         {
             Einbuchen = false;
             Buchung buchung = new Buchung(Einbuchen);
-            this.Hide();
             buchung.Show();
+        }
+
+        private void pictureBox_Logout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Login lg = new Login();
+            lg.Show();
         }
     }
 }

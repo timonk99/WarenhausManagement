@@ -30,8 +30,8 @@ namespace WarenhausManagement
             {
                 //Login mit DB oder AD
                 //nächste Form aufrufen wenn erfolgreich
-                Mainmenu hmenu = new Mainmenu();
-                //this.Close();
+                Mainmenu hmenu = new Mainmenu(_Username);
+                this.Hide();
                 hmenu.Show();
             }
             else
@@ -39,7 +39,7 @@ namespace WarenhausManagement
                 lbl_Status.Text = "Eingaben nicht vollständig";
             }
         }
-        
+        //Feld Speicherbedarf in DB
         public string CreateMD5Hash(string input)
         {
             // Step 1, calculate MD5 hash from input
@@ -56,9 +56,39 @@ namespace WarenhausManagement
             return sb.ToString();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void pictureBoxPWclear_Click(object sender, EventArgs e)
         {
-            Datenbankanbindung.Verbindung();
+            txtbx_Password.PasswordChar = '\0';
         }
+
+        private void pictureBoxPWclear_MouseLeave(object sender, EventArgs e)
+        {
+            txtbx_Password.PasswordChar = '*';
+        }
+        /*
+            string queryString = "SELECT tPatCulIntPatIDPk, tPatSFirstname, tPatSName, tPatDBirthday  FROM  [dbo].[TPatientRaw] WHERE tPatSName = @tPatSName";
+            string connectionString = "Server=172.16.112.25;Database=;WHM Id=SA;Password=Ers1234Ers1234;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Parameters.AddWithValue("@tPatSName", "Your-Parm-Value");
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                try
+                {
+                    while (reader.Read())
+                    {
+                        Console.WriteLine(String.Format("{0}, {1}",
+                        reader["tPatCulIntPatIDPk"], reader["tPatSFirstname"]));// etc
+                    }
+                }
+                finally
+                {
+                    // Always call Close when done reading.
+                    reader.Close();
+                }
+            }
+         */
     }
 }

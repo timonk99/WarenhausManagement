@@ -32,9 +32,9 @@
             this.btn_Ausbuchen = new System.Windows.Forms.Button();
             this.btn_Statistik = new System.Windows.Forms.Button();
             this.lbl_User = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox_Logout = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Logout)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Einbuchen
@@ -69,19 +69,11 @@
             // lbl_User
             // 
             this.lbl_User.AutoSize = true;
-            this.lbl_User.Location = new System.Drawing.Point(294, 19);
+            this.lbl_User.Location = new System.Drawing.Point(310, 9);
             this.lbl_User.Name = "lbl_User";
             this.lbl_User.Size = new System.Drawing.Size(49, 13);
             this.lbl_User.TabIndex = 3;
             this.lbl_User.Text = "Benutzer";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(359, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(26, 25);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -93,13 +85,24 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Menü";
             // 
+            // pictureBox_Logout
+            // 
+            this.pictureBox_Logout.Image = global::WarenhausManagement.Properties.Resources.Logout;
+            this.pictureBox_Logout.Location = new System.Drawing.Point(365, 3);
+            this.pictureBox_Logout.Name = "pictureBox_Logout";
+            this.pictureBox_Logout.Size = new System.Drawing.Size(29, 29);
+            this.pictureBox_Logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_Logout.TabIndex = 4;
+            this.pictureBox_Logout.TabStop = false;
+            this.pictureBox_Logout.Click += new System.EventHandler(this.pictureBox_Logout_Click);
+            // 
             // Mainmenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(397, 229);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBox_Logout);
             this.Controls.Add(this.lbl_User);
             this.Controls.Add(this.btn_Statistik);
             this.Controls.Add(this.btn_Ausbuchen);
@@ -107,7 +110,7 @@
             this.Name = "Mainmenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hauptmenu";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Logout)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,7 +122,7 @@
         private System.Windows.Forms.Button btn_Ausbuchen;
         private System.Windows.Forms.Button btn_Statistik;
         private System.Windows.Forms.Label lbl_User;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox_Logout;
         private System.Windows.Forms.Label label1;
     }
 }
