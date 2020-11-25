@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datenbankanbindung.cs" />
     <Compile Include="GUI\Einbuchung.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +107,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Auge.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bilder\Zentrales-Lager.jpg" />
