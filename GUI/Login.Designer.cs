@@ -34,30 +34,35 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btn_Login = new System.Windows.Forms.Button();
             this.lbl_Status = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBoxPWclear = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPWclear)).BeginInit();
             this.SuspendLayout();
             // 
             // txtbx_Username
             // 
             this.txtbx_Username.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtbx_Username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbx_Username.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtbx_Username.Location = new System.Drawing.Point(23, 121);
             this.txtbx_Username.Name = "txtbx_Username";
-            this.txtbx_Username.Size = new System.Drawing.Size(179, 20);
+            this.txtbx_Username.Size = new System.Drawing.Size(179, 13);
             this.txtbx_Username.TabIndex = 0;
             // 
             // txtbx_Password
             // 
             this.txtbx_Password.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtbx_Password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtbx_Password.Location = new System.Drawing.Point(23, 192);
+            this.txtbx_Password.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtbx_Password.Location = new System.Drawing.Point(23, 194);
             this.txtbx_Password.Name = "txtbx_Password";
-            this.txtbx_Password.Size = new System.Drawing.Size(179, 20);
+            this.txtbx_Password.PasswordChar = '*';
+            this.txtbx_Password.Size = new System.Drawing.Size(179, 13);
             this.txtbx_Password.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 105);
+            this.label1.Location = new System.Drawing.Point(20, 104);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 2;
@@ -66,7 +71,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 176);
+            this.label2.Location = new System.Drawing.Point(23, 175);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 3;
@@ -90,11 +95,42 @@
             this.lbl_Status.Size = new System.Drawing.Size(0, 13);
             this.lbl_Status.TabIndex = 5;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 137);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(180, 1);
+            this.flowLayoutPanel1.TabIndex = 6;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(26, 211);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(180, 1);
+            this.flowLayoutPanel2.TabIndex = 7;
+            // 
+            // pictureBoxPWclear
+            // 
+            this.pictureBoxPWclear.Image = global::WarenhausManagement.Properties.Resources.Auge;
+            this.pictureBoxPWclear.Location = new System.Drawing.Point(206, 186);
+            this.pictureBoxPWclear.Name = "pictureBoxPWclear";
+            this.pictureBoxPWclear.Size = new System.Drawing.Size(21, 20);
+            this.pictureBoxPWclear.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxPWclear.TabIndex = 8;
+            this.pictureBoxPWclear.TabStop = false;
+            this.pictureBoxPWclear.Click += new System.EventHandler(this.pictureBoxPWclear_Click);
+            this.pictureBoxPWclear.MouseLeave += new System.EventHandler(this.pictureBoxPWclear_MouseLeave);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(236, 285);
+            this.Controls.Add(this.pictureBoxPWclear);
+            this.Controls.Add(this.flowLayoutPanel2);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.lbl_Status);
             this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.label2);
@@ -105,6 +141,7 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPWclear)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,6 +155,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_Login;
         private System.Windows.Forms.Label lbl_Status;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.PictureBox pictureBoxPWclear;
     }
 }
 
