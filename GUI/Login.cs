@@ -30,8 +30,8 @@ namespace WarenhausManagement
             {
                 //Login mit DB oder AD
                 //nächste Form aufrufen wenn erfolgreich
-                Mainmenu hmenu = new Mainmenu();
-                //this.Close();
+                Mainmenu hmenu = new Mainmenu(_Username);
+                this.Hide();
                 hmenu.Show();
             }
             else

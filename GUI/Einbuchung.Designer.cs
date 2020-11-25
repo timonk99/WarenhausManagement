@@ -51,6 +51,7 @@
             this.txtbx_ArtikelNr.Name = "txtbx_ArtikelNr";
             this.txtbx_ArtikelNr.Size = new System.Drawing.Size(137, 20);
             this.txtbx_ArtikelNr.TabIndex = 0;
+            this.txtbx_ArtikelNr.TextChanged += new System.EventHandler(this.txtbx_ArtikelNr_TextChanged);
             // 
             // txtbx_Lagerplatz
             // 
@@ -192,6 +193,7 @@
             this.Controls.Add(this.txtbx_Lagerplatz);
             this.Controls.Add(this.txtbx_ArtikelNr);
             this.Name = "Buchung";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Einbuchung";
             this.ResumeLayout(false);
             this.PerformLayout();
