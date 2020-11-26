@@ -23,14 +23,12 @@ namespace WarenhausManagement
                 SqlCommand NewCommand = new SqlCommand("SELECT * FROM dbo.Ware;", NewConnection);
                 SqlDataReader Reader = NewCommand.ExecuteReader();
 
-                Reader.Read();
-                for( int i = 0; i < Reader.FieldCount; i++)
+                while(Reader.HasRows)
                 {
-                    Console.WriteLine(Reader.GetValue(i).ToString());
-                    if (i == Reader.FieldCount - 1)
+                    Reader.Read();
+                    for ( int i = 0; i < Reader.FieldCount; i++)
                     {
-                        i = -1;
-                        Reader.Read();
+                        Console.WriteLine(Reader.GetValue(i).ToString());
                     }
                 }
                 NewConnection.Close();
@@ -56,14 +54,12 @@ namespace WarenhausManagement
                 SqlCommand NewCommand = new SqlCommand("SELECT * FROM dbo.Lagerplatz;", NewConnection);
                 SqlDataReader Reader = NewCommand.ExecuteReader();
 
-                Reader.Read();
-                for (int i = 0; i < Reader.FieldCount; i++)
+                while (Reader.HasRows)
                 {
-                    Console.WriteLine(Reader.GetValue(i).ToString());
-                    if (i == Reader.FieldCount - 1)
+                    Reader.Read();
+                    for (int i = 0; i < Reader.FieldCount; i++)
                     {
-                        i = -1;
-                        Reader.Read();
+                        Console.WriteLine(Reader.GetValue(i).ToString());
                     }
                 }
                 NewConnection.Close();
@@ -78,10 +74,10 @@ namespace WarenhausManagement
             return a;
         }
 
-        public static bool StatistikLagerprozess(string _Username, string _Passwort)
+        public static List<string> StatistikLagerprozess(string _Username, string _Passwort)
         {
+            List<string> result = new List<string>();
             SqlConnection NewConnection = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
-            bool a = true;
             try
             {
 
@@ -89,26 +85,23 @@ namespace WarenhausManagement
                 SqlCommand NewCommand = new SqlCommand("SELECT * FROM dbo.Lagerprozess;", NewConnection);
                 SqlDataReader Reader = NewCommand.ExecuteReader();
 
-                Reader.Read();
-                for (int i = 0; i < Reader.FieldCount; i++)
+                while (Reader.HasRows)
                 {
-                    Console.WriteLine(Reader.GetValue(i).ToString());
-                    if (i == Reader.FieldCount - 1)
+                    Reader.Read();
+                    for (int i = 0; i < Reader.FieldCount; i++)
                     {
-                        i = -1;
-                        Reader.Read();
+                        result.Add(Reader.GetValue(i).ToString());
                     }
                 }
                 NewConnection.Close();
+                return result;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-                a = false;
                 NewConnection.Close();
+                return null;
             }
-
-            return a;
         }
         public static bool Eingabe(string _Username, string _Passwort, string _Tabellenname, string _Spalte, string _Wert)
         {

@@ -8,12 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Data.SqlClient;
 
 namespace WarenhausManagement.Statistik
 {
     public partial class StatsMain : Form
     {
-        int[] test = { 100, 50, 25 };
         public StatsMain()
         {
             InitializeComponent();
@@ -25,8 +25,9 @@ namespace WarenhausManagement.Statistik
             this.c_chart.ChartAreas.Clear();
             this.c_chart.Series.Clear();
         }
-        private void Fill_cb_regal(string[] list)
+        private void Fill_cb_regal()
         {
+            SqlConnection connect = new SqlConnection()
             cb_regal.Items.AddRange(list);
         }
         private void ArtikelLager(int[] values)
