@@ -112,6 +112,7 @@ namespace WarenhausManagement
                 //INSERT INTO tabellen_name (spalte1, spalte2, spalte3, etc.) VALUES ('Wert1', 'Wert2', 'Wert3', etc.)
                 NewConnection.Open();
                 SqlCommand NewCommand = new SqlCommand("INSERT INTO " + _Tabellenname + " (" + _Spalte + ") VALUES (" + _Wert + ")", NewConnection);
+                NewCommand.ExecuteNonQuery();
                 NewConnection.Close();
             }
             catch (Exception e)
