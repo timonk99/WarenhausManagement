@@ -34,8 +34,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btn_Login = new System.Windows.Forms.Button();
             this.lbl_Status = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // txtbx_Username
@@ -94,62 +92,11 @@
             this.lbl_Status.Size = new System.Drawing.Size(0, 13);
             this.lbl_Status.TabIndex = 5;
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(-2, -1);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(240, 103);
-            this.panel1.TabIndex = 6;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 137);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(180, 1);
-            this.flowLayoutPanel1.TabIndex = 6;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(26, 211);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(180, 1);
-            this.flowLayoutPanel2.TabIndex = 7;
-            // 
-            // pictureBoxPWclear
-            // 
-            this.pictureBoxPWclear.Image = global::WarenhausManagement.Properties.Resources.Auge;
-            this.pictureBoxPWclear.Location = new System.Drawing.Point(206, 186);
-            this.pictureBoxPWclear.Name = "pictureBoxPWclear";
-            this.pictureBoxPWclear.Size = new System.Drawing.Size(21, 20);
-            this.pictureBoxPWclear.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxPWclear.TabIndex = 8;
-            this.pictureBoxPWclear.TabStop = false;
-            this.pictureBoxPWclear.Click += new System.EventHandler(this.pictureBoxPWclear_Click);
-            this.pictureBoxPWclear.MouseLeave += new System.EventHandler(this.pictureBoxPWclear_MouseLeave);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Test";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(236, 285);
-            this.Controls.Add(this.pictureBoxPWclear);
-            this.Controls.Add(this.flowLayoutPanel2);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.lbl_Status);
             this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.label2);
@@ -160,7 +107,6 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPWclear)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,7 +123,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.PictureBox pictureBoxPWclear;
-        private System.Windows.Forms.Button button1;
     }
 }
 
