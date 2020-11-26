@@ -12,10 +12,10 @@ namespace WarenhausManagement
 
 
 
-        public static bool StatistikWare(string _Username, string _Passwort)
+        public static List<string> StatistikWare(string _Username, string _Passwort)
         {
+            List<string> result = new List<string>();
             SqlConnection NewConnection = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username +"; Password = " + _Passwort);
-            bool a = true;
             try
             {
 
@@ -36,17 +36,16 @@ namespace WarenhausManagement
             catch(Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-                a = false;
                 NewConnection.Close();
             }
 
-            return a;
+            return null;
         }
 
-        public static bool StatistikLagerplatz(string _Username, string _Passwort)
+        public static List<string> StatistikLagerplatz(string _Username, string _Passwort)
         {
+            List<string> result = new List<string>();
             SqlConnection NewConnection = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
-            bool a = true;
             try
             {
 
@@ -67,11 +66,11 @@ namespace WarenhausManagement
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-                a = false;
                 NewConnection.Close();
+                return null;
             }
+            return null;
 
-            return a;
         }
 
         public static List<string> StatistikLagerprozess(string _Username, string _Passwort)
