@@ -33,12 +33,21 @@ namespace WarenhausManagement.Statistik
             this.c_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btn_close = new System.Windows.Forms.Button();
             this.btn_load = new System.Windows.Forms.Button();
+            this.cb_auswahl = new System.Windows.Forms.ComboBox();
+            this.dt_von = new System.Windows.Forms.DateTimePicker();
+            this.l_titel = new System.Windows.Forms.Label();
+            this.l_von = new System.Windows.Forms.Label();
+            this.l_bis = new System.Windows.Forms.Label();
+            this.dt_bis = new System.Windows.Forms.DateTimePicker();
+            this.l_auswahl = new System.Windows.Forms.Label();
+            this.l_regal = new System.Windows.Forms.Label();
+            this.cb_regal = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.c_chart)).BeginInit();
             this.SuspendLayout();
             // 
             // c_chart
             // 
-            this.c_chart.Location = new System.Drawing.Point(100, 100);
+            this.c_chart.Location = new System.Drawing.Point(12, 25);
             this.c_chart.Name = "c_chart";
             this.c_chart.Size = new System.Drawing.Size(400, 400);
             this.c_chart.TabIndex = 0;
@@ -46,7 +55,7 @@ namespace WarenhausManagement.Statistik
             // 
             // btn_close
             // 
-            this.btn_close.Location = new System.Drawing.Point(697, 526);
+            this.btn_close.Location = new System.Drawing.Point(418, 402);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(75, 23);
             this.btn_close.TabIndex = 1;
@@ -56,7 +65,7 @@ namespace WarenhausManagement.Statistik
             // 
             // btn_load
             // 
-            this.btn_load.Location = new System.Drawing.Point(697, 497);
+            this.btn_load.Location = new System.Drawing.Point(418, 373);
             this.btn_load.Name = "btn_load";
             this.btn_load.Size = new System.Drawing.Size(75, 23);
             this.btn_load.TabIndex = 2;
@@ -64,11 +73,100 @@ namespace WarenhausManagement.Statistik
             this.btn_load.UseVisualStyleBackColor = true;
             this.btn_load.Click += new System.EventHandler(this.btn_load_Click);
             // 
+            // cb_auswahl
+            // 
+            this.cb_auswahl.FormattingEnabled = true;
+            this.cb_auswahl.Items.AddRange(new object[] {
+            "Auslastung",
+            "Artikel"});
+            this.cb_auswahl.Location = new System.Drawing.Point(418, 59);
+            this.cb_auswahl.Name = "cb_auswahl";
+            this.cb_auswahl.Size = new System.Drawing.Size(121, 21);
+            this.cb_auswahl.TabIndex = 3;
+            // 
+            // dt_von
+            // 
+            this.dt_von.Location = new System.Drawing.Point(418, 164);
+            this.dt_von.Name = "dt_von";
+            this.dt_von.Size = new System.Drawing.Size(200, 20);
+            this.dt_von.TabIndex = 4;
+            this.dt_von.MaxDate = System.DateTime.Now;
+            // 
+            // l_titel
+            // 
+            this.l_titel.AutoSize = true;
+            this.l_titel.Location = new System.Drawing.Point(171, 9);
+            this.l_titel.Name = "l_titel";
+            this.l_titel.Size = new System.Drawing.Size(44, 13);
+            this.l_titel.TabIndex = 5;
+            this.l_titel.Text = "Statistik";
+            // 
+            // l_von
+            // 
+            this.l_von.AutoSize = true;
+            this.l_von.Location = new System.Drawing.Point(418, 148);
+            this.l_von.Name = "l_von";
+            this.l_von.Size = new System.Drawing.Size(25, 13);
+            this.l_von.TabIndex = 6;
+            this.l_von.Text = "von";
+            // 
+            // l_bis
+            // 
+            this.l_bis.AutoSize = true;
+            this.l_bis.Location = new System.Drawing.Point(418, 210);
+            this.l_bis.Name = "l_bis";
+            this.l_bis.Size = new System.Drawing.Size(20, 13);
+            this.l_bis.TabIndex = 8;
+            this.l_bis.Text = "bis";
+            // 
+            // dt_bis
+            // 
+            this.dt_bis.Location = new System.Drawing.Point(418, 226);
+            this.dt_bis.Name = "dt_bis";
+            this.dt_bis.Size = new System.Drawing.Size(200, 20);
+            this.dt_bis.TabIndex = 7;
+            this.dt_bis.MaxDate = System.DateTime.Now;
+            // 
+            // l_auswahl
+            // 
+            this.l_auswahl.AutoSize = true;
+            this.l_auswahl.Location = new System.Drawing.Point(418, 43);
+            this.l_auswahl.Name = "l_auswahl";
+            this.l_auswahl.Size = new System.Drawing.Size(54, 13);
+            this.l_auswahl.TabIndex = 9;
+            this.l_auswahl.Text = "Diagramm";
+            // 
+            // l_regal
+            // 
+            this.l_regal.AutoSize = true;
+            this.l_regal.Location = new System.Drawing.Point(418, 95);
+            this.l_regal.Name = "l_regal";
+            this.l_regal.Size = new System.Drawing.Size(35, 13);
+            this.l_regal.TabIndex = 11;
+            this.l_regal.Text = "Regal";
+            // 
+            // cb_regal
+            // 
+            this.cb_regal.FormattingEnabled = true;
+            this.cb_regal.Location = new System.Drawing.Point(418, 111);
+            this.cb_regal.Name = "cb_regal";
+            this.cb_regal.Size = new System.Drawing.Size(121, 21);
+            this.cb_regal.TabIndex = 10;
+            // 
             // StatsMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(634, 436);
+            this.Controls.Add(this.l_regal);
+            this.Controls.Add(this.cb_regal);
+            this.Controls.Add(this.l_auswahl);
+            this.Controls.Add(this.l_bis);
+            this.Controls.Add(this.dt_bis);
+            this.Controls.Add(this.l_von);
+            this.Controls.Add(this.l_titel);
+            this.Controls.Add(this.dt_von);
+            this.Controls.Add(this.cb_auswahl);
             this.Controls.Add(this.btn_load);
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.c_chart);
@@ -76,6 +174,7 @@ namespace WarenhausManagement.Statistik
             this.Text = "StatsMain";
             ((System.ComponentModel.ISupportInitialize)(this.c_chart)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -84,5 +183,14 @@ namespace WarenhausManagement.Statistik
         private System.Windows.Forms.DataVisualization.Charting.Chart c_chart;
         private System.Windows.Forms.Button btn_close;
         private System.Windows.Forms.Button btn_load;
+        private System.Windows.Forms.ComboBox cb_auswahl;
+        private System.Windows.Forms.DateTimePicker dt_von;
+        private System.Windows.Forms.Label l_titel;
+        private System.Windows.Forms.Label l_von;
+        private System.Windows.Forms.Label l_bis;
+        private System.Windows.Forms.DateTimePicker dt_bis;
+        private System.Windows.Forms.Label l_auswahl;
+        private System.Windows.Forms.Label l_regal;
+        private System.Windows.Forms.ComboBox cb_regal;
     }
 }

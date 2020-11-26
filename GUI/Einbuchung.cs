@@ -13,10 +13,11 @@ namespace WarenhausManagement.GUI
 {
     public partial class Buchung : Form
     {
+        User user = new User();
         private bool _Einbuchung;
-        public Buchung(bool Einbuchung)
+        public Buchung(bool Einbuchung, User _user)
         {
-
+            user = _user;
             InitializeComponent();
             _Einbuchung = Einbuchung;
             if (Einbuchung == true)
@@ -40,12 +41,12 @@ namespace WarenhausManagement.GUI
             {
                 //Laden der Daten zum dem Artikel aus der DB in die Textfelder
                 ware.SetWareID(Convert.ToInt32(txtbx_ArtikelNr.Text));
-                ware = SQLquery(ware);
+                ware = WareninformationenLaden(ware);
                 txtbx_Bezeichnung.Text = ware.GetWareBezeichnung();
                 txtbx_Preis.Text = ware.GetPreis().ToString();
             }
         }
-        private Ware SQLquery(Ware ware)
+        private Ware WareninformationenLaden(Ware ware)
         {
             string queryString = "SELECT *  FROM  Ware WHERE WareID = @WareID";
             string connectionString = "Server=172.16.112.25;Database=WHM;User Id=SA;Password=Ers1234Ers1234;";
@@ -72,6 +73,25 @@ namespace WarenhausManagement.GUI
             }
 
             return ware;
+        }
+
+        private void btn_Einbuchen_Click(object sender, EventArgs e)
+        {
+            //SQL Statement zum Einbuchen
+            bool erfolgreich = Datenbankanbindung.Eingabe(user.GetUsername(), user.GetPassword(), "Lagerprozess","Lagerplatznummer, WareID, WareneingangDatum", ""+txtbx_Lagerplatz.Text+", "+txtbx_ArtikelNr.Text+", "+DateTime.Now+"") ;
+            if (erfolgreich == true)
+            {
+                lbl_Status.Text="Buchung erfolgreich";
+            }
+            else
+            {
+                lbl_Status.Text="Buchung fehlgeschlagen";
+            }
+        }
+
+        private void btn_Ausbuchen_Click(object sender, EventArgs e)
+        {
+            //SQL Statement zum Aussbuchen
         }
     }
 }

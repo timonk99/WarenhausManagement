@@ -14,8 +14,7 @@ namespace WarenhausManagement
 {
     public partial class Login : Form
     {
-        public string _Username;
-        public string _Password;
+        User user = new User();
         public Login()
         {
             InitializeComponent();
@@ -24,13 +23,16 @@ namespace WarenhausManagement
         private void btn_Login_Click(object sender, EventArgs e)
         {
             lbl_Status.Text = "";
-            _Username = txtbx_Username.Text;
-            _Password = CreateMD5Hash(txtbx_Password.Text);
-            if (_Username!= "" && _Password != null)
+            user.SetUsername(txtbx_Username.Text);
+            user.SetPassword(CreateMD5Hash(txtbx_Password.Text));
+            if (user.GetUsername()!= "" && user.GetPassword() != null)
             {
                 //Login mit DB oder AD
-                //nächste Form aufrufen wenn erfolgreich
-                Mainmenu hmenu = new Mainmenu(_Username);
+                //nächste Form aufrufen nur wenn erfolgreich
+                //user für Testzwecke
+                user.SetUsername("SA");
+                user.SetPassword("Ers1234Ers1234");
+                Mainmenu hmenu = new Mainmenu(user);
                 this.Hide();
                 hmenu.Show();
             }
@@ -56,20 +58,6 @@ namespace WarenhausManagement
             return sb.ToString();
         }
 
-        private void pictureBoxPWclear_Click(object sender, EventArgs e)
-        {
-            txtbx_Password.PasswordChar = '\0';
-        }
-
-        private void pictureBoxPWclear_MouseLeave(object sender, EventArgs e)
-        {
-            txtbx_Password.PasswordChar = '*';
-        }
-
-        /*
-   string queryString = "SELECT tPatCulIntPatIDPk, tPatSFirstname, tPatSName, tPatDBirthday  FROM  [dbo].[TPatientRaw] WHERE tPatSName = @tPatSName";
-   string connectionString = "Server=172.16.112.25;Database=;WHM Id=SA;Password=Ers1234Ers1234;";
-
         private void pictureBoxPW_Click(object sender, EventArgs e)
         {
             txtbx_Password.PasswordChar = '\0';
@@ -79,26 +67,5 @@ namespace WarenhausManagement
         {
             txtbx_Password.PasswordChar = '*';
         }
-   using (SqlConnection connection = new SqlConnection(connectionString))
-   {
-       SqlCommand command = new SqlCommand(queryString, connection);
-       command.Parameters.AddWithValue("@tPatSName", "Your-Parm-Value");
-       connection.Open();
-       SqlDataReader reader = command.ExecuteReader();
-       try
-       {
-           while (reader.Read())
-           {
-               Console.WriteLine(String.Format("{0}, {1}",
-               reader["tPatCulIntPatIDPk"], reader["tPatSFirstname"]));// etc
-           }
-       }
-       finally
-       {
-           // Always call Close when done reading.
-           reader.Close();
-       }
-   }
-*/
     }
 }

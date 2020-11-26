@@ -73,6 +73,7 @@
     <Compile Include="Statistik\StatsMain.Designer.cs">
       <DependentUpon>StatsMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
     <Compile Include="Ware.cs" />
     <EmbeddedResource Include="GUI\Einbuchung.resx">
       <DependentUpon>Einbuchung.cs</DependentUpon>
