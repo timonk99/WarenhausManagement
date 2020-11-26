@@ -14,8 +14,7 @@ namespace WarenhausManagement
 {
     public partial class Login : Form
     {
-        public string _Username;
-        public string _Password;
+        User user = new User();
         public Login()
         {
             InitializeComponent();
@@ -23,15 +22,16 @@ namespace WarenhausManagement
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
-            User user = new User();
             lbl_Status.Text = "";
-            _Username = txtbx_Username.Text;
-            _Password = CreateMD5Hash(txtbx_Password.Text);
-            if (_Username!= "" && _Password != null)
+            user.SetUsername(txtbx_Username.Text);
+            user.SetPassword(CreateMD5Hash(txtbx_Password.Text));
+            if (user.GetUsername()!= "" && user.GetPassword() != null)
             {
                 //Login mit DB oder AD
                 //nächste Form aufrufen nur wenn erfolgreich
-                //user füllen
+                //user für Testzwecke
+                user.SetUsername("SA");
+                user.SetPassword("Ers1234Ers1234");
                 Mainmenu hmenu = new Mainmenu(user);
                 this.Hide();
                 hmenu.Show();

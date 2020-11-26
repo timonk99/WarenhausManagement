@@ -27,14 +27,14 @@ namespace WarenhausManagement.GUI
         private void btn_Einbuchen_Click(object sender, EventArgs e)
         {
             Einbuchen = true;
-            Buchung buchung = new Buchung(Einbuchen);
+            Buchung buchung = new Buchung(Einbuchen, user) ;
             buchung.Show();
         }
 
         private void btn_Ausbuchen_Click(object sender, EventArgs e)
         {
             Einbuchen = false;
-            Buchung buchung = new Buchung(Einbuchen);
+            Buchung buchung = new Buchung(Einbuchen, user);
             buchung.Show();
         }
 
