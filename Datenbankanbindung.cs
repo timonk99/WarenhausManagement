@@ -12,7 +12,7 @@ namespace WarenhausManagement
 
 
 
-        public static List<string> StatistikWare(string _Username, string _Passwort)
+        public static List<string> EinbuchenMethode(string _Username, string _Passwort, int WareID)
         {
             List<string> result = new List<string>();
             SqlConnection NewConnection = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username +"; Password = " + _Passwort);
@@ -20,7 +20,7 @@ namespace WarenhausManagement
             {
 
                 NewConnection.Open();
-                SqlCommand NewCommand = new SqlCommand("SELECT * FROM dbo.Ware;", NewConnection);
+                SqlCommand NewCommand = new SqlCommand("select * from f_einbuchen("+WareID+")", NewConnection);
                 SqlDataReader Reader = NewCommand.ExecuteReader();
 
                 while(Reader.HasRows)
@@ -37,10 +37,27 @@ namespace WarenhausManagement
             catch(Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-                NewConnection.Close()
+                NewConnection.Close();
             }
 
             return null;
+        }
+        public static void EinbuchenProzedur(string _Username, string _Passwort, int WareID)
+        {
+            SqlConnection NewConnection = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
+            try
+            {
+
+                NewConnection.Open();
+                SqlCommand NewCommand = new SqlCommand("exec p_insert_lagerprozess("+WareID+");", NewConnection);
+                NewConnection.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                NewConnection.Close();
+            }
         }
 
         public static List<string> StatistikLagerplatz(string _Username, string _Passwort)
