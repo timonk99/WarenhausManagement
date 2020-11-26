@@ -23,14 +23,16 @@ namespace WarenhausManagement
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
+            User user = new User();
             lbl_Status.Text = "";
             _Username = txtbx_Username.Text;
             _Password = CreateMD5Hash(txtbx_Password.Text);
             if (_Username!= "" && _Password != null)
             {
                 //Login mit DB oder AD
-                //nächste Form aufrufen wenn erfolgreich
-                Mainmenu hmenu = new Mainmenu(_Username);
+                //nächste Form aufrufen nur wenn erfolgreich
+                //user füllen
+                Mainmenu hmenu = new Mainmenu(user);
                 this.Hide();
                 hmenu.Show();
             }
@@ -54,16 +56,6 @@ namespace WarenhausManagement
                 sb.Append(hashBytes[i].ToString("X2"));
             }
             return sb.ToString();
-        }
-
-        private void pictureBoxPWclear_Click(object sender, EventArgs e)
-        {
-            txtbx_Password.PasswordChar = '\0';
-        }
-
-        private void pictureBoxPWclear_MouseLeave(object sender, EventArgs e)
-        {
-            txtbx_Password.PasswordChar = '*';
         }
 
         private void pictureBoxPW_Click(object sender, EventArgs e)

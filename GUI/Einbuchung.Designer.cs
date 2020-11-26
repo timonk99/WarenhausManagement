@@ -88,6 +88,7 @@
             this.btn_Einbuchen.TabIndex = 4;
             this.btn_Einbuchen.Text = "Einbuchen";
             this.btn_Einbuchen.UseVisualStyleBackColor = true;
+            this.btn_Einbuchen.Click += new System.EventHandler(this.btn_Einbuchen_Click);
             // 
             // lbl_Status
             // 
@@ -95,9 +96,8 @@
             this.lbl_Status.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Status.Location = new System.Drawing.Point(91, 374);
             this.lbl_Status.Name = "lbl_Status";
-            this.lbl_Status.Size = new System.Drawing.Size(69, 13);
+            this.lbl_Status.Size = new System.Drawing.Size(0, 13);
             this.lbl_Status.TabIndex = 5;
-            this.lbl_Status.Text = "Status_Label";
             // 
             // btn_Ausbuchen
             // 
@@ -107,6 +107,7 @@
             this.btn_Ausbuchen.TabIndex = 6;
             this.btn_Ausbuchen.Text = "Ausbuchen";
             this.btn_Ausbuchen.UseVisualStyleBackColor = true;
+            this.btn_Ausbuchen.Click += new System.EventHandler(this.btn_Ausbuchen_Click);
             // 
             // label3
             // 

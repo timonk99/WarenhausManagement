@@ -40,12 +40,12 @@ namespace WarenhausManagement.GUI
             {
                 //Laden der Daten zum dem Artikel aus der DB in die Textfelder
                 ware.SetWareID(Convert.ToInt32(txtbx_ArtikelNr.Text));
-                ware = SQLquery(ware);
+                ware = WareninformationenLaden(ware);
                 txtbx_Bezeichnung.Text = ware.GetWareBezeichnung();
                 txtbx_Preis.Text = ware.GetPreis().ToString();
             }
         }
-        private Ware SQLquery(Ware ware)
+        private Ware WareninformationenLaden(Ware ware)
         {
             string queryString = "SELECT *  FROM  Ware WHERE WareID = @WareID";
             string connectionString = "Server=172.16.112.25;Database=WHM;User Id=SA;Password=Ers1234Ers1234;";
@@ -72,6 +72,16 @@ namespace WarenhausManagement.GUI
             }
 
             return ware;
+        }
+
+        private void btn_Einbuchen_Click(object sender, EventArgs e)
+        {
+            //SQL Statement zum Einbuchen
+        }
+
+        private void btn_Ausbuchen_Click(object sender, EventArgs e)
+        {
+            //SQL Statement zum Aussbuchen
         }
     }
 }

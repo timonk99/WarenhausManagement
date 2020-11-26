@@ -14,11 +14,14 @@ namespace WarenhausManagement.GUI
     {
         private string _Username;
         private bool Einbuchen;
-        public Mainmenu(string Username)
+        User user = new User();
+        //Rolle kontrollieren
+
+        public Mainmenu(User _user)
         {
             InitializeComponent();
-            _Username = Username;
-            lbl_User.Text = _Username;
+            user = _user;
+            lbl_User.Text = user.GetUsername();
         }
 
         private void btn_Einbuchen_Click(object sender, EventArgs e)
