@@ -28,15 +28,16 @@ namespace WarenhausManagement
                     Reader.Read();
                     for ( int i = 0; i < Reader.FieldCount; i++)
                     {
-                        Console.WriteLine(Reader.GetValue(i).ToString());
+                        result.Add(Reader.GetValue(i).ToString());
                     }
                 }
                 NewConnection.Close();
+                return result;
             }
             catch(Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-                NewConnection.Close();
+                NewConnection.Close()
             }
 
             return null;
@@ -58,16 +59,16 @@ namespace WarenhausManagement
                     Reader.Read();
                     for (int i = 0; i < Reader.FieldCount; i++)
                     {
-                        Console.WriteLine(Reader.GetValue(i).ToString());
+                        result.Add(Reader.GetValue(i).ToString());
                     }
                 }
                 NewConnection.Close();
+                return result;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
                 NewConnection.Close();
-                return null;
             }
             return null;
 
