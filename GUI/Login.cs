@@ -14,8 +14,8 @@ namespace WarenhausManagement
 {
     public partial class Login : Form
     {
-        private string _Username;
-        private string _Password;
+        public string _Username;
+        public string _Password;
         public Login()
         {
             InitializeComponent();
@@ -70,6 +70,15 @@ namespace WarenhausManagement
    string queryString = "SELECT tPatCulIntPatIDPk, tPatSFirstname, tPatSName, tPatDBirthday  FROM  [dbo].[TPatientRaw] WHERE tPatSName = @tPatSName";
    string connectionString = "Server=172.16.112.25;Database=;WHM Id=SA;Password=Ers1234Ers1234;";
 
+        private void pictureBoxPW_Click(object sender, EventArgs e)
+        {
+            txtbx_Password.PasswordChar = '\0';
+        }
+
+        private void pictureBoxPW_MouseLeave(object sender, EventArgs e)
+        {
+            txtbx_Password.PasswordChar = '*';
+        }
    using (SqlConnection connection = new SqlConnection(connectionString))
    {
        SqlCommand command = new SqlCommand(queryString, connection);
