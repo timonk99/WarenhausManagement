@@ -46,8 +46,9 @@ namespace WarenhausManagement
 
             return null;
         }
-        public static void EinbuchenProzedur(string _Username, string _Passwort, int WareID)
+        public static bool EinbuchenProzedur(string _Username, string _Passwort, int WareID)
         {
+            bool a;
             SqlConnection NewConnection = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
             try
             {
@@ -55,12 +56,13 @@ namespace WarenhausManagement
                 NewConnection.Open();
                 SqlCommand NewCommand = new SqlCommand("exec p_insert_lagerprozess("+WareID+");", NewConnection);
                 NewConnection.Close();
-
+                return a = true;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
                 NewConnection.Close();
+                return a = false; 
             }
         }
  
