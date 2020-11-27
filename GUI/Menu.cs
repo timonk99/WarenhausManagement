@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.DirectoryServices;
+using System.DirectoryServices.AccountManagement;
 
 namespace WarenhausManagement.GUI
 {
@@ -16,6 +18,9 @@ namespace WarenhausManagement.GUI
         private bool Einbuchen;
         User user = new User();
         //Rolle kontrollieren
+
+        string ADGroupName = "Config-Office-Makros-aus";
+        //bool Test123 = ADGroup(ADGroupName);
 
         public Mainmenu(User _user)
         {
@@ -43,6 +48,16 @@ namespace WarenhausManagement.GUI
             this.Close();
             Login lg = new Login();
             lg.Show();
+        }
+        private bool ADGroup(string ingroup)
+        {
+            string username = Environment.UserName;
+
+            PrincipalContext domainctx = new PrincipalContext(ContextType.Domain, "WHM", "DC=WHM,DC=local");
+
+            UserPrincipal userPrincipal = UserPrincipal.FindByIdentity(domainctx, IdentityType.SamAccountName, username);
+            bool isMember = userPrincipal.IsMemberOf(domainctx, IdentityType.Name, ingroup);
+            return isMember;
         }
     }
 }
