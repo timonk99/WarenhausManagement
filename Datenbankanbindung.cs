@@ -109,63 +109,31 @@ namespace WarenhausManagement
 
             }
         }
+        public static bool NauerArtikel(string _Username, string _Passwort, int WareID, string Warename, float Preis, int Warengröße)
 
-        public static List<string> StatistikLagerplatz(string _Username, string _Passwort)
         {
-            List<string> result = new List<string>();
+
             SqlConnection NewConnection = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
+            SqlCommand NewCommand = new SqlCommand("exec dbo.Ausbuchen(" + WareID + ", " + Warename + ""+Preis+""+Warengröße+");", NewConnection);
             try
             {
 
-                NewConnection.Open();
-                SqlCommand NewCommand = new SqlCommand("SELECT * FROM dbo.Lagerplatz;", NewConnection);
-                SqlDataReader Reader = NewCommand.ExecuteReader();
+                NewCommand.Connection.Open();
+                NewCommand.ExecuteNonQuery();
+                NewCommand.Connection.Close();
+                return true;
 
-                while (Reader.Read())
-                {
-                    for (int i = 0; i < Reader.FieldCount; i++)
-                    {
-                        result.Add(Reader.GetValue(i).ToString());
-                    }
-                }
-                NewConnection.Close();
-                return result;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
+
                 NewConnection.Close();
-            }
-            return null;
 
-        }
 
-        public static List<string> StatistikLagerprozess(string _Username, string _Passwort)
-        {
-            List<string> result = new List<string>();
-            SqlConnection NewConnection = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
-            try
-            {
+                NewCommand.Connection.Close();
+                return false;
 
-                NewConnection.Open();
-                SqlCommand NewCommand = new SqlCommand("SELECT * FROM dbo.Lagerprozess;", NewConnection);
-                SqlDataReader Reader = NewCommand.ExecuteReader();
-
-                while (Reader.Read())
-                {
-                    for (int i = 0; i < Reader.FieldCount; i++)
-                    {
-                        result.Add(Reader.GetValue(i).ToString());
-                    }
-                }
-                NewConnection.Close();
-                return result;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.StackTrace);
-                NewConnection.Close();
-                return null;
             }
         }
 
