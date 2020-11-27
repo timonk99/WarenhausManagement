@@ -16,7 +16,7 @@ namespace WarenhausManagement
             return date.Year.ToString() + date.Month.ToString() + date.Day.ToString();
         }
 
-        public static List<string> StatistikWare(string _Username, string _Passwort)
+        public static List<string> EinbuchenMethode(string _Username, string _Passwort, int WareID)
         {
             List<string> result = new List<string>();
             SqlConnection NewConnection = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username +"; Password = " + _Passwort);
@@ -24,7 +24,7 @@ namespace WarenhausManagement
             {
 
                 NewConnection.Open();
-                SqlCommand NewCommand = new SqlCommand("SELECT * FROM dbo.Ware;", NewConnection);
+                SqlCommand NewCommand = new SqlCommand("select * from f_einbuchen("+WareID+")", NewConnection);
                 SqlDataReader Reader = NewCommand.ExecuteReader();
 
                 while(Reader.HasRows)
@@ -41,12 +41,29 @@ namespace WarenhausManagement
             catch(Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-                NewConnection.Close()
+                NewConnection.Close();
             }
 
             return null;
         }
+        public static void EinbuchenProzedur(string _Username, string _Passwort, int WareID)
+        {
+            SqlConnection NewConnection = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
+            try
+            {
 
+                NewConnection.Open();
+                SqlCommand NewCommand = new SqlCommand("exec p_insert_lagerprozess("+WareID+");", NewConnection);
+                NewConnection.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                NewConnection.Close();
+            }
+        }
+ 
         public static List<string> StatistikLagerplatz(string _Username, string _Passwort)
         {
             List<string> result = new List<string>();
@@ -106,27 +123,6 @@ namespace WarenhausManagement
                 NewConnection.Close();
                 return null;
             }
-        }
-        public static bool Eingabe(string _Username, string _Passwort, string _Tabellenname, string _Spalte, string _Wert)
-        {
-            SqlConnection NewConnection = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
-            bool a = true;
-            try
-            {
-                //INSERT INTO tabellen_name (spalte1, spalte2, spalte3, etc.) VALUES ('Wert1', 'Wert2', 'Wert3', etc.)
-                NewConnection.Open();
-                SqlCommand NewCommand = new SqlCommand("INSERT INTO " + _Tabellenname + " (" + _Spalte + ") VALUES (" + _Wert + ")", NewConnection);
-                NewCommand.ExecuteNonQuery();
-                NewConnection.Close();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.StackTrace);
-                a = false;
-                NewConnection.Close();
-            }
-
-            return a;
         }
 
         public static int Get_Regale(string _Username, string _Passwort)

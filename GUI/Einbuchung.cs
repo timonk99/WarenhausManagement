@@ -13,6 +13,8 @@ namespace WarenhausManagement.GUI
 {
     public partial class Buchung : Form
     {
+        private int _LagerID;
+        Ware ware = new Ware();
         User user = new User();
         private bool _Einbuchung;
         public Buchung(bool Einbuchung, User _user)
@@ -34,47 +36,6 @@ namespace WarenhausManagement.GUI
             }
         }
 
-        private void txtbx_ArtikelNr_TextChanged(object sender, EventArgs e)
-        {
-            Ware ware = new Ware();
-            if (_Einbuchung != true)
-            {
-                //Laden der Daten zum dem Artikel aus der DB in die Textfelder
-                ware.SetWareID(Convert.ToInt32(txtbx_ArtikelNr.Text));
-                ware = WareninformationenLaden(ware);
-                txtbx_Bezeichnung.Text = ware.GetWareBezeichnung();
-                txtbx_Preis.Text = ware.GetPreis().ToString();
-            }
-        }
-        private Ware WareninformationenLaden(Ware ware)
-        {
-            string queryString = "SELECT *  FROM  Ware WHERE WareID = @WareID";
-            string connectionString = "Server=172.16.112.25;Database=WHM;User Id=SA;Password=Ers1234Ers1234;";
-            SqlConnection conn = new SqlConnection(connectionString);
-            SqlCommand command = new SqlCommand(queryString, conn);
-            command.Parameters.AddWithValue("@WareID", ware.GetWareID());
-            conn.Open();
-            SqlDataReader reader = command.ExecuteReader();
-            try
-            {
-                while (reader.Read())
-                {
-                    ware.SetWareBezeichnung(reader.GetString(1));
-                    ware.SetPreis(reader.GetDouble(2));
-                }
-            }
-            catch
-            {
-
-            }
-            finally
-            {
-                reader.Close();
-            }
-
-            return ware;
-        }
-
         private void btn_Einbuchen_Click(object sender, EventArgs e)
         {
             //SQL Statement zum Einbuchen
@@ -92,6 +53,29 @@ namespace WarenhausManagement.GUI
         private void btn_Ausbuchen_Click(object sender, EventArgs e)
         {
             //SQL Statement zum Aussbuchen
+        }
+
+        private void txtbx_ArtikelNr_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string wareID;
+                wareID = txtbx_ArtikelNr.Text;
+                wareID = wareID.Substring(8);
+                ware.SetWareID(Convert.ToInt32(wareID));
+            }
+        }
+
+        private void txtbx_Lagerplatz_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string strlagerID;
+                strlagerID = txtbx_Lagerplatz.Text;
+                strlagerID = strlagerID.Substring(8);
+                strlagerID = "1" + strlagerID;
+                _LagerID= Convert.ToInt32(strlagerID);
+            }
         }
     }
 }
