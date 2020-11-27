@@ -86,11 +86,11 @@ namespace WarenhausManagement.Statistik
             // 
             // dt_von
             // 
-            this.dt_von.Location = new System.Drawing.Point(418, 164);
+            this.dt_von.Location = new System.Drawing.Point(418, 226);
+            this.dt_von.MaxDate = new System.DateTime(2020, 11, 27, 11, 10, 45, 462);
             this.dt_von.Name = "dt_von";
             this.dt_von.Size = new System.Drawing.Size(200, 20);
             this.dt_von.TabIndex = 4;
-            this.dt_von.MaxDate = System.DateTime.Now;
             // 
             // l_titel
             // 
@@ -121,11 +121,11 @@ namespace WarenhausManagement.Statistik
             // 
             // dt_bis
             // 
-            this.dt_bis.Location = new System.Drawing.Point(418, 226);
+            this.dt_bis.Location = new System.Drawing.Point(418, 164);
+            this.dt_bis.MaxDate = new System.DateTime(2020, 11, 27, 11, 10, 45, 468);
             this.dt_bis.Name = "dt_bis";
             this.dt_bis.Size = new System.Drawing.Size(200, 20);
             this.dt_bis.TabIndex = 7;
-            this.dt_bis.MaxDate = System.DateTime.Now;
             // 
             // l_auswahl
             // 

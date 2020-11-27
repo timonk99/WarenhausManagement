@@ -14,6 +14,8 @@ namespace WarenhausManagement.Statistik
 {
     public partial class StatsMain : Form
     {
+        public string testUser = "SA";
+        public string testPasswort = "Ers1234Ers1234";
         public StatsMain()
         {
             InitializeComponent();
@@ -25,13 +27,14 @@ namespace WarenhausManagement.Statistik
             this.c_chart.Titles.Clear();
             this.c_chart.ChartAreas.Clear();
             this.c_chart.Series.Clear();
+            this.c_chart.Legends.Clear();
         }
         private void Fill_cb_regal()
         {
-            int regale = Datenbankanbindung.Get_Regale();
+            int regale = Datenbankanbindung.Get_Regale(testUser, testPasswort);
 
             cb_regal.Items.Add("Alle");
-            for( int i = 1; i == regale; i++)
+            for( int i = 1; i <= regale; i++)
             {
                 cb_regal.Items.Add(i);
             }
@@ -65,10 +68,12 @@ namespace WarenhausManagement.Statistik
             this.c_chart.Legends.Add(types[0]);
             this.c_chart.Series[0].Points.AddY( 10 - value);
             this.c_chart.Series[0].Points[0].LegendText = types[0];
+            this.c_chart.Series[0].Points[0].AxisLabel = (10 - value).ToString();
 
             this.c_chart.Legends.Add(types[1]);
             this.c_chart.Series[0].Points.AddY(value);
             this.c_chart.Series[0].Points[1].LegendText = types[1];
+            this.c_chart.Series[0].Points[1].AxisLabel = (value).ToString();
         }
         private void btn_close_Click(object sender, EventArgs e)
         {
@@ -77,8 +82,8 @@ namespace WarenhausManagement.Statistik
 
         private void btn_load_Click(object sender, EventArgs e)
         {
-            if (cb_auswahl.SelectedIndex == 0) PieAuslastung(Datenbankanbindung.Get_Auslastung());
-            else if (cb_auswahl.SelectedIndex == 1) ArtikelLager(Datenbankanbindung.Get_Warenmenge());
+            if (cb_auswahl.SelectedIndex == 0) PieAuslastung(Datenbankanbindung.Get_Auslastung(testUser,testPasswort, dt_von.Value, dt_bis.Value, cb_regal.Text));
+            else if (cb_auswahl.SelectedIndex == 1) ArtikelLager(Datenbankanbindung.Get_Warenmenge(testUser, testPasswort, dt_von.Value, dt_bis.Value));
         }
     }
 }

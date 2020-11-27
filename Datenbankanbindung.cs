@@ -27,9 +27,8 @@ namespace WarenhausManagement
                 SqlCommand NewCommand = new SqlCommand("select * from f_einbuchen("+WareID+")", NewConnection);
                 SqlDataReader Reader = NewCommand.ExecuteReader();
 
-                while(Reader.HasRows)
+                while(Reader.Read())
                 {
-                    Reader.Read();
                     for ( int i = 0; i < Reader.FieldCount; i++)
                     {
                         result.Add(Reader.GetValue(i).ToString());
@@ -75,9 +74,8 @@ namespace WarenhausManagement
                 SqlCommand NewCommand = new SqlCommand("SELECT * FROM dbo.Lagerplatz;", NewConnection);
                 SqlDataReader Reader = NewCommand.ExecuteReader();
 
-                while (Reader.HasRows)
+                while (Reader.Read())
                 {
-                    Reader.Read();
                     for (int i = 0; i < Reader.FieldCount; i++)
                     {
                         result.Add(Reader.GetValue(i).ToString());
@@ -106,9 +104,8 @@ namespace WarenhausManagement
                 SqlCommand NewCommand = new SqlCommand("SELECT * FROM dbo.Lagerprozess;", NewConnection);
                 SqlDataReader Reader = NewCommand.ExecuteReader();
 
-                while (Reader.HasRows)
+                while (Reader.Read())
                 {
-                    Reader.Read();
                     for (int i = 0; i < Reader.FieldCount; i++)
                     {
                         result.Add(Reader.GetValue(i).ToString());
@@ -137,6 +134,7 @@ namespace WarenhausManagement
 
             reader.Read();
             value = reader.GetInt32(0);
+            reader.Close();
             return value;
         }
 
@@ -156,6 +154,7 @@ namespace WarenhausManagement
                     SqlDataReader reader = com.ExecuteReader();
                     reader.Read();
                     auslastung += reader.GetInt32(0);
+                    reader.Close();
                 }
             }
             else
@@ -176,18 +175,19 @@ namespace WarenhausManagement
             List<List<string>> rn_values = new List<List<string>>();
 
             SqlConnection connect = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
-            SqlCommand com = new SqlCommand("select * from dbo.f_get_menge_ware('" + convertDate(startDate) + "', '" + convertDate(endDate) + "' );");
+            SqlCommand com = new SqlCommand("select * from dbo.f_get_menge_ware('" + convertDate(startDate) + "', '" + convertDate(endDate) + "' );", connect);
+            com.Connection.Open();
             SqlDataReader reader = com.ExecuteReader();
 
-            while(reader.HasRows)
+            while(reader.Read())
             {
-                reader.Read();
                 mengen.Add(reader.GetValue(0).ToString());
                 waren.Add(reader.GetValue(1).ToString());
             }
 
             rn_values.Add(waren);
             rn_values.Add(mengen);
+            com.Connection.Close();
             return rn_values;
 
 
