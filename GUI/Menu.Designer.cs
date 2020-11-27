@@ -39,7 +39,8 @@
             // 
             // btn_Einbuchen
             // 
-            this.btn_Einbuchen.Location = new System.Drawing.Point(52, 92);
+            this.btn_Einbuchen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Einbuchen.Location = new System.Drawing.Point(35, 73);
             this.btn_Einbuchen.Name = "btn_Einbuchen";
             this.btn_Einbuchen.Size = new System.Drawing.Size(158, 36);
             this.btn_Einbuchen.TabIndex = 0;
@@ -49,7 +50,8 @@
             // 
             // btn_Ausbuchen
             // 
-            this.btn_Ausbuchen.Location = new System.Drawing.Point(52, 134);
+            this.btn_Ausbuchen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Ausbuchen.Location = new System.Drawing.Point(35, 115);
             this.btn_Ausbuchen.Name = "btn_Ausbuchen";
             this.btn_Ausbuchen.Size = new System.Drawing.Size(158, 36);
             this.btn_Ausbuchen.TabIndex = 1;
@@ -59,7 +61,8 @@
             // 
             // btn_Statistik
             // 
-            this.btn_Statistik.Location = new System.Drawing.Point(52, 176);
+            this.btn_Statistik.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Statistik.Location = new System.Drawing.Point(35, 157);
             this.btn_Statistik.Name = "btn_Statistik";
             this.btn_Statistik.Size = new System.Drawing.Size(158, 36);
             this.btn_Statistik.TabIndex = 2;
@@ -69,9 +72,10 @@
             // lbl_User
             // 
             this.lbl_User.AutoSize = true;
+            this.lbl_User.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_User.Location = new System.Drawing.Point(310, 9);
             this.lbl_User.Name = "lbl_User";
-            this.lbl_User.Size = new System.Drawing.Size(49, 13);
+            this.lbl_User.Size = new System.Drawing.Size(56, 15);
             this.lbl_User.TabIndex = 3;
             this.lbl_User.Text = "Benutzer";
             // 
@@ -79,7 +83,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(100, 37);
+            this.label1.Location = new System.Drawing.Point(82, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 20);
             this.label1.TabIndex = 5;
