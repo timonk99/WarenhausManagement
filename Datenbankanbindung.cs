@@ -58,7 +58,6 @@ namespace WarenhausManagement
         public static bool EinbuchenProzedur(string _Username, string _Passwort, int WareID, int LagerplatzID)
 
         {
-            bool a;
             SqlConnection NewConnection = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
             SqlCommand NewCommand = new SqlCommand("exec p_insert_lagerprozess(" + WareID + ", " + LagerplatzID + ");", NewConnection);
             try
@@ -67,7 +66,7 @@ namespace WarenhausManagement
                 NewCommand.Connection.Open();
                 NewCommand.ExecuteNonQuery();
                 NewCommand.Connection.Close();
-                return a = true;
+                return true;
 
             }
             catch (Exception e)
@@ -78,24 +77,24 @@ namespace WarenhausManagement
 
 
                 NewCommand.Connection.Close();
-                return a = false; 
+                return false; 
 
             }
         }
-        /*
-                 public static bool EinbuchenProzedur(string _Username, string _Passwort, int WareID, int LagerplatzID)
+
+        public static bool AusbuchenProzedur(string _Username, string _Passwort, int WareID, int LagerplatzID)
 
         {
-            bool a;
+
             SqlConnection NewConnection = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
-            SqlCommand NewCommand = new SqlCommand("exec p_insert_lagerprozess(" + WareID + ", " + LagerplatzID + ");", NewConnection);
+            SqlCommand NewCommand = new SqlCommand("exec dbo.Ausbuchen(" + WareID + ", " + LagerplatzID + ");", NewConnection);
             try
             {
 
                 NewCommand.Connection.Open();
                 NewCommand.ExecuteNonQuery();
                 NewCommand.Connection.Close();
-                return a = true;
+                return true;
 
             }
             catch (Exception e)
@@ -106,11 +105,10 @@ namespace WarenhausManagement
 
 
                 NewCommand.Connection.Close();
-                return a = false; 
+                return false;
 
             }
         }
-         */
 
         public static List<string> StatistikLagerplatz(string _Username, string _Passwort)
         {
