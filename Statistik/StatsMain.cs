@@ -17,6 +17,7 @@ namespace WarenhausManagement.Statistik
         public StatsMain()
         {
             InitializeComponent();
+            Fill_cb_regal();
         }
 
         private void ClearChart()
@@ -27,32 +28,31 @@ namespace WarenhausManagement.Statistik
         }
         private void Fill_cb_regal()
         {
-            SqlConnection connect = new SqlConnection()
-            cb_regal.Items.AddRange(list);
+            int regale = Datenbankanbindung.Get_Regale();
+
+            cb_regal.Items.Add("Alle");
+            for( int i = 1; i == regale; i++)
+            {
+                cb_regal.Items.Add(i);
+            }
         }
-        private void ArtikelLager(int[] values)
+        private void ArtikelLager(List<List<string>> values)
         {
-            string testArtikel = "Test Artikel";
             ClearChart();
 
-            DateTime startDate = dt_von.Value;
-            TimeSpan timeSpan = dt_bis.Value.Subtract(dt_von.Value);
-            int days = timeSpan.Days + 1;
-
-            this.c_chart.Titles.Add("Bestand von " + testArtikel + " vom " + dt_von.Value.ToShortDateString() + " bis " + dt_bis.Value.ToShortDateString());
+            this.c_chart.Titles.Add("Bestand vom " + dt_von.Value.ToShortDateString() + " bis " + dt_bis.Value.ToShortDateString());
             this.c_chart.Titles[0].Font = new Font("Verdana", 12);
             this.c_chart.ChartAreas.Add(new ChartArea());
             this.c_chart.Series.Add(new Series());
 
-            for (int i = 0; i < days; i++)
+            for(int i = 0; i < values[0].Count; i++)
             {
-                this.c_chart.Series[0].Points.AddXY(startDate.ToShortDateString(), values[i]);
-                startDate = startDate.AddDays(1);
+                this.c_chart.Series[0].Points.AddXY(values[0][i].ToString(), values[1][i]);
             }
         }
-        private void PieAuslastung(int[] values)
+        private void PieAuslastung(int value)
         {
-            string[] types = { "Leer", "Voll", "Reserviert" };
+            string[] types = { "Leer", "Voll"};
 
             ClearChart();
             
@@ -62,13 +62,13 @@ namespace WarenhausManagement.Statistik
             this.c_chart.Series.Add(new Series());
             this.c_chart.Series[0].ChartType = SeriesChartType.Pie;
 
+            this.c_chart.Legends.Add(types[0]);
+            this.c_chart.Series[0].Points.AddY( 10 - value);
+            this.c_chart.Series[0].Points[0].LegendText = types[0];
 
-            for(int i = 0; i < values.Length; i++)
-            {
-                this.c_chart.Legends.Add(types[i]);
-                this.c_chart.Series[0].Points.AddY(values[i]);
-                this.c_chart.Series[0].Points[i].LegendText = types[i];
-            }
+            this.c_chart.Legends.Add(types[1]);
+            this.c_chart.Series[0].Points.AddY(value);
+            this.c_chart.Series[0].Points[1].LegendText = types[1];
         }
         private void btn_close_Click(object sender, EventArgs e)
         {
@@ -77,8 +77,8 @@ namespace WarenhausManagement.Statistik
 
         private void btn_load_Click(object sender, EventArgs e)
         {
-            if (cb_auswahl.SelectedIndex == 0) PieAuslastung(test);
-            else if (cb_auswahl.SelectedIndex == 1) ArtikelLager(test);
+            if (cb_auswahl.SelectedIndex == 0) PieAuslastung(Datenbankanbindung.Get_Auslastung());
+            else if (cb_auswahl.SelectedIndex == 1) ArtikelLager(Datenbankanbindung.Get_Warenmenge());
         }
     }
 }

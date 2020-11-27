@@ -11,6 +11,10 @@ namespace WarenhausManagement
     {
 
 
+        private static string convertDate(DateTime date)
+        {
+            return date.Year.ToString() + date.Month.ToString() + date.Day.ToString();
+        }
 
         public static List<string> EinbuchenMethode(string _Username, string _Passwort, int WareID)
         {
@@ -121,5 +125,73 @@ namespace WarenhausManagement
             }
         }
 
+        public static int Get_Regale(string _Username, string _Passwort)
+        {
+            int value = 0;
+
+            SqlConnection connect = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
+            SqlCommand com = new SqlCommand("select max(Regal) from Lagerplatz;", connect);
+
+            com.Connection.Open();
+            SqlDataReader reader = com.ExecuteReader();
+
+            reader.Read();
+            value = reader.GetInt32(0);
+            return value;
+        }
+
+        public static int Get_Auslastung(string _Username, string _Passwort, DateTime startDate, DateTime endDate, string regal)
+        {
+            int auslastung = 0;
+            SqlConnection connect = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
+            SqlCommand com = new SqlCommand();
+            com.Connection = connect;
+            com.Connection.Open();
+            if (regal == "Alle")
+            {
+                int regalAnzahl = Get_Regale(_Username, _Passwort);
+                for(int i = 1; i < regalAnzahl; i++)
+                {
+                    com.CommandText = ("select dbo.f_get_auslastung( '" + convertDate(startDate) + "', '" + convertDate(endDate) + "', " + i + " );");
+                    SqlDataReader reader = com.ExecuteReader();
+                    reader.Read();
+                    auslastung += reader.GetInt32(0);
+                }
+            }
+            else
+            {
+                com.CommandText = ("select dbo.f_get_auslastung( '" + convertDate(startDate) + "', '" + convertDate(endDate) + "', " + regal + " );");
+                SqlDataReader reader = com.ExecuteReader();
+                reader.Read();
+                auslastung = reader.GetInt32(0);
+            }
+            com.Connection.Close();
+            return auslastung;
+        }
+
+        public static List<List<string>> Get_Warenmenge(string _Username, string _Passwort, DateTime startDate, DateTime endDate)
+        {
+            List<string> waren = new List<string>();
+            List<string> mengen = new List<string>();
+            List<List<string>> rn_values = new List<List<string>>();
+
+            SqlConnection connect = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
+            SqlCommand com = new SqlCommand("select * from dbo.f_get_menge_ware('" + convertDate(startDate) + "', '" + convertDate(endDate) + "' );");
+            SqlDataReader reader = com.ExecuteReader();
+
+            while(reader.HasRows)
+            {
+                reader.Read();
+                mengen.Add(reader.GetValue(0).ToString());
+                waren.Add(reader.GetValue(1).ToString());
+            }
+
+            rn_values.Add(waren);
+            rn_values.Add(mengen);
+            return rn_values;
+
+
+
+        }
     }
 }
