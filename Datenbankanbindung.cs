@@ -16,9 +16,13 @@ namespace WarenhausManagement
             return date.Year.ToString() + date.Month.ToString() + date.Day.ToString();
         }
 
-        public static List<string> EinbuchenMethode(string _Username, string _Passwort, int WareID)
+        public static List<List<string>> EinbuchenMethode(string _Username, string _Passwort, int WareID)
         {
-            List<string> result = new List<string>();
+            List<string> beschreibung = new List<string>();
+            List<string> speicherbedarf = new List<string>();
+            List<string> preis = new List<string>();
+
+            List<List<string>> result = new List<List<string>>();
             SqlConnection NewConnection = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username +"; Password = " + _Passwort);
             try
             {
@@ -27,15 +31,18 @@ namespace WarenhausManagement
                 SqlCommand NewCommand = new SqlCommand("select * from f_einbuchen("+WareID+")", NewConnection);
                 SqlDataReader Reader = NewCommand.ExecuteReader();
 
-                while(Reader.HasRows)
+                while(Reader.Read())
                 {
-                    Reader.Read();
-                    for ( int i = 0; i < Reader.FieldCount; i++)
-                    {
-                        result.Add(Reader.GetValue(i).ToString());
-                    }
+                    beschreibung.Add(Reader.GetValue(0).ToString());
+                    speicherbedarf.Add(Reader.GetValue(1).ToString());
+                    preis.Add(Reader.GetValue(2).ToString());
                 }
                 NewConnection.Close();
+
+                result.Add(beschreibung);
+                result.Add(speicherbedarf);
+                result.Add(preis);
+
                 return result;
             }
             catch(Exception e)
@@ -46,12 +53,19 @@ namespace WarenhausManagement
 
             return null;
         }
+        public static void EinbuchenProzedur(string _Username, string _Passwort, int WareID, int LagerplatzID)
         public static bool EinbuchenProzedur(string _Username, string _Passwort, int WareID)
         {
             bool a;
             SqlConnection NewConnection = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
+            SqlCommand NewCommand = new SqlCommand("exec p_insert_lagerprozess(" + WareID + ", " + LagerplatzID + ");", NewConnection);
             try
             {
+                
+                NewCommand.Connection.Open();
+                NewCommand.ExecuteNonQuery();
+                NewCommand.Connection.Close();
+
 
                 NewConnection.Open();
                 SqlCommand NewCommand = new SqlCommand("exec p_insert_lagerprozess("+WareID+");", NewConnection);
@@ -61,6 +75,7 @@ namespace WarenhausManagement
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
+                NewCommand.Connection.Close();
                 NewConnection.Close();
                 return a = false; 
             }
@@ -77,9 +92,8 @@ namespace WarenhausManagement
                 SqlCommand NewCommand = new SqlCommand("SELECT * FROM dbo.Lagerplatz;", NewConnection);
                 SqlDataReader Reader = NewCommand.ExecuteReader();
 
-                while (Reader.HasRows)
+                while (Reader.Read())
                 {
-                    Reader.Read();
                     for (int i = 0; i < Reader.FieldCount; i++)
                     {
                         result.Add(Reader.GetValue(i).ToString());
@@ -108,9 +122,8 @@ namespace WarenhausManagement
                 SqlCommand NewCommand = new SqlCommand("SELECT * FROM dbo.Lagerprozess;", NewConnection);
                 SqlDataReader Reader = NewCommand.ExecuteReader();
 
-                while (Reader.HasRows)
+                while (Reader.Read())
                 {
-                    Reader.Read();
                     for (int i = 0; i < Reader.FieldCount; i++)
                     {
                         result.Add(Reader.GetValue(i).ToString());
@@ -139,6 +152,7 @@ namespace WarenhausManagement
 
             reader.Read();
             value = reader.GetInt32(0);
+            reader.Close();
             return value;
         }
 
@@ -158,6 +172,7 @@ namespace WarenhausManagement
                     SqlDataReader reader = com.ExecuteReader();
                     reader.Read();
                     auslastung += reader.GetInt32(0);
+                    reader.Close();
                 }
             }
             else
@@ -178,18 +193,19 @@ namespace WarenhausManagement
             List<List<string>> rn_values = new List<List<string>>();
 
             SqlConnection connect = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
-            SqlCommand com = new SqlCommand("select * from dbo.f_get_menge_ware('" + convertDate(startDate) + "', '" + convertDate(endDate) + "' );");
+            SqlCommand com = new SqlCommand("select * from dbo.f_get_menge_ware('" + convertDate(startDate) + "', '" + convertDate(endDate) + "' );", connect);
+            com.Connection.Open();
             SqlDataReader reader = com.ExecuteReader();
 
-            while(reader.HasRows)
+            while(reader.Read())
             {
-                reader.Read();
                 mengen.Add(reader.GetValue(0).ToString());
                 waren.Add(reader.GetValue(1).ToString());
             }
 
             rn_values.Add(waren);
             rn_values.Add(mengen);
+            com.Connection.Close();
             return rn_values;
 
 
