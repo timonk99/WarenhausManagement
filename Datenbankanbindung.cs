@@ -59,7 +59,7 @@ namespace WarenhausManagement
                 NewConnection.Close();
             }
         }
-
+ 
         public static List<string> StatistikLagerplatz(string _Username, string _Passwort)
         {
             List<string> result = new List<string>();
@@ -119,27 +119,6 @@ namespace WarenhausManagement
                 NewConnection.Close();
                 return null;
             }
-        }
-        public static bool Eingabe(string _Username, string _Passwort, string _Tabellenname, string _Spalte, string _Wert)
-        {
-            SqlConnection NewConnection = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
-            bool a = true;
-            try
-            {
-                //INSERT INTO tabellen_name (spalte1, spalte2, spalte3, etc.) VALUES ('Wert1', 'Wert2', 'Wert3', etc.)
-                NewConnection.Open();
-                SqlCommand NewCommand = new SqlCommand("INSERT INTO " + _Tabellenname + " (" + _Spalte + ") VALUES (" + _Wert + ")", NewConnection);
-                NewCommand.ExecuteNonQuery();
-                NewConnection.Close();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.StackTrace);
-                a = false;
-                NewConnection.Close();
-            }
-
-            return a;
         }
 
     }
