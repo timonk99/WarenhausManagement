@@ -47,17 +47,19 @@
             // 
             // txtbx_ArtikelNr
             // 
+            this.txtbx_ArtikelNr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbx_ArtikelNr.Location = new System.Drawing.Point(91, 75);
             this.txtbx_ArtikelNr.Name = "txtbx_ArtikelNr";
-            this.txtbx_ArtikelNr.Size = new System.Drawing.Size(137, 20);
+            this.txtbx_ArtikelNr.Size = new System.Drawing.Size(137, 22);
             this.txtbx_ArtikelNr.TabIndex = 0;
             this.txtbx_ArtikelNr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbx_ArtikelNr_KeyDown);
             // 
             // txtbx_Lagerplatz
             // 
+            this.txtbx_Lagerplatz.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbx_Lagerplatz.Location = new System.Drawing.Point(91, 129);
             this.txtbx_Lagerplatz.Name = "txtbx_Lagerplatz";
-            this.txtbx_Lagerplatz.Size = new System.Drawing.Size(137, 20);
+            this.txtbx_Lagerplatz.Size = new System.Drawing.Size(137, 22);
             this.txtbx_Lagerplatz.TabIndex = 1;
             this.txtbx_Lagerplatz.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbx_Lagerplatz_KeyDown);
             // 
@@ -65,9 +67,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(91, 59);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.Size = new System.Drawing.Size(66, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Artikel-Nr.";
             // 
@@ -75,17 +78,19 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(91, 113);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 13);
+            this.label2.Size = new System.Drawing.Size(92, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Lagerplatz-Nr.";
             // 
             // btn_Einbuchen
             // 
+            this.btn_Einbuchen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Einbuchen.Location = new System.Drawing.Point(91, 344);
             this.btn_Einbuchen.Name = "btn_Einbuchen";
-            this.btn_Einbuchen.Size = new System.Drawing.Size(75, 23);
+            this.btn_Einbuchen.Size = new System.Drawing.Size(85, 23);
             this.btn_Einbuchen.TabIndex = 4;
             this.btn_Einbuchen.Text = "Einbuchen";
             this.btn_Einbuchen.UseVisualStyleBackColor = true;
@@ -102,7 +107,8 @@
             // 
             // btn_Ausbuchen
             // 
-            this.btn_Ausbuchen.Location = new System.Drawing.Point(183, 344);
+            this.btn_Ausbuchen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Ausbuchen.Location = new System.Drawing.Point(198, 344);
             this.btn_Ausbuchen.Name = "btn_Ausbuchen";
             this.btn_Ausbuchen.Size = new System.Drawing.Size(75, 23);
             this.btn_Ausbuchen.TabIndex = 6;
@@ -114,34 +120,38 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(91, 173);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 13);
+            this.label3.Size = new System.Drawing.Size(121, 16);
             this.label3.TabIndex = 8;
             this.label3.Text = "Artikelbezeichnung";
             // 
             // txtbx_Bezeichnung
             // 
+            this.txtbx_Bezeichnung.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbx_Bezeichnung.Location = new System.Drawing.Point(91, 189);
             this.txtbx_Bezeichnung.Name = "txtbx_Bezeichnung";
-            this.txtbx_Bezeichnung.Size = new System.Drawing.Size(137, 20);
+            this.txtbx_Bezeichnung.Size = new System.Drawing.Size(137, 22);
             this.txtbx_Bezeichnung.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(91, 230);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 13);
+            this.label4.Size = new System.Drawing.Size(101, 16);
             this.label4.TabIndex = 10;
             this.label4.Text = "Speicherbedarf";
             // 
             // txtbx_Speicher
             // 
+            this.txtbx_Speicher.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbx_Speicher.Location = new System.Drawing.Point(91, 246);
             this.txtbx_Speicher.Name = "txtbx_Speicher";
-            this.txtbx_Speicher.Size = new System.Drawing.Size(137, 20);
+            this.txtbx_Speicher.Size = new System.Drawing.Size(137, 22);
             this.txtbx_Speicher.TabIndex = 9;
             // 
             // label5
@@ -159,21 +169,24 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(91, 279);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(30, 13);
+            this.label6.Size = new System.Drawing.Size(39, 16);
             this.label6.TabIndex = 13;
             this.label6.Text = "Preis";
             // 
             // txtbx_Preis
             // 
+            this.txtbx_Preis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbx_Preis.Location = new System.Drawing.Point(91, 295);
             this.txtbx_Preis.Name = "txtbx_Preis";
-            this.txtbx_Preis.Size = new System.Drawing.Size(137, 20);
+            this.txtbx_Preis.Size = new System.Drawing.Size(137, 22);
             this.txtbx_Preis.TabIndex = 12;
             // 
             // button3
             // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(93, 404);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
