@@ -16,9 +16,13 @@ namespace WarenhausManagement
             return date.Year.ToString() + date.Month.ToString() + date.Day.ToString();
         }
 
-        public static List<string> EinbuchenMethode(string _Username, string _Passwort, int WareID)
+        public static List<List<string>> EinbuchenMethode(string _Username, string _Passwort, int WareID)
         {
-            List<string> result = new List<string>();
+            List<string> beschreibung = new List<string>();
+            List<string> speicherbedarf = new List<string>();
+            List<string> preis = new List<string>();
+
+            List<List<string>> result = new List<List<string>>();
             SqlConnection NewConnection = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username +"; Password = " + _Passwort);
             try
             {
@@ -29,12 +33,16 @@ namespace WarenhausManagement
 
                 while(Reader.Read())
                 {
-                    for ( int i = 0; i < Reader.FieldCount; i++)
-                    {
-                        result.Add(Reader.GetValue(i).ToString());
-                    }
+                    beschreibung.Add(Reader.GetValue(0).ToString());
+                    speicherbedarf.Add(Reader.GetValue(1).ToString());
+                    preis.Add(Reader.GetValue(2).ToString());
                 }
                 NewConnection.Close();
+
+                result.Add(beschreibung);
+                result.Add(speicherbedarf);
+                result.Add(preis);
+
                 return result;
             }
             catch(Exception e)
