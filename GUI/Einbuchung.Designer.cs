@@ -43,6 +43,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtbx_Preis = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.checkBoxNeuerArtikel = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtbx_ArtikelNr
@@ -52,12 +53,13 @@
             this.txtbx_ArtikelNr.Name = "txtbx_ArtikelNr";
             this.txtbx_ArtikelNr.Size = new System.Drawing.Size(137, 22);
             this.txtbx_ArtikelNr.TabIndex = 0;
+            this.txtbx_ArtikelNr.TextChanged += new System.EventHandler(this.txtbx_ArtikelNr_TextChanged);
             this.txtbx_ArtikelNr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbx_ArtikelNr_KeyDown);
             // 
             // txtbx_Lagerplatz
             // 
             this.txtbx_Lagerplatz.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbx_Lagerplatz.Location = new System.Drawing.Point(91, 129);
+            this.txtbx_Lagerplatz.Location = new System.Drawing.Point(88, 281);
             this.txtbx_Lagerplatz.Name = "txtbx_Lagerplatz";
             this.txtbx_Lagerplatz.Size = new System.Drawing.Size(137, 22);
             this.txtbx_Lagerplatz.TabIndex = 1;
@@ -79,7 +81,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(91, 113);
+            this.label2.Location = new System.Drawing.Point(88, 265);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 16);
             this.label2.TabIndex = 3;
@@ -121,7 +123,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(91, 173);
+            this.label3.Location = new System.Drawing.Point(91, 112);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(121, 16);
             this.label3.TabIndex = 8;
@@ -130,7 +132,7 @@
             // txtbx_Bezeichnung
             // 
             this.txtbx_Bezeichnung.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbx_Bezeichnung.Location = new System.Drawing.Point(91, 189);
+            this.txtbx_Bezeichnung.Location = new System.Drawing.Point(91, 128);
             this.txtbx_Bezeichnung.Name = "txtbx_Bezeichnung";
             this.txtbx_Bezeichnung.Size = new System.Drawing.Size(137, 22);
             this.txtbx_Bezeichnung.TabIndex = 7;
@@ -140,7 +142,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(91, 230);
+            this.label4.Location = new System.Drawing.Point(91, 169);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(101, 16);
             this.label4.TabIndex = 10;
@@ -149,7 +151,7 @@
             // txtbx_Speicher
             // 
             this.txtbx_Speicher.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbx_Speicher.Location = new System.Drawing.Point(91, 246);
+            this.txtbx_Speicher.Location = new System.Drawing.Point(91, 185);
             this.txtbx_Speicher.Name = "txtbx_Speicher";
             this.txtbx_Speicher.Size = new System.Drawing.Size(137, 22);
             this.txtbx_Speicher.TabIndex = 9;
@@ -170,7 +172,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(91, 279);
+            this.label6.Location = new System.Drawing.Point(91, 218);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(39, 16);
             this.label6.TabIndex = 13;
@@ -179,7 +181,7 @@
             // txtbx_Preis
             // 
             this.txtbx_Preis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbx_Preis.Location = new System.Drawing.Point(91, 295);
+            this.txtbx_Preis.Location = new System.Drawing.Point(91, 234);
             this.txtbx_Preis.Name = "txtbx_Preis";
             this.txtbx_Preis.Size = new System.Drawing.Size(137, 22);
             this.txtbx_Preis.TabIndex = 12;
@@ -194,6 +196,19 @@
             this.button3.Text = "Zurück";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // checkBoxNeuerArtikel
+            // 
+            this.checkBoxNeuerArtikel.AutoSize = true;
+            this.checkBoxNeuerArtikel.BackColor = System.Drawing.Color.Transparent;
+            this.checkBoxNeuerArtikel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxNeuerArtikel.Location = new System.Drawing.Point(258, 75);
+            this.checkBoxNeuerArtikel.Name = "checkBoxNeuerArtikel";
+            this.checkBoxNeuerArtikel.Size = new System.Drawing.Size(156, 20);
+            this.checkBoxNeuerArtikel.TabIndex = 15;
+            this.checkBoxNeuerArtikel.Text = "neuen Artikel anlegen";
+            this.checkBoxNeuerArtikel.UseVisualStyleBackColor = false;
+            this.checkBoxNeuerArtikel.CheckedChanged += new System.EventHandler(this.checkBoxNeuerArtikel_CheckedChanged);
+            // 
             // Buchung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -201,6 +216,7 @@
             this.BackgroundImage = global::WarenhausManagement.Properties.Resources._90619730_farbverlauf_weiße_licht_weichen_blauen_farbe_hintergrund;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(767, 494);
+            this.Controls.Add(this.checkBoxNeuerArtikel);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtbx_Preis);
@@ -241,5 +257,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtbx_Preis;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.CheckBox checkBoxNeuerArtikel;
     }
 }

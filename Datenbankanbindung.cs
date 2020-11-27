@@ -59,7 +59,7 @@ namespace WarenhausManagement
 
         {
             SqlConnection NewConnection = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
-            SqlCommand NewCommand = new SqlCommand("exec p_insert_lagerprozess(" + WareID + ", " + LagerplatzID + ");", NewConnection);
+            SqlCommand NewCommand = new SqlCommand("exec p_insert_lagerprozess " + WareID + ", " + LagerplatzID + ";", NewConnection);
             try
             {
 
