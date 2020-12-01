@@ -31,7 +31,8 @@ namespace WarenhausManagement
             user.SetPassword(CreateMD5Hash(txtbx_Password.Text));
             if (user.GetUsername()!= "" && user.GetPassword() != null)
             {
-                //Login mit DB oder AD
+                //Login mit AD wenn ausführender Rechner in Domäne
+                /*
                 string AnmeldeName = txtbx_Username.Text;
                 string AnmeldePw = txtbx_Password.Text;
                 
@@ -46,10 +47,11 @@ namespace WarenhausManagement
                 {
                     lbl_Status.Text = "Eingaben nicht vollständig";
                 }
+                */
                 //nächste Form aufrufen nur wenn erfolgreich
                 //user für Testzwecke
-                //user.SetUsername("SA");
-                //user.SetPassword("Ers1234Ers1234");
+                user.SetUsername("SA");
+                user.SetPassword("Ers1234Ers1234");
 
             }
             else
