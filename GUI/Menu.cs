@@ -59,5 +59,11 @@ namespace WarenhausManagement.GUI
             bool isMember = userPrincipal.IsMemberOf(domainctx, IdentityType.Name, ingroup);
             return isMember;
         }
+
+        private void btn_Statistik_Click(object sender, EventArgs e)
+        {
+            Statistik.StatsMain stat = new Statistik.StatsMain();
+            stat.Show();
+        }
     }
 }
