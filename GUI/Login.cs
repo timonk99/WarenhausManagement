@@ -52,6 +52,9 @@ namespace WarenhausManagement
                 //user für Testzwecke
                 user.SetUsername("SA");
                 user.SetPassword("Ers1234Ers1234");
+                Mainmenu hmenu = new Mainmenu(user);
+                this.Hide();
+                hmenu.Show();
 
             }
             else
