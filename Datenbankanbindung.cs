@@ -136,7 +136,7 @@ namespace WarenhausManagement
 
             }
         }
-        public static bool WareID(string _Username, string _Passwort, string Warename)
+        public static int WareID(string _Username, string _Passwort, string Warename)
 
         {
 
@@ -146,9 +146,15 @@ namespace WarenhausManagement
             {
 
                 NewCommand.Connection.Open();
-                NewCommand.ExecuteNonQuery();
-                NewCommand.Connection.Close();
-                return true;
+                SqlDataReader Reader = NewCommand.ExecuteReader();
+                int WareID = 0;
+                while (Reader.Read())
+                {
+                    WareID = Reader.GetInt32(0);
+                }
+                NewConnection.Close();
+
+                return WareID;
 
             }
             catch (Exception e)
@@ -159,7 +165,7 @@ namespace WarenhausManagement
 
 
                 NewCommand.Connection.Close();
-                return false;
+                return -1;
 
             }
         }
