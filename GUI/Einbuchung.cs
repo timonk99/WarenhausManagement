@@ -53,9 +53,21 @@ namespace WarenhausManagement.GUI
                 }
 
                 //Neuen Artikel anlegen
-                Datenbankanbindung.NauerArtikel(user.GetUsername(), user.GetPassword(), ware.GetWareBezeichnung(), ware.GetPreis(), ware.GetSpeicherbedarf());
-                //ID dazu holen
+                bool erfolgreich = false;
+                erfolgreich = Datenbankanbindung.NauerArtikel(user.GetUsername(), user.GetPassword(), ware.GetWareBezeichnung(), ware.GetPreis(), ware.GetSpeicherbedarf());
+                if (erfolgreich == true)
+                {
+                    //ID dazu holen
+                    ware.SetWareID(Datenbankanbindung.WareID(user.GetUsername(), user.GetPassword(), ware.GetWareBezeichnung()));
                 //Einbuchen
+                    if ( ware.GetWareID()!= -1)
+                    {
+                        bool ok =Datenbankanbindung.EinbuchenProzedur(user.GetUsername(), user.GetPassword(), ware.GetWareID(), _LagerID);
+                        //Verarbeitung auf Returnwert
+                    }
+
+                }
+                
             }
             else //bereits existierenden Artikel einbuchen
             {
