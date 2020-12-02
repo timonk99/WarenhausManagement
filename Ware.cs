@@ -10,7 +10,7 @@ namespace WarenhausManagement
     {
         private int _WareID;
         private string _WareBezeichnung;
-        private double _Preis;
+        private float _Preis;
         private int _Speicherbedarf;
 
         public int GetWareID()
@@ -29,11 +29,11 @@ namespace WarenhausManagement
         {
             _WareBezeichnung = Warebezeichnung;
         }
-        public double GetPreis()
+        public float GetPreis()
         {
             return _Preis;
         }
-        public void SetPreis(double Preis)
+        public void SetPreis(float Preis)
         {
             _Preis = Preis;
         }

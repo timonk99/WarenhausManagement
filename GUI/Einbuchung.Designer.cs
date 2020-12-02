@@ -53,7 +53,6 @@
             this.txtbx_ArtikelNr.Name = "txtbx_ArtikelNr";
             this.txtbx_ArtikelNr.Size = new System.Drawing.Size(137, 22);
             this.txtbx_ArtikelNr.TabIndex = 0;
-            this.txtbx_ArtikelNr.TextChanged += new System.EventHandler(this.txtbx_ArtikelNr_TextChanged);
             this.txtbx_ArtikelNr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbx_ArtikelNr_KeyDown);
             // 
             // txtbx_Lagerplatz

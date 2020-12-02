@@ -40,21 +40,37 @@ namespace WarenhausManagement.GUI
         {
             if (checkBoxNeuerArtikel.Checked == true)
             {
+                //Textboxen auslesen
+                ware.SetWareBezeichnung(txtbx_Bezeichnung.Text);
+                try
+                {
+                    ware.SetSpeicherbedarf(Convert.ToInt32(txtbx_Speicher.Text));
+                    ware.SetPreis(float.Parse(txtbx_Preis.Text));
+                }
+                catch
+                {
+                    lbl_Status.Text = "Falsches Format im Feld Speicherbedarf oder Preis. Zahlenformat erforderlich";
+                }
+
                 //Neuen Artikel anlegen
+                Datenbankanbindung.NauerArtikel(user.GetUsername(), user.GetPassword(), ware.GetWareBezeichnung(), ware.GetPreis(), ware.GetSpeicherbedarf());
+                //ID dazu holen
+                //Einbuchen
             }
             else //bereits existierenden Artikel einbuchen
             {
-                //Textboxen auf richtigen Inhalt prüfen
-                try
+                bool erfolgreich = false;
+                try //Textboxen auf richtigen Inhalt prüfen -> Konvertieren
                 {
                     ware.SetWareID(Convert.ToInt32(txtbx_ArtikelNr.Text));
                     _LagerID = Convert.ToInt32(txtbx_Lagerplatz.Text);
+                    erfolgreich = Datenbankanbindung.EinbuchenProzedur(user.GetUsername(), user.GetPassword(), ware.GetWareID(), _LagerID);
                 }
                 catch
                 {
                     lbl_Status.Text = "Fehlerhafte Eingabe: Artikel Nummer oder Lagerplatz";
                 }
-                bool erfolgreich = Datenbankanbindung.EinbuchenProzedur(user.GetUsername(), user.GetPassword(), ware.GetWareID(), _LagerID);
+
                 if (erfolgreich == true)
                 {
                     lbl_Status.Text = "Einbuchung erfolgreich";
@@ -68,11 +84,31 @@ namespace WarenhausManagement.GUI
 
         private void btn_Ausbuchen_Click(object sender, EventArgs e)
         {
-            //SQL Statement zum Aussbuchen
+            bool erfolgreich = false;
+            try //Eingabefehler abfangen
+            {
+                ware.SetWareID(Convert.ToInt32(txtbx_ArtikelNr.Text));
+                _LagerID = Convert.ToInt32(txtbx_Lagerplatz.Text);
+            }
+            catch
+            {
+                lbl_Status.Text = "Fehlerhafte Eingabe: Artikel Nummer oder Lagerplatz";
+            }
+            //SQL Statement zum Ausbuchen
+            erfolgreich = Datenbankanbindung.AusbuchenProzedur(user.GetUsername(), user.GetPassword(), ware.GetWareID(), _LagerID);
+            if (erfolgreich == true)
+            {
+                lbl_Status.Text = "Ausbuchung erfolgreich";
+            }
+            else
+            {
+                lbl_Status.Text = "Ausbuchung fehlgeschlagen";
+            }
         }
 
         private void txtbx_ArtikelNr_KeyDown(object sender, KeyEventArgs e)
         {
+            
             if (e.KeyCode == Keys.Enter)
             {
                 string wareID;
@@ -86,7 +122,6 @@ namespace WarenhausManagement.GUI
                     ware.SetWareID(Convert.ToInt32(wareID));
                     List<List<string>> DatenArtikel = new List<List<string>>();
                     DatenArtikel = Datenbankanbindung.EinbuchenMethode(user.GetUsername(), user.GetPassword(), ware.GetWareID());
-
                     txtbx_Bezeichnung.Text = DatenArtikel[0][0];
                     txtbx_Speicher.Text = DatenArtikel[1][0];
                     txtbx_Preis.Text = DatenArtikel[2][0];
@@ -108,11 +143,6 @@ namespace WarenhausManagement.GUI
                 strlagerID = "1" + strlagerID;
                 _LagerID = Convert.ToInt32(strlagerID);
             }
-        }
-
-        private void txtbx_ArtikelNr_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void checkBoxNeuerArtikel_CheckedChanged(object sender, EventArgs e)
