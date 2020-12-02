@@ -15,7 +15,7 @@ namespace WarenhausManagement
         {
             return date.Year.ToString() + date.Month.ToString() + date.Day.ToString();
         }
-
+        //MOIN
         public static List<List<string>> EinbuchenMethode(string _Username, string _Passwort, int WareID)
         {
             List<string> beschreibung = new List<string>();
