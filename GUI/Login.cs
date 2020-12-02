@@ -29,7 +29,7 @@ namespace WarenhausManagement
         {
             lbl_Status.Text = "";
             user.SetUsername(txtbx_Username.Text);
-            user.SetPassword(CreateMD5Hash(txtbx_Password.Text));
+            user.SetPassword(txtbx_Password.Text);
 
             if (user.GetUsername() != "" && user.GetPassword() != null)
             {
