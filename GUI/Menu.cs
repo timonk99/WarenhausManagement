@@ -16,7 +16,7 @@ namespace WarenhausManagement.GUI
     {
         private string _Username;
         private bool Einbuchen;
-        User user = new User();
+        public User user = new User();
         //Rolle kontrollieren
 
         string ADGroupName = "Config-Office-Makros-aus";
@@ -62,7 +62,7 @@ namespace WarenhausManagement.GUI
 
         private void btn_Statistik_Click(object sender, EventArgs e)
         {
-            Statistik.StatsMain stat = new Statistik.StatsMain();
+            Statistik.StatsMain stat = new Statistik.StatsMain(user);
             stat.Show();
         }
     }
