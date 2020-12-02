@@ -49,7 +49,7 @@
             this.txtbx_Username.BackColor = System.Drawing.SystemColors.Control;
             this.txtbx_Username.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtbx_Username.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbx_Username.Location = new System.Drawing.Point(51, 182);
+            this.txtbx_Username.Location = new System.Drawing.Point(51, 180);
             this.txtbx_Username.Name = "txtbx_Username";
             this.txtbx_Username.Size = new System.Drawing.Size(179, 15);
             this.txtbx_Username.TabIndex = 0;
@@ -64,6 +64,7 @@
             this.txtbx_Password.PasswordChar = '*';
             this.txtbx_Password.Size = new System.Drawing.Size(179, 15);
             this.txtbx_Password.TabIndex = 1;
+            this.txtbx_Password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbx_Password_KeyDown);
             // 
             // label1
             // 

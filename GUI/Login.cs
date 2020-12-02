@@ -159,5 +159,13 @@ namespace WarenhausManagement
         {
             txtbx_Password.PasswordChar = '*';
         }
+
+        private void txtbx_Password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_Login.PerformClick();
+            }
+        }
     }
 }
