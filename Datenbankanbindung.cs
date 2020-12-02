@@ -114,9 +114,7 @@ namespace WarenhausManagement
         {
 
             SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
-            SqlCommand NewCommand = new SqlCommand("exec dbo.Ausbuchen(" + WareID + ", " + Warename + ""+Preis+""+Warengröße+");", NewConnection);
-            SqlConnection NewConnection = new SqlConnection("Server = 172.16.112.25; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
-            SqlCommand NewCommand = new SqlCommand("select* from dbo.NeuerArikel(" + Warename + ""+Preis+""+Warengröße+");", NewConnection);
+            SqlCommand NewCommand = new SqlCommand("exec dbo.Ausbuchen(" + Warename + ""+Preis+""+Warengröße+");", NewConnection);
             try
             {
 
