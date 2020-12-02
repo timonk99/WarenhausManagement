@@ -136,6 +136,33 @@ namespace WarenhausManagement
 
             }
         }
+        public static bool WareID(string _Username, string _Passwort, string Warename)
+
+        {
+
+            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
+            SqlCommand NewCommand = new SqlCommand("select dbo.WareID(" + Warename + "");
+            try
+            {
+
+                NewCommand.Connection.Open();
+                NewCommand.ExecuteNonQuery();
+                NewCommand.Connection.Close();
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+
+                NewConnection.Close();
+
+
+                NewCommand.Connection.Close();
+                return false;
+
+            }
+        }
 
         public static int Get_Regale(string _Username, string _Passwort)
         {
