@@ -68,6 +68,7 @@
             this.btn_Statistik.TabIndex = 2;
             this.btn_Statistik.Text = "Statistik anzeigen";
             this.btn_Statistik.UseVisualStyleBackColor = true;
+            this.btn_Statistik.Click += new System.EventHandler(this.btn_Statistik_Click);
             // 
             // lbl_User
             // 

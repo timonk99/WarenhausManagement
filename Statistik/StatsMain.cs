@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using System.Data.SqlClient;
 
 namespace WarenhausManagement.Statistik
 {
@@ -43,7 +42,7 @@ namespace WarenhausManagement.Statistik
         {
             ClearChart();
 
-            this.c_chart.Titles.Add("Bestand vom " + dt_von.Value.ToShortDateString() + " bis " + dt_bis.Value.ToShortDateString());
+            this.c_chart.Titles.Add("Bestand vom " + dt_startDate.Value.ToShortDateString() + " bis " + dt_endDate.Value.ToShortDateString());
             this.c_chart.Titles[0].Font = new Font("Verdana", 12);
             this.c_chart.ChartAreas.Add(new ChartArea());
             this.c_chart.Series.Add(new Series());
@@ -59,16 +58,26 @@ namespace WarenhausManagement.Statistik
 
             ClearChart();
             
-            this.c_chart.Titles.Add("Auslastung von " + cb_regal.Text + " vom " + dt_von.Value.ToShortDateString() + " bis " + dt_bis.Value.ToShortDateString());
+            this.c_chart.Titles.Add("Auslastung von " + cb_regal.Text + " vom " + dt_startDate.Value.ToShortDateString() + " bis " + dt_endDate.Value.ToShortDateString());
             this.c_chart.Titles[0].Font = new Font("Verdana", 12);
             this.c_chart.ChartAreas.Add(new ChartArea());
             this.c_chart.Series.Add(new Series());
             this.c_chart.Series[0].ChartType = SeriesChartType.Pie;
 
-            this.c_chart.Legends.Add(types[0]);
-            this.c_chart.Series[0].Points.AddY( 10 - value);
-            this.c_chart.Series[0].Points[0].LegendText = types[0];
-            this.c_chart.Series[0].Points[0].AxisLabel = (10 - value).ToString();
+            if(cb_regal.SelectedItem.ToString() == "Alle")
+            {
+                this.c_chart.Legends.Add(types[0]);
+                this.c_chart.Series[0].Points.AddY((cb_regal.Items.Count - 1) * 10 - value);
+                this.c_chart.Series[0].Points[0].LegendText = types[0];
+                this.c_chart.Series[0].Points[0].AxisLabel = ((cb_regal.Items.Count - 1) * 10 - value).ToString();
+            }
+            else
+            {
+                this.c_chart.Legends.Add(types[0]);
+                this.c_chart.Series[0].Points.AddY(10 - value);
+                this.c_chart.Series[0].Points[0].LegendText = types[0];
+                this.c_chart.Series[0].Points[0].AxisLabel = (10 - value).ToString();
+            }
 
             this.c_chart.Legends.Add(types[1]);
             this.c_chart.Series[0].Points.AddY(value);
@@ -82,8 +91,8 @@ namespace WarenhausManagement.Statistik
 
         private void btn_load_Click(object sender, EventArgs e)
         {
-            if (cb_auswahl.SelectedIndex == 0) PieAuslastung(Datenbankanbindung.Get_Auslastung(testUser,testPasswort, dt_von.Value, dt_bis.Value, cb_regal.Text));
-            else if (cb_auswahl.SelectedIndex == 1) ArtikelLager(Datenbankanbindung.Get_Warenmenge(testUser, testPasswort, dt_von.Value, dt_bis.Value));
+            if (cb_auswahl.SelectedIndex == 0) PieAuslastung(Datenbankanbindung.Get_Auslastung(testUser,testPasswort, dt_endDate.Value, dt_startDate.Value, cb_regal.Text));
+            else if (cb_auswahl.SelectedIndex == 1) ArtikelLager(Datenbankanbindung.Get_Warenmenge(testUser, testPasswort, dt_endDate.Value, dt_startDate.Value));
         }
     }
 }

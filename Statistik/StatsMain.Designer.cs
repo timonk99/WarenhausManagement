@@ -34,11 +34,11 @@ namespace WarenhausManagement.Statistik
             this.btn_close = new System.Windows.Forms.Button();
             this.btn_load = new System.Windows.Forms.Button();
             this.cb_auswahl = new System.Windows.Forms.ComboBox();
-            this.dt_von = new System.Windows.Forms.DateTimePicker();
+            this.dt_endDate = new System.Windows.Forms.DateTimePicker();
             this.l_titel = new System.Windows.Forms.Label();
             this.l_von = new System.Windows.Forms.Label();
             this.l_bis = new System.Windows.Forms.Label();
-            this.dt_bis = new System.Windows.Forms.DateTimePicker();
+            this.dt_startDate = new System.Windows.Forms.DateTimePicker();
             this.l_auswahl = new System.Windows.Forms.Label();
             this.l_regal = new System.Windows.Forms.Label();
             this.cb_regal = new System.Windows.Forms.ComboBox();
@@ -84,13 +84,14 @@ namespace WarenhausManagement.Statistik
             this.cb_auswahl.Size = new System.Drawing.Size(121, 21);
             this.cb_auswahl.TabIndex = 3;
             // 
-            // dt_von
+            // dt_endDate
             // 
-            this.dt_von.Location = new System.Drawing.Point(418, 226);
-            this.dt_von.MaxDate = new System.DateTime(2020, 11, 27, 11, 10, 45, 462);
-            this.dt_von.Name = "dt_von";
-            this.dt_von.Size = new System.Drawing.Size(200, 20);
-            this.dt_von.TabIndex = 4;
+            this.dt_endDate.Location = new System.Drawing.Point(418, 226);
+            this.dt_endDate.MaxDate = new System.DateTime(2020, 11, 27, 11, 10, 45, 462);
+            this.dt_endDate.Name = "dt_endDate";
+            this.dt_endDate.Size = new System.Drawing.Size(200, 20);
+            this.dt_endDate.TabIndex = 4;
+            this.dt_endDate.Value = new System.DateTime(2020, 11, 27, 11, 10, 45, 462);
             // 
             // l_titel
             // 
@@ -119,13 +120,14 @@ namespace WarenhausManagement.Statistik
             this.l_bis.TabIndex = 8;
             this.l_bis.Text = "bis";
             // 
-            // dt_bis
+            // dt_startDate
             // 
-            this.dt_bis.Location = new System.Drawing.Point(418, 164);
-            this.dt_bis.MaxDate = new System.DateTime(2020, 11, 27, 11, 10, 45, 468);
-            this.dt_bis.Name = "dt_bis";
-            this.dt_bis.Size = new System.Drawing.Size(200, 20);
-            this.dt_bis.TabIndex = 7;
+            this.dt_startDate.Location = new System.Drawing.Point(418, 164);
+            this.dt_startDate.MaxDate = new System.DateTime(2020, 11, 27, 11, 10, 45, 468);
+            this.dt_startDate.Name = "dt_startDate";
+            this.dt_startDate.Size = new System.Drawing.Size(200, 20);
+            this.dt_startDate.TabIndex = 7;
+            this.dt_startDate.Value = new System.DateTime(2020, 11, 27, 11, 10, 45, 468);
             // 
             // l_auswahl
             // 
@@ -162,10 +164,10 @@ namespace WarenhausManagement.Statistik
             this.Controls.Add(this.cb_regal);
             this.Controls.Add(this.l_auswahl);
             this.Controls.Add(this.l_bis);
-            this.Controls.Add(this.dt_bis);
+            this.Controls.Add(this.dt_startDate);
             this.Controls.Add(this.l_von);
             this.Controls.Add(this.l_titel);
-            this.Controls.Add(this.dt_von);
+            this.Controls.Add(this.dt_endDate);
             this.Controls.Add(this.cb_auswahl);
             this.Controls.Add(this.btn_load);
             this.Controls.Add(this.btn_close);
@@ -184,11 +186,11 @@ namespace WarenhausManagement.Statistik
         private System.Windows.Forms.Button btn_close;
         private System.Windows.Forms.Button btn_load;
         private System.Windows.Forms.ComboBox cb_auswahl;
-        private System.Windows.Forms.DateTimePicker dt_von;
+        private System.Windows.Forms.DateTimePicker dt_endDate;
         private System.Windows.Forms.Label l_titel;
         private System.Windows.Forms.Label l_von;
         private System.Windows.Forms.Label l_bis;
-        private System.Windows.Forms.DateTimePicker dt_bis;
+        private System.Windows.Forms.DateTimePicker dt_startDate;
         private System.Windows.Forms.Label l_auswahl;
         private System.Windows.Forms.Label l_regal;
         private System.Windows.Forms.ComboBox cb_regal;
