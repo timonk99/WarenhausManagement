@@ -15,10 +15,13 @@ namespace WarenhausManagement.Statistik
     {
         public string testUser = "SA";
         public string testPasswort = "Ers1234Ers1234";
-        public StatsMain()
+
+        private User user;
+        public StatsMain(User user)
         {
             InitializeComponent();
             Fill_cb_regal();
+            this.user = user;
         }
 
         private void ClearChart()
@@ -91,8 +94,8 @@ namespace WarenhausManagement.Statistik
 
         private void btn_load_Click(object sender, EventArgs e)
         {
-            if (cb_auswahl.SelectedIndex == 0) PieAuslastung(Datenbankanbindung.Get_Auslastung(testUser,testPasswort, dt_endDate.Value, dt_startDate.Value, cb_regal.Text));
-            else if (cb_auswahl.SelectedIndex == 1) ArtikelLager(Datenbankanbindung.Get_Warenmenge(testUser, testPasswort, dt_endDate.Value, dt_startDate.Value));
+            if (cb_auswahl.SelectedIndex == 0) PieAuslastung(Datenbankanbindung.Get_Auslastung(user.GetUsername(),user.GetPassword(), dt_endDate.Value, dt_startDate.Value, cb_regal.Text));
+            else if (cb_auswahl.SelectedIndex == 1) ArtikelLager(Datenbankanbindung.Get_Warenmenge(user.GetUsername(), user.GetPassword(), dt_endDate.Value, dt_startDate.Value));
         }
     }
 }
