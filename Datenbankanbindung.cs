@@ -113,7 +113,7 @@ namespace WarenhausManagement
 
         {
 
-            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
+            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; Integrated Security=True;");
             SqlCommand NewCommand = new SqlCommand("exec dbo.Ausbuchen(" + Warename + ""+Preis+""+Warengröße+");", NewConnection);
             try
             {
