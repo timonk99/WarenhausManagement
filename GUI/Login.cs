@@ -12,6 +12,7 @@ using WarenhausManagement.GUI;
 using System.DirectoryServices;
 using System.DirectoryServices.ActiveDirectory;
 using System.DirectoryServices.Protocols;
+using System.DirectoryServices.AccountManagement;
 using System.Security;
 
 namespace WarenhausManagement
@@ -29,14 +30,45 @@ namespace WarenhausManagement
             lbl_Status.Text = "";
             user.SetUsername(txtbx_Username.Text);
             user.SetPassword(CreateMD5Hash(txtbx_Password.Text));
-            if (user.GetUsername()!= "" && user.GetPassword() != null)
+
+            if (user.GetUsername() != "" && user.GetPassword() != null)
             {
                 //Login mit AD wenn ausführender Rechner in Domäne
-                /*
+
                 string AnmeldeName = txtbx_Username.Text;
                 string AnmeldePw = txtbx_Password.Text;
-                
+
+                using (PrincipalContext ctx = new PrincipalContext(ContextType.Domain))
+                {
+                    // find a user
+                    UserPrincipal nutzer = UserPrincipal.FindByIdentity(ctx, AnmeldeName);
+
+                    if (nutzer != null)
+                    {
+                        // get the user's groups
+                        var groups = nutzer.GetAuthorizationGroups();
+
+                        foreach (GroupPrincipal group in groups)
+                        {
+                            if (group.Name == "WHM_DB_Lager")
+                            {
+                                user.SetRolle("WHM_DB_Lager");
+                            }
+                            if (group.Name == "WHM_DB_Einkauf")
+                            {
+                                user.SetRolle("WHM_DB_Einkauf");
+                            }
+                            if (group.Name == "WHM_DB_Admin")
+                            {
+                                user.SetRolle("WHM_DB_Admin");
+                            }
+                        }
+                    }
+
+                }
+
                 bool AnmeldungGültig = LDAPConnection(AnmeldeName, AnmeldePw);
+
                 if (AnmeldungGültig == true)
                 {
                     Mainmenu hmenu = new Mainmenu(user);
@@ -47,15 +79,14 @@ namespace WarenhausManagement
                 {
                     lbl_Status.Text = "Eingaben nicht vollständig";
                 }
-                */
-                //nächste Form aufrufen nur wenn erfolgreich
-                //user für Testzwecke
-                user.SetUsername("SA");
+
+                //User für Testzwecke
+                /*user.SetUsername("SA");
                 user.SetPassword("Ers1234Ers1234");
                 Mainmenu hmenu = new Mainmenu(user);
                 this.Hide();
                 hmenu.Show();
-
+                */
             }
             else
             {
@@ -80,42 +111,25 @@ namespace WarenhausManagement
         }
         public bool LDAPConnection(string username, string password)
         {
+
+            //Variablen deklarieren
             SecureString pwd = new SecureString();
             bool bAuth = false;
             DirectoryEntry entry = null;
 
-
-
-            // erstellt und kehrt zurück zu der LDAP Verbindung
-
-
+            //LDAP Verbindung aufbauen
 
             DirectoryEntry ldapConnection = new DirectoryEntry("WHM.local");
             ldapConnection.Path = "LDAP://CN=DBUser,DC=WHM,DC=local";
             ldapConnection.AuthenticationType = AuthenticationTypes.Secure;
-
-
 
             foreach (char c in password)
             {
                 pwd.AppendChar(c);
             }
 
-
-
-            //Bewirkt, dass das Passwort nicht mehr verändert werden kann
-
-
-
-            pwd.MakeReadOnly();
-
-
-
             //Passwort wird einem Pointer übergeben, damit dieser später "entschlüsselt" werden kann
             IntPtr pPwd = System.Runtime.InteropServices.Marshal.SecureStringToBSTR(pwd);
-
-
-
 
             try
             {
