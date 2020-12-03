@@ -113,7 +113,7 @@ namespace WarenhausManagement
 
         {
             string preisString = Preis.ToString();
-            preisString.Replace(',', '.');
+            preisString = preisString.Replace(',', '.');
             
             
             SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; Integrated Security=True;");
