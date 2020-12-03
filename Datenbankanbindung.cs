@@ -112,9 +112,12 @@ namespace WarenhausManagement
         public static bool NauerArtikel(string _Username, string _Passwort,string Warename, float Preis, int Warengröße)
 
         {
-
+            string preisString = Preis.ToString();
+            preisString.Replace(',', '.');
+            
+            
             SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; Integrated Security=True;");
-            SqlCommand NewCommand = new SqlCommand("EXEC dbo.NeuerArtikel '" + Warename + "', "+Preis+", "+Warengröße+";", NewConnection);
+            SqlCommand NewCommand = new SqlCommand("exec dbo.NeuerArtikel'" + Warename + "', '"+preisString+"', "+Warengröße+";", NewConnection);
             try
             {
 
