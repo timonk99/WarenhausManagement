@@ -38,40 +38,42 @@ namespace WarenhausManagement.GUI
 
         private void btn_Einbuchen_Click(object sender, EventArgs e)
         {
+            //Textboxen auslesen
+            ware.SetWareBezeichnung(txtbx_Bezeichnung.Text);
+
             if (checkBoxNeuerArtikel.Checked == true)
             {
-                //Textboxen auslesen
-                ware.SetWareBezeichnung(txtbx_Bezeichnung.Text);
                 try
                 {
                     ware.SetSpeicherbedarf(Convert.ToInt32(txtbx_Speicher.Text));
+                    _LagerID = Convert.ToInt32(txtbx_Lagerplatz.Text);
                     ware.SetPreis(float.Parse(txtbx_Preis.Text));
+
+                    //Neuen Artikel anlegen
+                    bool erfolgreich = false;
+                    erfolgreich = Datenbankanbindung.NauerArtikel(user.GetUsername(), user.GetPassword(), ware.GetWareBezeichnung(), ware.GetPreis(), ware.GetSpeicherbedarf());
+                    if (erfolgreich == true)
+                    {
+                        //ID dazu holen
+                        ware.SetWareID(Datenbankanbindung.WareID(user.GetUsername(), user.GetPassword(), ware.GetWareBezeichnung()));
+                        //Einbuchen
+                        if (ware.GetWareID() != -1)
+                        {
+                            bool ok = Datenbankanbindung.EinbuchenProzedur(user.GetUsername(), user.GetPassword(), ware.GetWareID(), _LagerID);
+                            //Verarbeitung auf Returnwert
+                            if (ok == true)
+                            {
+                                lbl_Status.Text = "Artikel erfolgreich angelegt und eingebucht";
+                            }
+                        }
+
+                    }
                 }
                 catch
                 {
                     lbl_Status.Text = "Falsches Format im Feld Speicherbedarf oder Preis. Zahlenformat erforderlich";
                 }
 
-                //Neuen Artikel anlegen
-                bool erfolgreich = false;
-                erfolgreich = Datenbankanbindung.NauerArtikel(user.GetUsername(), user.GetPassword(), ware.GetWareBezeichnung(), ware.GetPreis(), ware.GetSpeicherbedarf());
-                if (erfolgreich == true)
-                {
-                    //ID dazu holen
-                    ware.SetWareID(Datenbankanbindung.WareID(user.GetUsername(), user.GetPassword(), ware.GetWareBezeichnung()));
-                //Einbuchen
-                    if ( ware.GetWareID()!= -1)
-                    {
-                        bool ok =Datenbankanbindung.EinbuchenProzedur(user.GetUsername(), user.GetPassword(), ware.GetWareID(), _LagerID);
-                        //Verarbeitung auf Returnwert
-                        if (ok == true)
-                        {
-                            lbl_Status.Text = "Artikel erfolgreich angelegt und eingebucht";
-                        }
-                    }
-
-                }
-                
             }
             else //bereits existierenden Artikel einbuchen
             {
@@ -124,7 +126,7 @@ namespace WarenhausManagement.GUI
 
         private void txtbx_ArtikelNr_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
             if (e.KeyCode == Keys.Enter)
             {
                 string wareID;

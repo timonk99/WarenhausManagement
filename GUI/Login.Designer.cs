@@ -161,10 +161,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Franklin Gothic Demi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(105, 58);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 26);
+            this.label3.Size = new System.Drawing.Size(65, 25);
             this.label3.TabIndex = 12;
             this.label3.Text = "WHM";
             // 
@@ -173,6 +173,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(286, 343);
+            this.Controls.Add(this.txtbx_Username);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -183,7 +184,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtbx_Password);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.txtbx_Username);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
