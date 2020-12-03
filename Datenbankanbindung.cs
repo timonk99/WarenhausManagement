@@ -9,7 +9,7 @@ namespace WarenhausManagement
 {
     public static class Datenbankanbindung
     {
-        private static string ServerIP = "172.16.112.37";
+        private static string ServerIP = "172.16.112.38";
 
         private static string convertDate(DateTime date)
         {
@@ -114,7 +114,7 @@ namespace WarenhausManagement
         {
 
             SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; Integrated Security=True;");
-            SqlCommand NewCommand = new SqlCommand("exec dbo.NeuerArtikel'" + Warename + "', "+Preis+", "+Warengröße+";", NewConnection);
+            SqlCommand NewCommand = new SqlCommand("EXEC dbo.NeuerArtikel '" + Warename + "', "+Preis+", "+Warengröße+";", NewConnection);
             try
             {
 

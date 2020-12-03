@@ -64,6 +64,10 @@ namespace WarenhausManagement.GUI
                     {
                         bool ok =Datenbankanbindung.EinbuchenProzedur(user.GetUsername(), user.GetPassword(), ware.GetWareID(), _LagerID);
                         //Verarbeitung auf Returnwert
+                        if (ok == true)
+                        {
+                            lbl_Status.Text = "Artikel erfolgreich angelegt und eingebucht";
+                        }
                     }
 
                 }

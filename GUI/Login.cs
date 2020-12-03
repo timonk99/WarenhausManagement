@@ -77,7 +77,7 @@ namespace WarenhausManagement
                 }
                 else
                 {
-                    lbl_Status.Text = "Eingaben nicht vollständig";
+                    lbl_Status.Text = "Benutzername oder Passwort fehlerhaft";
                 }
 
                 //User für Testzwecke
