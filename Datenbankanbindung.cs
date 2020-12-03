@@ -58,7 +58,7 @@ namespace WarenhausManagement
         public static bool EinbuchenProzedur(string _Username, string _Passwort, int WareID, int LagerplatzID)
 
         {
-            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
+            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; Integrated Security = true");
             SqlCommand NewCommand = new SqlCommand("exec p_insert_lagerprozess " + WareID + ", " + LagerplatzID + ";", NewConnection);
             try
             {
@@ -143,8 +143,8 @@ namespace WarenhausManagement
 
         {
 
-            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
-            SqlCommand NewCommand = new SqlCommand("select dbo.WareID(" + Warename + "");
+            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; Integrated Security=True;");
+            SqlCommand NewCommand = new SqlCommand("select dbo.WareID ('" + Warename + "')", NewConnection);
             try
             {
 
