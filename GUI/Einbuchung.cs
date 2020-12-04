@@ -46,7 +46,7 @@ namespace WarenhausManagement.GUI
                 try
                 {
                     ware.SetSpeicherbedarf(Convert.ToInt32(txtbx_Speicher.Text));
-                    _LagerID = Convert.ToInt32(txtbx_Lagerplatz.Text);
+                    _LagerID = Convert.ToInt32(txtbx_Lagerplatz.Text="1"+txtbx_Lagerplatz.Text);
                     ware.SetPreis(float.Parse(txtbx_Preis.Text));
 
                     //Neuen Artikel anlegen
@@ -81,7 +81,7 @@ namespace WarenhausManagement.GUI
                 try //Textboxen auf richtigen Inhalt prüfen -> Konvertieren
                 {
                     ware.SetWareID(Convert.ToInt32(txtbx_ArtikelNr.Text));
-                    _LagerID = Convert.ToInt32(txtbx_Lagerplatz.Text);
+                    _LagerID = Convert.ToInt32(txtbx_Lagerplatz.Text = "1"+txtbx_Lagerplatz.Text);
                     erfolgreich = Datenbankanbindung.EinbuchenProzedur(user.GetUsername(), user.GetPassword(), ware.GetWareID(), _LagerID);
                 }
                 catch
