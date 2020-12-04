@@ -33,6 +33,7 @@ namespace WarenhausManagement.GUI
                 txtbx_Preis.ReadOnly = true;
                 txtbx_Lagerplatz.ReadOnly = true;
                 txtbx_Speicher.ReadOnly = true;
+                checkBoxNeuerArtikel.Visible = false;
             }
         }
 
@@ -157,7 +158,10 @@ namespace WarenhausManagement.GUI
             {
                 string strlagerID;
                 strlagerID = txtbx_Lagerplatz.Text;
-                strlagerID = strlagerID.Substring(8);
+                if (strlagerID.Length == 12)
+                {
+                    strlagerID = strlagerID.Substring(8);
+                }
                 strlagerID = "1" + strlagerID;
                 _LagerID = Convert.ToInt32(strlagerID);
             }
@@ -165,7 +169,15 @@ namespace WarenhausManagement.GUI
 
         private void checkBoxNeuerArtikel_CheckedChanged(object sender, EventArgs e)
         {
-            txtbx_ArtikelNr.ReadOnly = true;
+            if (checkBoxNeuerArtikel.Checked == true)
+            {
+                txtbx_ArtikelNr.ReadOnly = true;
+            }
+            else if(checkBoxNeuerArtikel.Checked ==false)
+            {
+                txtbx_ArtikelNr.ReadOnly = false;
+            }
+            
         }
     }
 }

@@ -23,7 +23,7 @@ namespace WarenhausManagement
             List<string> preis = new List<string>();
 
             List<List<string>> result = new List<List<string>>();
-            SqlConnection NewConnection = new SqlConnection("Server =  " + ServerIP + "; Database = WHM; User Id = " + _Username +"; Password = " + _Passwort);
+            SqlConnection NewConnection = new SqlConnection("Server =  " + ServerIP + "; Database = WHM; Integrated Security = true;");
             try
             {
 
