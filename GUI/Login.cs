@@ -38,34 +38,34 @@ namespace WarenhausManagement
                 string AnmeldeName = txtbx_Username.Text;
                 string AnmeldePw = txtbx_Password.Text;
 
-                using (PrincipalContext ctx = new PrincipalContext(ContextType.Domain))
-                {
-                    // find a user
-                    UserPrincipal nutzer = UserPrincipal.FindByIdentity(ctx, AnmeldeName);
-
-                    if (nutzer != null)
+                    using (PrincipalContext ctx = new PrincipalContext(ContextType.Domain))
                     {
-                        // get the user's groups
-                        var groups = nutzer.GetAuthorizationGroups();
+                        // find a user
+                        UserPrincipal nutzer = UserPrincipal.FindByIdentity(ctx, AnmeldeName);
 
-                        foreach (GroupPrincipal group in groups)
+                        if (nutzer != null)
                         {
-                            if (group.Name == "WHM_DB_Lager")
+                            // get the user's groups
+                            var groups = nutzer.GetAuthorizationGroups();
+
+                            foreach (GroupPrincipal group in groups)
                             {
-                                user.SetRolle("WHM_DB_Lager");
-                            }
-                            if (group.Name == "WHM_DB_Einkauf")
-                            {
-                                user.SetRolle("WHM_DB_Einkauf");
-                            }
-                            if (group.Name == "WHM_DB_Admin")
-                            {
-                                user.SetRolle("WHM_DB_Admin");
+                                if (group.Name == "WHM_DB_Lager")
+                                {
+                                    user.SetRolle("WHM_DB_Lager");
+                                }
+                                if (group.Name == "WHM_DB_Einkauf")
+                                {
+                                    user.SetRolle("WHM_DB_Einkauf");
+                                }
+                                if (group.Name == "WHM_DB_Admin")
+                                {
+                                    user.SetRolle("WHM_DB_Admin");
+                                }
                             }
                         }
-                    }
 
-                }
+                    }
 
                 bool AnmeldungGültig = LDAPConnection(AnmeldeName, AnmeldePw);
 
@@ -74,10 +74,6 @@ namespace WarenhausManagement
                     Mainmenu hmenu = new Mainmenu(user);
                     this.Hide();
                     hmenu.Show();
-                }
-                else
-                {
-                    lbl_Status.Text = "Benutzername oder Passwort fehlerhaft";
                 }
 
                 //User für Testzwecke
@@ -94,21 +90,7 @@ namespace WarenhausManagement
             }
         }
         //Feld Speicherbedarf in DB
-        public string CreateMD5Hash(string input)
-        {
-            // Step 1, calculate MD5 hash from input
-            MD5 md5 = MD5.Create();
-            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-            byte[] hashBytes = md5.ComputeHash(inputBytes);
-
-            // Step 2, convert byte array to hex string
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < hashBytes.Length; i++)
-            {
-                sb.Append(hashBytes[i].ToString("X2"));
-            }
-            return sb.ToString();
-        }
+        
         public bool LDAPConnection(string username, string password)
         {
 
@@ -137,16 +119,25 @@ namespace WarenhausManagement
                 object nativeObject = entry.NativeObject;
                 bAuth = true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 bAuth = false;
+                lbl_Status.Text = "Benutzername oder Passwort falsch.";
             }
             finally
             {
                 entry.Close();
                 entry.Dispose();
             }
-
+            //Testen ob Verbindung möglich
+            try
+            {
+                ldapConnection.RefreshCache();
+            }
+            catch
+            {
+                lbl_Status.Text = "Verbindung nicht möglich.";
+            }
             return bAuth;
         }
 
