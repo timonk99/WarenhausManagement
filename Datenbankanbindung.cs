@@ -177,7 +177,7 @@ namespace WarenhausManagement
         {
             int value = 0;
 
-            SqlConnection connect = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
+            SqlConnection connect = new SqlConnection("Server = " + ServerIP + "; Database = WHM; Integrated Security=True;");
             SqlCommand com = new SqlCommand("select max(Regal) from Lagerplatz;", connect);
 
             com.Connection.Open();
@@ -192,7 +192,7 @@ namespace WarenhausManagement
         public static int Get_Auslastung(string _Username, string _Passwort, DateTime startDate, DateTime endDate, string regal)
         {
             int auslastung = 0;
-            SqlConnection connect = new SqlConnection("Server =  " + ServerIP + "; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
+            SqlConnection connect = new SqlConnection("Server =  " + ServerIP + "; Database = WHM; Integrated Security=True;");
             SqlCommand com = new SqlCommand();
             com.Connection = connect;
             com.Connection.Open();
@@ -225,7 +225,7 @@ namespace WarenhausManagement
             List<string> mengen = new List<string>();
             List<List<string>> rn_values = new List<List<string>>();
 
-            SqlConnection connect = new SqlConnection("Server =  " + ServerIP + "; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
+            SqlConnection connect = new SqlConnection("Server =  " + ServerIP + "; Database = WHM; Integrated Security=True;");
             SqlCommand com = new SqlCommand("select * from dbo.f_get_menge_ware('" + convertDate(startDate) + "', '" + convertDate(endDate) + "' );", connect);
             com.Connection.Open();
             SqlDataReader reader = com.ExecuteReader();
