@@ -27,6 +27,16 @@ namespace WarenhausManagement.GUI
             InitializeComponent();
             user = _user;
             lbl_User.Text = user.GetUsername();
+
+            if(user.GetRolle()== "WHM_DB_Einkauf")
+            {
+                btn_Einbuchen.Visible = false;
+                btn_Ausbuchen.Visible = false; 
+            }
+            else if(user.GetRolle()== "WHM_DB_Lager")
+            {
+                btn_Statistik.Visible = false;
+            }
         }
 
         private void btn_Einbuchen_Click(object sender, EventArgs e)
