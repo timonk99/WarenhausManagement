@@ -40,6 +40,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.roundedButton1 = new WarenhausManagement.Design.RoundedButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPW)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -167,11 +168,21 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "WHM";
             // 
+            // roundedButton1
+            // 
+            this.roundedButton1.Location = new System.Drawing.Point(96, 219);
+            this.roundedButton1.Name = "roundedButton1";
+            this.roundedButton1.Size = new System.Drawing.Size(156, 76);
+            this.roundedButton1.TabIndex = 12;
+            this.roundedButton1.Text = "roundedButton1";
+            this.roundedButton1.UseVisualStyleBackColor = true;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(286, 343);
+            this.Controls.Add(this.roundedButton1);
             this.Controls.Add(this.txtbx_Username);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
@@ -212,6 +223,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
+        private Design.RoundedButton roundedButton1;
     }
 }
 

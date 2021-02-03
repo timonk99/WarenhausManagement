@@ -50,6 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Datenbankanbindung.cs" />
+    <Compile Include="Design\RoundedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="GUI\Einbuchung.cs">
       <SubType>Form</SubType>
     </Compile>
