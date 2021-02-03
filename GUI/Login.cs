@@ -19,6 +19,7 @@ namespace WarenhausManagement
 {
     public partial class Login : Form
     {
+        private bool pwsichtbar = false;
         User user = new User();
         public Login()
         {
@@ -37,7 +38,8 @@ namespace WarenhausManagement
 
                 string AnmeldeName = txtbx_Username.Text;
                 string AnmeldePw = txtbx_Password.Text;
-
+                try
+                {
                     using (PrincipalContext ctx = new PrincipalContext(ContextType.Domain))
                     {
                         // find a user
@@ -66,6 +68,11 @@ namespace WarenhausManagement
                         }
 
                     }
+                }
+                catch (Exception d)
+                {
+                    lbl_Status.Text = "Verbindung zu Domäne fehlgeschlagen: " + d;
+                }
 
                 bool AnmeldungGültig = LDAPConnection(AnmeldeName, AnmeldePw);
 
@@ -135,19 +142,17 @@ namespace WarenhausManagement
             }
             catch
             {
-                lbl_Status.Text = "Verbindung nicht möglich.";
+                lbl_Status.Text = "Verbindung zu Domänen-Controller nicht möglich.";
             }
             return bAuth;
         }
 
         private void pictureBoxPW_Click(object sender, EventArgs e)
         {
-            txtbx_Password.PasswordChar = '\0';
-        }
-
-        private void pictureBoxPW_MouseLeave(object sender, EventArgs e)
-        {
-            txtbx_Password.PasswordChar = '*';
+            if (pwsichtbar == false)
+                txtbx_Password.PasswordChar = '\0';
+            else
+                txtbx_Password.PasswordChar = '*';
         }
 
         private void txtbx_Password_KeyDown(object sender, KeyEventArgs e)

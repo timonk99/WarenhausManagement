@@ -31,7 +31,6 @@ namespace WarenhausManagement.GUI
                 btn_Einbuchen.Visible = false;
                 txtbx_Bezeichnung.ReadOnly = true;
                 txtbx_Preis.ReadOnly = true;
-                txtbx_Lagerplatz.ReadOnly = true;
                 txtbx_Speicher.ReadOnly = true;
                 checkBoxNeuerArtikel.Visible = false;
             }
@@ -72,7 +71,7 @@ namespace WarenhausManagement.GUI
                 }
                 catch
                 {
-                    lbl_Status.Text = "Falsches Format im Feld Speicherbedarf oder Preis. Zahlenformat erforderlich";
+                    lbl_Status.Text = "Falsche Eingabe im Feld Speicherbedarf oder Preis. Eingabe muss Zahlenformat haben";
                 }
 
             }
@@ -87,7 +86,7 @@ namespace WarenhausManagement.GUI
                 }
                 catch
                 {
-                    lbl_Status.Text = "Fehlerhafte Eingabe: Artikel Nummer oder Lagerplatz";
+                    lbl_Status.Text = "Fehlerhafte Eingabe: Artikelnummer oder Lagerplatz";
                 }
 
                 if (erfolgreich == true)

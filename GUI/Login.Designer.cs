@@ -127,7 +127,6 @@
             this.pictureBoxPW.TabIndex = 6;
             this.pictureBoxPW.TabStop = false;
             this.pictureBoxPW.Click += new System.EventHandler(this.pictureBoxPW_Click);
-            this.pictureBoxPW.MouseLeave += new System.EventHandler(this.pictureBoxPW_MouseLeave);
             // 
             // panel1
             // 

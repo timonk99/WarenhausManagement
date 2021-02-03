@@ -111,7 +111,7 @@
             this.btn_Ausbuchen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Ausbuchen.Location = new System.Drawing.Point(198, 344);
             this.btn_Ausbuchen.Name = "btn_Ausbuchen";
-            this.btn_Ausbuchen.Size = new System.Drawing.Size(75, 23);
+            this.btn_Ausbuchen.Size = new System.Drawing.Size(86, 23);
             this.btn_Ausbuchen.TabIndex = 6;
             this.btn_Ausbuchen.Text = "Ausbuchen";
             this.btn_Ausbuchen.UseVisualStyleBackColor = true;

@@ -59,16 +59,16 @@ namespace WarenhausManagement.GUI
             Login lg = new Login();
             lg.Show();
         }
-        private bool ADGroup(string ingroup)
-        {
-            string username = Environment.UserName;
+        //private bool ADGroup(string ingroup)
+        //{
+        //    string username = Environment.UserName;
 
-            PrincipalContext domainctx = new PrincipalContext(ContextType.Domain, "WHM", "DC=WHM,DC=local");
+        //    PrincipalContext domainctx = new PrincipalContext(ContextType.Domain, "WHM", "DC=WHM,DC=local");
 
-            UserPrincipal userPrincipal = UserPrincipal.FindByIdentity(domainctx, IdentityType.SamAccountName, username);
-            bool isMember = userPrincipal.IsMemberOf(domainctx, IdentityType.Name, ingroup);
-            return isMember;
-        }
+        //    UserPrincipal userPrincipal = UserPrincipal.FindByIdentity(domainctx, IdentityType.SamAccountName, username);
+        //    bool isMember = userPrincipal.IsMemberOf(domainctx, IdentityType.Name, ingroup);
+        //    return isMember;
+        //}
 
         private void btn_Statistik_Click(object sender, EventArgs e)
         {
