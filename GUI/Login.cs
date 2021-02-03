@@ -162,5 +162,75 @@ namespace WarenhausManagement
                 btn_Login.PerformClick();
             }
         }
+
+        private void btnlogin_Click(object sender, EventArgs e)
+        {
+            lbl_Status.Text = "";
+            user.SetUsername(txtbx_Username.Text);
+            user.SetPassword(txtbx_Password.Text);
+
+            if (user.GetUsername() != "" && user.GetPassword() != null)
+            {
+                //Login mit AD wenn ausführender Rechner in Domäne
+
+                string AnmeldeName = txtbx_Username.Text;
+                string AnmeldePw = txtbx_Password.Text;
+                try
+                {
+                    using (PrincipalContext ctx = new PrincipalContext(ContextType.Domain))
+                    {
+                        // find a user
+                        UserPrincipal nutzer = UserPrincipal.FindByIdentity(ctx, AnmeldeName);
+
+                        if (nutzer != null)
+                        {
+                            // get the user's groups
+                            var groups = nutzer.GetAuthorizationGroups();
+
+                            foreach (GroupPrincipal group in groups)
+                            {
+                                if (group.Name == "WHM_DB_Lager")
+                                {
+                                    user.SetRolle("WHM_DB_Lager");
+                                }
+                                if (group.Name == "WHM_DB_Einkauf")
+                                {
+                                    user.SetRolle("WHM_DB_Einkauf");
+                                }
+                                if (group.Name == "WHM_DB_Admin")
+                                {
+                                    user.SetRolle("WHM_DB_Admin");
+                                }
+                            }
+                        }
+
+                    }
+                }
+                catch (Exception d)
+                {
+                    lbl_Status.Text = "Verbindung zu Domäne fehlgeschlagen: " + d;
+                }
+
+                bool AnmeldungGültig = LDAPConnection(AnmeldeName, AnmeldePw);
+
+                if (AnmeldungGültig == true)
+                {
+                    Mainmenu hmenu = new Mainmenu(user);
+                    this.Hide();
+                    hmenu.Show();
+                }
+                //User für Testzwecke
+                /*user.SetUsername("SA");
+                user.SetPassword("Ers1234Ers1234");
+                Mainmenu hmenu = new Mainmenu(user);
+                this.Hide();
+                hmenu.Show();
+                */
+            }
+            else
+            {
+                lbl_Status.Text = "Eingaben nicht vollständig";
+            }
+        }
     }
 }

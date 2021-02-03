@@ -32,7 +32,6 @@
             this.txtbx_Password = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_Login = new System.Windows.Forms.Button();
             this.lbl_Status = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBoxPW = new System.Windows.Forms.PictureBox();
@@ -40,14 +39,14 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.roundedButton1 = new WarenhausManagement.Design.RoundedButton();
+            this.btnlogin = new WarenhausManagement.Design.RoundedButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPW)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtbx_Username
             // 
-            this.txtbx_Username.BackColor = System.Drawing.SystemColors.Control;
+            this.txtbx_Username.BackColor = System.Drawing.Color.White;
             this.txtbx_Username.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtbx_Username.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbx_Username.Location = new System.Drawing.Point(51, 180);
@@ -57,7 +56,7 @@
             // 
             // txtbx_Password
             // 
-            this.txtbx_Password.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtbx_Password.BackColor = System.Drawing.Color.White;
             this.txtbx_Password.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtbx_Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbx_Password.Location = new System.Drawing.Point(48, 243);
@@ -89,22 +88,10 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Passwort";
             // 
-            // btn_Login
-            // 
-            this.btn_Login.BackColor = System.Drawing.Color.White;
-            this.btn_Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Login.Location = new System.Drawing.Point(48, 286);
-            this.btn_Login.Name = "btn_Login";
-            this.btn_Login.Size = new System.Drawing.Size(179, 34);
-            this.btn_Login.TabIndex = 4;
-            this.btn_Login.Text = "Login";
-            this.btn_Login.UseVisualStyleBackColor = false;
-            this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
-            // 
             // lbl_Status
             // 
             this.lbl_Status.AutoSize = true;
-            this.lbl_Status.Location = new System.Drawing.Point(45, 270);
+            this.lbl_Status.Location = new System.Drawing.Point(45, 318);
             this.lbl_Status.Name = "lbl_Status";
             this.lbl_Status.Size = new System.Drawing.Size(0, 13);
             this.lbl_Status.TabIndex = 5;
@@ -168,28 +155,31 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "WHM";
             // 
-            // roundedButton1
+            // btnlogin
             // 
-            this.roundedButton1.Location = new System.Drawing.Point(96, 219);
-            this.roundedButton1.Name = "roundedButton1";
-            this.roundedButton1.Size = new System.Drawing.Size(156, 76);
-            this.roundedButton1.TabIndex = 12;
-            this.roundedButton1.Text = "roundedButton1";
-            this.roundedButton1.UseVisualStyleBackColor = true;
+            this.btnlogin.BackColor = System.Drawing.Color.White;
+            this.btnlogin.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnlogin.Location = new System.Drawing.Point(51, 265);
+            this.btnlogin.Name = "btnlogin";
+            this.btnlogin.Size = new System.Drawing.Size(154, 48);
+            this.btnlogin.TabIndex = 12;
+            this.btnlogin.Text = "Login";
+            this.btnlogin.UseVisualStyleBackColor = false;
+            this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(286, 343);
-            this.Controls.Add(this.roundedButton1);
+            this.Controls.Add(this.btnlogin);
             this.Controls.Add(this.txtbx_Username);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBoxPW);
             this.Controls.Add(this.lbl_Status);
-            this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtbx_Password);
@@ -212,7 +202,6 @@
         private System.Windows.Forms.TextBox txtbx_Password;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_Login;
         private System.Windows.Forms.Label lbl_Status;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
@@ -223,7 +212,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
-        private Design.RoundedButton roundedButton1;
+        private Design.RoundedButton btnlogin;
     }
 }
 
