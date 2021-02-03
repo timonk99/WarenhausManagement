@@ -150,16 +150,22 @@ namespace WarenhausManagement
         private void pictureBoxPW_Click(object sender, EventArgs e)
         {
             if (pwsichtbar == false)
+            {
                 txtbx_Password.PasswordChar = '\0';
+                pwsichtbar = true;
+            }
             else
+            {
                 txtbx_Password.PasswordChar = '*';
+                pwsichtbar = false;
+            }
         }
 
         private void txtbx_Password_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                btn_Login.PerformClick();
+                btnlogin.PerformClick();
             }
         }
 
@@ -231,6 +237,16 @@ namespace WarenhausManagement
             {
                 lbl_Status.Text = "Eingaben nicht vollständig";
             }
+        }
+
+        private void txtbx_Username_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtbx_Username.Text = "";
+        }
+
+        private void txtbx_Password_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtbx_Password.Text = "";
         }
     }
 }
