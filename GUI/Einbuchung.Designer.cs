@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Buchung));
             this.txtbx_ArtikelNr = new System.Windows.Forms.TextBox();
             this.txtbx_Lagerplatz = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_Einbuchen = new System.Windows.Forms.Button();
             this.lbl_Status = new System.Windows.Forms.Label();
-            this.btn_Ausbuchen = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtbx_Bezeichnung = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,25 +41,36 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtbx_Preis = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.checkBoxNeuerArtikel = new System.Windows.Forms.CheckBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox_Logout = new System.Windows.Forms.PictureBox();
+            this.lbl_User = new System.Windows.Forms.Label();
+            this.btnZuruck = new WarenhausManagement.Design.RoundedButton();
+            this.btnAusbuchen = new WarenhausManagement.Design.RoundedButton();
+            this.btnEinbuchen = new WarenhausManagement.Design.RoundedButton();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Logout)).BeginInit();
             this.SuspendLayout();
             // 
             // txtbx_ArtikelNr
             // 
-            this.txtbx_ArtikelNr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbx_ArtikelNr.Location = new System.Drawing.Point(91, 75);
+            this.txtbx_ArtikelNr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbx_ArtikelNr.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbx_ArtikelNr.Location = new System.Drawing.Point(91, 120);
             this.txtbx_ArtikelNr.Name = "txtbx_ArtikelNr";
-            this.txtbx_ArtikelNr.Size = new System.Drawing.Size(137, 22);
+            this.txtbx_ArtikelNr.Size = new System.Drawing.Size(137, 27);
             this.txtbx_ArtikelNr.TabIndex = 0;
             this.txtbx_ArtikelNr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbx_ArtikelNr_KeyDown);
             // 
             // txtbx_Lagerplatz
             // 
-            this.txtbx_Lagerplatz.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbx_Lagerplatz.Location = new System.Drawing.Point(88, 281);
+            this.txtbx_Lagerplatz.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbx_Lagerplatz.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbx_Lagerplatz.Location = new System.Drawing.Point(91, 340);
             this.txtbx_Lagerplatz.Name = "txtbx_Lagerplatz";
-            this.txtbx_Lagerplatz.Size = new System.Drawing.Size(137, 22);
+            this.txtbx_Lagerplatz.Size = new System.Drawing.Size(137, 27);
             this.txtbx_Lagerplatz.TabIndex = 1;
             this.txtbx_Lagerplatz.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbx_Lagerplatz_KeyDown);
             // 
@@ -68,10 +78,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(91, 59);
+            this.label1.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(88, 101);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 16);
+            this.label1.Size = new System.Drawing.Size(77, 19);
             this.label1.TabIndex = 2;
             this.label1.Text = "Artikel-Nr.";
             // 
@@ -79,90 +89,71 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(88, 265);
+            this.label2.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(88, 317);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 16);
+            this.label2.Size = new System.Drawing.Size(104, 19);
             this.label2.TabIndex = 3;
             this.label2.Text = "Lagerplatz-Nr.";
-            // 
-            // btn_Einbuchen
-            // 
-            this.btn_Einbuchen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Einbuchen.Location = new System.Drawing.Point(91, 344);
-            this.btn_Einbuchen.Name = "btn_Einbuchen";
-            this.btn_Einbuchen.Size = new System.Drawing.Size(85, 23);
-            this.btn_Einbuchen.TabIndex = 4;
-            this.btn_Einbuchen.Text = "Einbuchen";
-            this.btn_Einbuchen.UseVisualStyleBackColor = true;
-            this.btn_Einbuchen.Click += new System.EventHandler(this.btn_Einbuchen_Click);
             // 
             // lbl_Status
             // 
             this.lbl_Status.AutoSize = true;
             this.lbl_Status.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Status.Location = new System.Drawing.Point(91, 374);
+            this.lbl_Status.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Status.Location = new System.Drawing.Point(272, 468);
             this.lbl_Status.Name = "lbl_Status";
-            this.lbl_Status.Size = new System.Drawing.Size(0, 13);
+            this.lbl_Status.Size = new System.Drawing.Size(0, 16);
             this.lbl_Status.TabIndex = 5;
-            // 
-            // btn_Ausbuchen
-            // 
-            this.btn_Ausbuchen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Ausbuchen.Location = new System.Drawing.Point(198, 344);
-            this.btn_Ausbuchen.Name = "btn_Ausbuchen";
-            this.btn_Ausbuchen.Size = new System.Drawing.Size(86, 23);
-            this.btn_Ausbuchen.TabIndex = 6;
-            this.btn_Ausbuchen.Text = "Ausbuchen";
-            this.btn_Ausbuchen.UseVisualStyleBackColor = true;
-            this.btn_Ausbuchen.Click += new System.EventHandler(this.btn_Ausbuchen_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(91, 112);
+            this.label3.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(88, 155);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 16);
+            this.label3.Size = new System.Drawing.Size(136, 19);
             this.label3.TabIndex = 8;
             this.label3.Text = "Artikelbezeichnung";
             // 
             // txtbx_Bezeichnung
             // 
-            this.txtbx_Bezeichnung.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbx_Bezeichnung.Location = new System.Drawing.Point(91, 128);
+            this.txtbx_Bezeichnung.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbx_Bezeichnung.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbx_Bezeichnung.Location = new System.Drawing.Point(91, 175);
             this.txtbx_Bezeichnung.Name = "txtbx_Bezeichnung";
-            this.txtbx_Bezeichnung.Size = new System.Drawing.Size(137, 22);
+            this.txtbx_Bezeichnung.Size = new System.Drawing.Size(137, 27);
             this.txtbx_Bezeichnung.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(91, 169);
+            this.label4.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(88, 209);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(101, 16);
+            this.label4.Size = new System.Drawing.Size(110, 19);
             this.label4.TabIndex = 10;
             this.label4.Text = "Speicherbedarf";
             // 
             // txtbx_Speicher
             // 
-            this.txtbx_Speicher.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbx_Speicher.Location = new System.Drawing.Point(91, 185);
+            this.txtbx_Speicher.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbx_Speicher.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbx_Speicher.Location = new System.Drawing.Point(91, 230);
             this.txtbx_Speicher.Name = "txtbx_Speicher";
-            this.txtbx_Speicher.Size = new System.Drawing.Size(137, 22);
+            this.txtbx_Speicher.Size = new System.Drawing.Size(137, 27);
             this.txtbx_Speicher.TabIndex = 9;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(89, 19);
+            this.label5.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(89, 61);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 24);
+            this.label5.Size = new System.Drawing.Size(94, 25);
             this.label5.TabIndex = 11;
             this.label5.Text = "Buchung";
             // 
@@ -170,53 +161,128 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(91, 218);
+            this.label6.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(88, 263);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 16);
+            this.label6.Size = new System.Drawing.Size(40, 19);
             this.label6.TabIndex = 13;
             this.label6.Text = "Preis";
             // 
             // txtbx_Preis
             // 
-            this.txtbx_Preis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbx_Preis.Location = new System.Drawing.Point(91, 234);
+            this.txtbx_Preis.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbx_Preis.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbx_Preis.Location = new System.Drawing.Point(91, 285);
             this.txtbx_Preis.Name = "txtbx_Preis";
-            this.txtbx_Preis.Size = new System.Drawing.Size(137, 22);
+            this.txtbx_Preis.Size = new System.Drawing.Size(137, 27);
             this.txtbx_Preis.TabIndex = 12;
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(93, 404);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "Zurück";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // checkBoxNeuerArtikel
             // 
             this.checkBoxNeuerArtikel.AutoSize = true;
             this.checkBoxNeuerArtikel.BackColor = System.Drawing.Color.Transparent;
-            this.checkBoxNeuerArtikel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxNeuerArtikel.Location = new System.Drawing.Point(258, 75);
+            this.checkBoxNeuerArtikel.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxNeuerArtikel.Location = new System.Drawing.Point(258, 117);
             this.checkBoxNeuerArtikel.Name = "checkBoxNeuerArtikel";
-            this.checkBoxNeuerArtikel.Size = new System.Drawing.Size(156, 20);
+            this.checkBoxNeuerArtikel.Size = new System.Drawing.Size(172, 23);
             this.checkBoxNeuerArtikel.TabIndex = 15;
             this.checkBoxNeuerArtikel.Text = "neuen Artikel anlegen";
             this.checkBoxNeuerArtikel.UseVisualStyleBackColor = false;
             this.checkBoxNeuerArtikel.CheckedChanged += new System.EventHandler(this.checkBoxNeuerArtikel_CheckedChanged);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(93, 45);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel1.Controls.Add(this.pictureBox_Logout);
+            this.panel1.Controls.Add(this.lbl_User);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(734, 45);
+            this.panel1.TabIndex = 20;
+            // 
+            // pictureBox_Logout
+            // 
+            this.pictureBox_Logout.BackColor = System.Drawing.Color.SteelBlue;
+            this.pictureBox_Logout.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Logout.Image")));
+            this.pictureBox_Logout.Location = new System.Drawing.Point(692, 9);
+            this.pictureBox_Logout.Name = "pictureBox_Logout";
+            this.pictureBox_Logout.Size = new System.Drawing.Size(29, 27);
+            this.pictureBox_Logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_Logout.TabIndex = 21;
+            this.pictureBox_Logout.TabStop = false;
+            // 
+            // lbl_User
+            // 
+            this.lbl_User.AutoSize = true;
+            this.lbl_User.BackColor = System.Drawing.Color.SteelBlue;
+            this.lbl_User.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_User.Location = new System.Drawing.Point(619, 13);
+            this.lbl_User.Name = "lbl_User";
+            this.lbl_User.Size = new System.Drawing.Size(67, 19);
+            this.lbl_User.TabIndex = 3;
+            this.lbl_User.Text = "Benutzer";
+            // 
+            // btnZuruck
+            // 
+            this.btnZuruck.BackColor = System.Drawing.Color.White;
+            this.btnZuruck.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnZuruck.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnZuruck.Location = new System.Drawing.Point(38, 451);
+            this.btnZuruck.Name = "btnZuruck";
+            this.btnZuruck.Size = new System.Drawing.Size(154, 48);
+            this.btnZuruck.TabIndex = 18;
+            this.btnZuruck.Text = "Zurück";
+            this.btnZuruck.UseVisualStyleBackColor = false;
+            this.btnZuruck.Click += new System.EventHandler(this.btnZuruck_Click);
+            // 
+            // btnAusbuchen
+            // 
+            this.btnAusbuchen.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnAusbuchen.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAusbuchen.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAusbuchen.Location = new System.Drawing.Point(208, 397);
+            this.btnAusbuchen.Name = "btnAusbuchen";
+            this.btnAusbuchen.Size = new System.Drawing.Size(154, 48);
+            this.btnAusbuchen.TabIndex = 17;
+            this.btnAusbuchen.Text = "Ausbuchen";
+            this.btnAusbuchen.UseVisualStyleBackColor = false;
+            this.btnAusbuchen.Click += new System.EventHandler(this.btnAusbuchen_Click);
+            // 
+            // btnEinbuchen
+            // 
+            this.btnEinbuchen.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnEinbuchen.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEinbuchen.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnEinbuchen.Location = new System.Drawing.Point(38, 397);
+            this.btnEinbuchen.Name = "btnEinbuchen";
+            this.btnEinbuchen.Size = new System.Drawing.Size(154, 48);
+            this.btnEinbuchen.TabIndex = 16;
+            this.btnEinbuchen.Text = "Einbuchen";
+            this.btnEinbuchen.UseVisualStyleBackColor = false;
+            this.btnEinbuchen.Click += new System.EventHandler(this.btnEinbuchen_Click);
+            // 
             // Buchung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::WarenhausManagement.Properties.Resources._90619730_farbverlauf_weiße_licht_weichen_blauen_farbe_hintergrund;
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(767, 494);
+            this.ClientSize = new System.Drawing.Size(731, 512);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnZuruck);
+            this.Controls.Add(this.btnAusbuchen);
+            this.Controls.Add(this.btnEinbuchen);
             this.Controls.Add(this.checkBoxNeuerArtikel);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtbx_Preis);
             this.Controls.Add(this.label5);
@@ -224,16 +290,19 @@
             this.Controls.Add(this.txtbx_Speicher);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtbx_Bezeichnung);
-            this.Controls.Add(this.btn_Ausbuchen);
             this.Controls.Add(this.lbl_Status);
-            this.Controls.Add(this.btn_Einbuchen);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtbx_Lagerplatz);
             this.Controls.Add(this.txtbx_ArtikelNr);
+            this.Controls.Add(this.panel1);
             this.Name = "Buchung";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Einbuchung";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Logout)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -245,9 +314,7 @@
         private System.Windows.Forms.TextBox txtbx_Lagerplatz;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_Einbuchen;
         private System.Windows.Forms.Label lbl_Status;
-        private System.Windows.Forms.Button btn_Ausbuchen;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtbx_Bezeichnung;
         private System.Windows.Forms.Label label4;
@@ -255,7 +322,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtbx_Preis;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.CheckBox checkBoxNeuerArtikel;
+        private Design.RoundedButton btnEinbuchen;
+        private Design.RoundedButton btnAusbuchen;
+        private Design.RoundedButton btnZuruck;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lbl_User;
+        private System.Windows.Forms.PictureBox pictureBox_Logout;
     }
 }

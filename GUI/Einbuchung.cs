@@ -21,106 +21,19 @@ namespace WarenhausManagement.GUI
         {
             user = _user;
             InitializeComponent();
+            lbl_User.Text = user.GetUsername();
             _Einbuchung = Einbuchung;
             if (Einbuchung == true)
             {
-                btn_Ausbuchen.Visible = false;
+                btnAusbuchen.Visible = false;
             }
             else
             {
-                btn_Einbuchen.Visible = false;
+                btnEinbuchen.Visible = false;
                 txtbx_Bezeichnung.ReadOnly = true;
                 txtbx_Preis.ReadOnly = true;
                 txtbx_Speicher.ReadOnly = true;
                 checkBoxNeuerArtikel.Visible = false;
-            }
-        }
-
-        private void btn_Einbuchen_Click(object sender, EventArgs e)
-        {
-            //Textboxen auslesen
-            ware.SetWareBezeichnung(txtbx_Bezeichnung.Text);
-
-            if (checkBoxNeuerArtikel.Checked == true)
-            {
-                try
-                {
-                    ware.SetSpeicherbedarf(Convert.ToInt32(txtbx_Speicher.Text));
-                    _LagerID = Convert.ToInt32(txtbx_Lagerplatz.Text="1"+txtbx_Lagerplatz.Text);
-                    ware.SetPreis(float.Parse(txtbx_Preis.Text));
-
-                    //Neuen Artikel anlegen
-                    bool erfolgreich = false;
-                    erfolgreich = Datenbankanbindung.NauerArtikel(user.GetUsername(), user.GetPassword(), ware.GetWareBezeichnung(), ware.GetPreis(), ware.GetSpeicherbedarf());
-                    if (erfolgreich == true)
-                    {
-                        //ID dazu holen
-                        ware.SetWareID(Datenbankanbindung.WareID(user.GetUsername(), user.GetPassword(), ware.GetWareBezeichnung()));
-                        //Einbuchen
-                        if (ware.GetWareID() != -1)
-                        {
-                            bool ok = Datenbankanbindung.EinbuchenProzedur(user.GetUsername(), user.GetPassword(), ware.GetWareID(), _LagerID);
-                            //Verarbeitung auf Returnwert
-                            if (ok == true)
-                            {
-                                lbl_Status.Text = "Artikel erfolgreich angelegt und eingebucht";
-                            }
-                        }
-
-                    }
-                }
-                catch
-                {
-                    lbl_Status.Text = "Falsche Eingabe im Feld Speicherbedarf oder Preis. Eingabe muss Zahlenformat haben";
-                }
-
-            }
-            else //bereits existierenden Artikel einbuchen
-            {
-                bool erfolgreich = false;
-                try //Textboxen auf richtigen Inhalt prüfen -> Konvertieren
-                {
-                    ware.SetWareID(Convert.ToInt32(txtbx_ArtikelNr.Text));
-                    _LagerID = Convert.ToInt32(txtbx_Lagerplatz.Text = "1"+txtbx_Lagerplatz.Text);
-                    erfolgreich = Datenbankanbindung.EinbuchenProzedur(user.GetUsername(), user.GetPassword(), ware.GetWareID(), _LagerID);
-                }
-                catch
-                {
-                    lbl_Status.Text = "Fehlerhafte Eingabe: Artikelnummer oder Lagerplatz";
-                }
-
-                if (erfolgreich == true)
-                {
-                    lbl_Status.Text = "Einbuchung erfolgreich";
-                }
-                else
-                {
-                    lbl_Status.Text = "Einbuchung fehlgeschlagen";
-                }
-            }
-        }
-
-        private void btn_Ausbuchen_Click(object sender, EventArgs e)
-        {
-            bool erfolgreich = false;
-            try //Eingabefehler abfangen
-            {
-                ware.SetWareID(Convert.ToInt32(txtbx_ArtikelNr.Text));
-                _LagerID = Convert.ToInt32(txtbx_Lagerplatz.Text);
-            }
-            catch
-            {
-                lbl_Status.Text = "Fehlerhafte Eingabe: Artikel Nummer oder Lagerplatz";
-            }
-            //SQL Statement zum Ausbuchen
-            erfolgreich = Datenbankanbindung.AusbuchenProzedur(user.GetUsername(), user.GetPassword(), ware.GetWareID(), _LagerID);
-            if (erfolgreich == true)
-            {
-                lbl_Status.Text = "Ausbuchung erfolgreich";
-            }
-            else
-            {
-                lbl_Status.Text = "Ausbuchung fehlgeschlagen";
             }
         }
 
@@ -177,6 +90,99 @@ namespace WarenhausManagement.GUI
                 txtbx_ArtikelNr.ReadOnly = false;
             }
             
+        }
+
+        private void btnEinbuchen_Click(object sender, EventArgs e)
+        {
+            //Textboxen auslesen
+            ware.SetWareBezeichnung(txtbx_Bezeichnung.Text);
+
+            if (checkBoxNeuerArtikel.Checked == true)
+            {
+                try
+                {
+                    ware.SetSpeicherbedarf(Convert.ToInt32(txtbx_Speicher.Text));
+                    _LagerID = Convert.ToInt32(txtbx_Lagerplatz.Text = "1" + txtbx_Lagerplatz.Text);
+                    ware.SetPreis(float.Parse(txtbx_Preis.Text));
+
+                    //Neuen Artikel anlegen
+                    bool erfolgreich = false;
+                    erfolgreich = Datenbankanbindung.NauerArtikel(user.GetUsername(), user.GetPassword(), ware.GetWareBezeichnung(), ware.GetPreis(), ware.GetSpeicherbedarf());
+                    if (erfolgreich == true)
+                    {
+                        //ID dazu holen
+                        ware.SetWareID(Datenbankanbindung.WareID(user.GetUsername(), user.GetPassword(), ware.GetWareBezeichnung()));
+                        //Einbuchen
+                        if (ware.GetWareID() != -1)
+                        {
+                            bool ok = Datenbankanbindung.EinbuchenProzedur(user.GetUsername(), user.GetPassword(), ware.GetWareID(), _LagerID);
+                            //Verarbeitung auf Returnwert
+                            if (ok == true)
+                            {
+                                lbl_Status.Text = "Artikel erfolgreich angelegt und eingebucht";
+                            }
+                        }
+
+                    }
+                }
+                catch
+                {
+                    lbl_Status.Text = "Falsche Eingabe im Feld Speicherbedarf oder Preis. Eingabe muss Zahlenformat haben";
+                }
+
+            }
+            else //bereits existierenden Artikel einbuchen
+            {
+                bool erfolgreich = false;
+                try //Textboxen auf richtigen Inhalt prüfen -> Konvertieren
+                {
+                    ware.SetWareID(Convert.ToInt32(txtbx_ArtikelNr.Text));
+                    _LagerID = Convert.ToInt32(txtbx_Lagerplatz.Text = "1" + txtbx_Lagerplatz.Text);
+                    erfolgreich = Datenbankanbindung.EinbuchenProzedur(user.GetUsername(), user.GetPassword(), ware.GetWareID(), _LagerID);
+                }
+                catch
+                {
+                    lbl_Status.Text = "Fehlerhafte Eingabe: Artikelnummer oder Lagerplatz";
+                }
+
+                if (erfolgreich == true)
+                {
+                    lbl_Status.Text = "Einbuchung erfolgreich";
+                }
+                else
+                {
+                    lbl_Status.Text = "Einbuchung fehlgeschlagen";
+                }
+            }
+        }
+
+        private void btnAusbuchen_Click(object sender, EventArgs e)
+        {
+            bool erfolgreich = false;
+            try //Eingabefehler abfangen
+            {
+                ware.SetWareID(Convert.ToInt32(txtbx_ArtikelNr.Text));
+                _LagerID = Convert.ToInt32(txtbx_Lagerplatz.Text);
+            }
+            catch
+            {
+                lbl_Status.Text = "Fehlerhafte Eingabe: Artikel Nummer oder Lagerplatz";
+            }
+            //SQL Statement zum Ausbuchen
+            erfolgreich = Datenbankanbindung.AusbuchenProzedur(user.GetUsername(), user.GetPassword(), ware.GetWareID(), _LagerID);
+            if (erfolgreich == true)
+            {
+                lbl_Status.Text = "Ausbuchung erfolgreich";
+            }
+            else
+            {
+                lbl_Status.Text = "Ausbuchung fehlgeschlagen";
+            }
+        }
+
+        private void btnZuruck_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

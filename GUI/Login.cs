@@ -75,7 +75,8 @@ namespace WarenhausManagement
                 }
 
                 bool AnmeldungGültig = LDAPConnection(AnmeldeName, AnmeldePw);
-
+                //nur für Testzwecke
+                AnmeldungGültig = true;
                 if (AnmeldungGültig == true)
                 {
                     Mainmenu hmenu = new Mainmenu(user);
@@ -218,7 +219,8 @@ namespace WarenhausManagement
                 }
 
                 bool AnmeldungGültig = LDAPConnection(AnmeldeName, AnmeldePw);
-
+                //testzwecke
+                AnmeldungGültig = true;
                 if (AnmeldungGültig == true)
                 {
                     Mainmenu hmenu = new Mainmenu(user);
@@ -247,6 +249,18 @@ namespace WarenhausManagement
         private void txtbx_Password_MouseClick(object sender, MouseEventArgs e)
         {
             txtbx_Password.Text = "";
+        }
+
+        private void btnlogin_MouseHover(object sender, EventArgs e)
+        {
+            btnlogin.Font = new Font(btnlogin.Font.Name, btnlogin.Font.Size, FontStyle.Bold);
+            btnlogin.BackColor = Color.SteelBlue;
+        }
+
+        private void btnlogin_MouseLeave(object sender, EventArgs e)
+        {
+            btnlogin.Font = new Font(btnlogin.Font.Name, btnlogin.Font.Size, FontStyle.Regular);
+            btnlogin.BackColor = Color.LightSteelBlue;
         }
     }
 }

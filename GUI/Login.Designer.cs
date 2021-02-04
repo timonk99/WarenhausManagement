@@ -32,21 +32,19 @@
             this.txtbx_Username = new System.Windows.Forms.TextBox();
             this.txtbx_Password = new System.Windows.Forms.TextBox();
             this.lbl_Status = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.pictureBoxPW = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnlogin = new WarenhausManagement.Design.RoundedButton();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPW)).BeginInit();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // txtbx_Username
@@ -74,19 +72,10 @@
             // lbl_Status
             // 
             this.lbl_Status.AutoSize = true;
-            this.lbl_Status.Location = new System.Drawing.Point(45, 318);
+            this.lbl_Status.Location = new System.Drawing.Point(22, 321);
             this.lbl_Status.Name = "lbl_Status";
             this.lbl_Status.Size = new System.Drawing.Size(0, 13);
             this.lbl_Status.TabIndex = 5;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Test";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // pictureBoxPW
             // 
@@ -116,27 +105,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(176, 1);
             this.panel2.TabIndex = 10;
-            // 
-            // panel3
-            // 
-            this.panel3.BackgroundImage = global::WarenhausManagement.Properties.Resources._90619730_farbverlauf_weiße_licht_weichen_blauen_farbe_hintergrund;
-            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(286, 141);
-            this.panel3.TabIndex = 11;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(105, 58);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 25);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "WHM";
             // 
             // pictureBox1
             // 
@@ -180,16 +148,28 @@
             // 
             // btnlogin
             // 
-            this.btnlogin.BackColor = System.Drawing.Color.White;
+            this.btnlogin.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnlogin.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnlogin.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnlogin.Location = new System.Drawing.Point(51, 264);
+            this.btnlogin.Location = new System.Drawing.Point(51, 269);
             this.btnlogin.Name = "btnlogin";
             this.btnlogin.Size = new System.Drawing.Size(154, 48);
             this.btnlogin.TabIndex = 12;
             this.btnlogin.Text = "Login";
             this.btnlogin.UseVisualStyleBackColor = false;
             this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
+            this.btnlogin.MouseLeave += new System.EventHandler(this.btnlogin_MouseLeave);
+            this.btnlogin.MouseHover += new System.EventHandler(this.btnlogin_MouseHover);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(64, 42);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(151, 59);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 17;
+            this.pictureBox3.TabStop = false;
             // 
             // Login
             // 
@@ -197,16 +177,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(286, 343);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBoxPW);
             this.Controls.Add(this.lbl_Status);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnlogin);
             this.Controls.Add(this.txtbx_Username);
             this.Controls.Add(this.txtbx_Password);
@@ -215,10 +194,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPW)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,17 +210,15 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.PictureBox pictureBoxPWclear;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBoxPW;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label3;
         private Design.RoundedButton btnlogin;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
 

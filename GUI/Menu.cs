@@ -30,27 +30,23 @@ namespace WarenhausManagement.GUI
 
             if(user.GetRolle()== "WHM_DB_Einkauf")
             {
-                btn_Einbuchen.Visible = false;
-                btn_Ausbuchen.Visible = false; 
+                btnEinbuchen.Visible = false;
+                btnAusbuchen.Visible = false; 
             }
             else if(user.GetRolle()== "WHM_DB_Lager")
             {
-                btn_Statistik.Visible = false;
+                btnStatistik.Visible = false;
             }
         }
 
         private void btn_Einbuchen_Click(object sender, EventArgs e)
         {
-            Einbuchen = true;
-            Buchung buchung = new Buchung(Einbuchen, user) ;
-            buchung.Show();
+            
         }
 
         private void btn_Ausbuchen_Click(object sender, EventArgs e)
         {
-            Einbuchen = false;
-            Buchung buchung = new Buchung(Einbuchen, user);
-            buchung.Show();
+            
         }
 
         private void pictureBox_Logout_Click(object sender, EventArgs e)
@@ -72,8 +68,63 @@ namespace WarenhausManagement.GUI
 
         private void btn_Statistik_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void btnEinbuchen_Click(object sender, EventArgs e)
+        {
+            Einbuchen = true;
+            Buchung buchung = new Buchung(Einbuchen, user);
+            buchung.Show();
+        }
+
+        private void btnAusbuchen_Click(object sender, EventArgs e)
+        {
+            Einbuchen = false;
+            Buchung buchung = new Buchung(Einbuchen, user);
+            buchung.Show();
+        }
+
+        private void btnStatistik_Click(object sender, EventArgs e)
+        {
             Statistik.StatsMain stat = new Statistik.StatsMain(user);
             stat.Show();
+        }
+
+        private void btnEinbuchen_MouseHover(object sender, EventArgs e)
+        {
+            btnEinbuchen.Font = new Font(btnEinbuchen.Font.Name, btnEinbuchen.Font.Size, FontStyle.Bold);
+            btnEinbuchen.BackColor = Color.SteelBlue;
+        }
+
+        private void btnEinbuchen_MouseLeave(object sender, EventArgs e)
+        {
+            btnEinbuchen.Font = new Font(btnEinbuchen.Font.Name, btnEinbuchen.Font.Size, FontStyle.Regular);
+            btnEinbuchen.BackColor = Color.LightSteelBlue;
+        }
+
+        private void btnAusbuchen_MouseHover(object sender, EventArgs e)
+        {
+            btnAusbuchen.Font = new Font(btnAusbuchen.Font.Name, btnAusbuchen.Font.Size, FontStyle.Bold);
+            btnAusbuchen.BackColor = Color.SteelBlue;
+        }
+
+        private void btnAusbuchen_MouseLeave(object sender, EventArgs e)
+        {
+            btnAusbuchen.Font = new Font(btnAusbuchen.Font.Name, btnAusbuchen.Font.Size, FontStyle.Regular);
+            btnAusbuchen.BackColor = Color.LightSteelBlue;
+        }
+
+        private void btnStatistik_MouseHover(object sender, EventArgs e)
+        {
+            btnStatistik.Font = new Font(btnStatistik.Font.Name, btnStatistik.Font.Size, FontStyle.Bold);
+            btnStatistik.BackColor = Color.SteelBlue;
+        }
+
+        private void btnStatistik_MouseLeave(object sender, EventArgs e)
+        {
+            btnStatistik.Font = new Font(btnStatistik.Font.Name, btnStatistik.Font.Size, FontStyle.Regular);
+            btnStatistik.BackColor = Color.LightSteelBlue;
         }
     }
 }
