@@ -36,7 +36,7 @@ namespace WarenhausManagement.Statistik
             try
             {
 
-                int regale = Datenbankanbindung.Get_Regale(testUser, testPasswort);
+                int regale = Datenbankanbindung.Get_Regale(user.GetUsername(), user.GetPassword());
 
                 cb_regal.Items.Add("Alle");
                 for (int i = 1; i <= regale; i++)
