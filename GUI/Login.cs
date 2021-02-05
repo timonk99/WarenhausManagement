@@ -220,7 +220,7 @@ namespace WarenhausManagement
 
                 bool AnmeldungGültig = LDAPConnection(AnmeldeName, AnmeldePw);
                 //testzwecke
-                AnmeldungGültig = true;
+                //AnmeldungGültig = true;
                 if (AnmeldungGültig == true)
                 {
                     Mainmenu hmenu = new Mainmenu(user);
