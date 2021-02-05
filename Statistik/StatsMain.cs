@@ -33,59 +33,79 @@ namespace WarenhausManagement.Statistik
         }
         private void Fill_cb_regal()
         {
-            int regale = Datenbankanbindung.Get_Regale(testUser, testPasswort);
-
-            cb_regal.Items.Add("Alle");
-            for( int i = 1; i <= regale; i++)
+            try
             {
-                cb_regal.Items.Add(i);
+
+                int regale = Datenbankanbindung.Get_Regale(testUser, testPasswort);
+
+                cb_regal.Items.Add("Alle");
+                for (int i = 1; i <= regale; i++)
+                {
+                    cb_regal.Items.Add(i);
+                }
+            } catch (Exception e)
+            {
+                new Message(e.Message);
             }
         }
         private void ArtikelLager(List<List<string>> values)
         {
-            ClearChart();
-
-            this.c_chart.Titles.Add("Bestand vom " + dt_startDate.Value.ToShortDateString() + " bis " + dt_endDate.Value.ToShortDateString());
-            this.c_chart.Titles[0].Font = new Font("Verdana", 12);
-            this.c_chart.ChartAreas.Add(new ChartArea());
-            this.c_chart.Series.Add(new Series());
-
-            for(int i = 0; i < values[0].Count; i++)
+            try
             {
-                this.c_chart.Series[0].Points.AddXY(values[0][i].ToString(), values[1][i]);
+                ClearChart();
+
+                this.c_chart.Titles.Add("Bestand vom " + dt_startDate.Value.ToShortDateString() + " bis " + dt_endDate.Value.ToShortDateString());
+                this.c_chart.Titles[0].Font = new Font("Verdana", 12);
+                this.c_chart.ChartAreas.Add(new ChartArea());
+                this.c_chart.Series.Add(new Series());
+
+                for (int i = 0; i < values[0].Count; i++)
+                {
+                    this.c_chart.Series[0].Points.AddXY(values[0][i].ToString(), values[1][i]);
+                }
+            } catch (Exception e)
+            {
+                new Message(e.Message);
             }
         }
         private void PieAuslastung(int value)
         {
-            string[] types = { "Leer", "Voll"};
-
-            ClearChart();
-            
-            this.c_chart.Titles.Add("Auslastung von " + cb_regal.Text + " vom " + dt_startDate.Value.ToShortDateString() + " bis " + dt_endDate.Value.ToShortDateString());
-            this.c_chart.Titles[0].Font = new Font("Verdana", 12);
-            this.c_chart.ChartAreas.Add(new ChartArea());
-            this.c_chart.Series.Add(new Series());
-            this.c_chart.Series[0].ChartType = SeriesChartType.Pie;
-
-            if(cb_regal.SelectedItem.ToString() == "Alle")
+            try
             {
-                this.c_chart.Legends.Add(types[0]);
-                this.c_chart.Series[0].Points.AddY((cb_regal.Items.Count - 1) * 10 - value);
-                this.c_chart.Series[0].Points[0].LegendText = types[0];
-                this.c_chart.Series[0].Points[0].AxisLabel = ((cb_regal.Items.Count - 1) * 10 - value).ToString();
-            }
-            else
-            {
-                this.c_chart.Legends.Add(types[0]);
-                this.c_chart.Series[0].Points.AddY(10 - value);
-                this.c_chart.Series[0].Points[0].LegendText = types[0];
-                this.c_chart.Series[0].Points[0].AxisLabel = (10 - value).ToString();
-            }
+                string[] types = { "Leer", "Voll" };
 
-            this.c_chart.Legends.Add(types[1]);
-            this.c_chart.Series[0].Points.AddY(value);
-            this.c_chart.Series[0].Points[1].LegendText = types[1];
-            this.c_chart.Series[0].Points[1].AxisLabel = (value).ToString();
+                ClearChart();
+
+                this.c_chart.Titles.Add("Auslastung von " + cb_regal.Text + " vom " + dt_startDate.Value.ToShortDateString() + " bis " + dt_endDate.Value.ToShortDateString());
+                this.c_chart.Titles[0].Font = new Font("Verdana", 12);
+                this.c_chart.ChartAreas.Add(new ChartArea());
+                this.c_chart.Series.Add(new Series());
+                this.c_chart.Series[0].ChartType = SeriesChartType.Pie;
+
+                if (cb_regal.SelectedItem.ToString() == "Alle")
+                {
+                    this.c_chart.Legends.Add(types[0]);
+                    this.c_chart.Series[0].Points.AddY((cb_regal.Items.Count - 1) * 10 - value);
+                    this.c_chart.Series[0].Points[0].LegendText = types[0];
+                    this.c_chart.Series[0].Points[0].AxisLabel = ((cb_regal.Items.Count - 1) * 10 - value).ToString();
+                }
+                else
+                {
+                    this.c_chart.Legends.Add(types[0]);
+                    this.c_chart.Series[0].Points.AddY(10 - value);
+                    this.c_chart.Series[0].Points[0].LegendText = types[0];
+                    this.c_chart.Series[0].Points[0].AxisLabel = (10 - value).ToString();
+                }
+
+                this.c_chart.Legends.Add(types[1]);
+                this.c_chart.Series[0].Points.AddY(value);
+                this.c_chart.Series[0].Points[1].LegendText = types[1];
+                this.c_chart.Series[0].Points[1].AxisLabel = (value).ToString();
+
+            } catch(Exception e)
+            {
+                new Message(e.Message);
+            }
         }
         private void btn_close_Click(object sender, EventArgs e)
         {
@@ -94,8 +114,9 @@ namespace WarenhausManagement.Statistik
 
         private void btn_load_Click(object sender, EventArgs e)
         {
-            if (cb_auswahl.SelectedIndex == 0) PieAuslastung(Datenbankanbindung.Get_Auslastung(user.GetUsername(),user.GetPassword(), dt_endDate.Value, dt_startDate.Value, cb_regal.Text));
+            if (cb_auswahl.SelectedIndex == 0) PieAuslastung(Datenbankanbindung.Get_Auslastung(user.GetUsername(), user.GetPassword(), dt_endDate.Value, dt_startDate.Value, cb_regal.Text));
             else if (cb_auswahl.SelectedIndex == 1) ArtikelLager(Datenbankanbindung.Get_Warenmenge(user.GetUsername(), user.GetPassword(), dt_endDate.Value, dt_startDate.Value));
+            else new Message("Die Auswahl des Diagramms ist ungültig. Bitte ein anderes Diagramm wählen");
         }
     }
 }
