@@ -39,8 +39,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnlogin = new WarenhausManagement.Design.RoundedButton();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btnlogin = new WarenhausManagement.Design.RoundedButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPW)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -146,6 +146,16 @@
             this.label2.TabIndex = 16;
             this.label2.Text = "Passwort";
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(64, 42);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(151, 59);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 17;
+            this.pictureBox3.TabStop = false;
+            // 
             // btnlogin
             // 
             this.btnlogin.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -160,16 +170,6 @@
             this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
             this.btnlogin.MouseLeave += new System.EventHandler(this.btnlogin_MouseLeave);
             this.btnlogin.MouseHover += new System.EventHandler(this.btnlogin_MouseHover);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(64, 42);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(151, 59);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 17;
-            this.pictureBox3.TabStop = false;
             // 
             // Login
             // 

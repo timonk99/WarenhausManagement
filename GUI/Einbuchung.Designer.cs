@@ -205,13 +205,15 @@
             this.panel1.BackColor = System.Drawing.Color.SteelBlue;
             this.panel1.Controls.Add(this.pictureBox_Logout);
             this.panel1.Controls.Add(this.lbl_User);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(734, 45);
+            this.panel1.Size = new System.Drawing.Size(731, 45);
             this.panel1.TabIndex = 20;
             // 
             // pictureBox_Logout
             // 
+            this.pictureBox_Logout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_Logout.BackColor = System.Drawing.Color.SteelBlue;
             this.pictureBox_Logout.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Logout.Image")));
             this.pictureBox_Logout.Location = new System.Drawing.Point(692, 9);
@@ -223,6 +225,7 @@
             // 
             // lbl_User
             // 
+            this.lbl_User.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_User.AutoSize = true;
             this.lbl_User.BackColor = System.Drawing.Color.SteelBlue;
             this.lbl_User.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

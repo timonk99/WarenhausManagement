@@ -76,7 +76,7 @@ namespace WarenhausManagement
 
                 bool AnmeldungGültig = LDAPConnection(AnmeldeName, AnmeldePw);
                 //nur für Testzwecke
-                AnmeldungGültig = true;
+                //AnmeldungGültig = true;
                 if (AnmeldungGültig == true)
                 {
                     Mainmenu hmenu = new Mainmenu(user);
@@ -227,13 +227,6 @@ namespace WarenhausManagement
                     this.Hide();
                     hmenu.Show();
                 }
-                //User für Testzwecke
-                /*user.SetUsername("SA");
-                user.SetPassword("Ers1234Ers1234");
-                Mainmenu hmenu = new Mainmenu(user);
-                this.Hide();
-                hmenu.Show();
-                */
             }
             else
             {

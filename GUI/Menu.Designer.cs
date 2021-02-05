@@ -44,6 +44,7 @@
             // 
             // lbl_User
             // 
+            this.lbl_User.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_User.AutoSize = true;
             this.lbl_User.BackColor = System.Drawing.Color.SteelBlue;
             this.lbl_User.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -55,6 +56,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Gadugi", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(120, 52);
@@ -65,6 +67,7 @@
             // 
             // pictureBox_Logout
             // 
+            this.pictureBox_Logout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_Logout.BackColor = System.Drawing.Color.SteelBlue;
             this.pictureBox_Logout.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Logout.Image")));
             this.pictureBox_Logout.Location = new System.Drawing.Point(334, 4);
@@ -87,6 +90,7 @@
             // 
             // btnEinbuchen
             // 
+            this.btnEinbuchen.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnEinbuchen.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnEinbuchen.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEinbuchen.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -102,6 +106,7 @@
             // 
             // btnAusbuchen
             // 
+            this.btnAusbuchen.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnAusbuchen.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnAusbuchen.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAusbuchen.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -117,6 +122,7 @@
             // 
             // btnStatistik
             // 
+            this.btnStatistik.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnStatistik.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnStatistik.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStatistik.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -134,9 +140,10 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.SteelBlue;
             this.panel1.Controls.Add(this.lbl_User);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(379, 34);
+            this.panel1.Size = new System.Drawing.Size(378, 34);
             this.panel1.TabIndex = 16;
             // 
             // Mainmenu
