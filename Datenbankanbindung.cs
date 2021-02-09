@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace WarenhausManagement
 {
     public static class Datenbankanbindung
     {
-        private static string ServerIP = "172.16.112.38";
+        private static string ServerIP = ConfigurationManager.AppSeetings("db");
+        
 
         private static string convertDate(DateTime date)
         {
@@ -23,7 +25,7 @@ namespace WarenhausManagement
             List<string> preis = new List<string>();
 
             List<List<string>> result = new List<List<string>>();
-            SqlConnection NewConnection = new SqlConnection("Server =  " + ServerIP + "; Database = WHM; Integrated Security = true;");
+            SqlConnection NewConnection = new SqlConnection("Server =  " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
             try
             {
 
@@ -58,7 +60,7 @@ namespace WarenhausManagement
         public static bool EinbuchenProzedur(string _Username, string _Passwort, int WareID, int LagerplatzID)
 
         {
-            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; Integrated Security = true");
+            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
             SqlCommand NewCommand = new SqlCommand("exec p_insert_lagerprozess " + WareID + ", " + LagerplatzID + ";", NewConnection);
             try
             {
@@ -116,7 +118,7 @@ namespace WarenhausManagement
             preisString = preisString.Replace(',', '.');
             
             
-            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; Integrated Security=True;");
+            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
             SqlCommand NewCommand = new SqlCommand("exec dbo.NeuerArtikel'" + Warename + "', '"+preisString+"', "+Warengröße+";", NewConnection);
             try
             {
@@ -143,7 +145,7 @@ namespace WarenhausManagement
 
         {
 
-            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; Integrated Security=True;");
+            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
             SqlCommand NewCommand = new SqlCommand("select dbo.WareID ('" + Warename + "')", NewConnection);
             try
             {
@@ -177,7 +179,7 @@ namespace WarenhausManagement
         {
             int value = 0;
 
-            SqlConnection connect = new SqlConnection("Server = " + ServerIP + "; Database = WHM; Integrated Security=True;");
+            SqlConnection connect = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
             SqlCommand com = new SqlCommand("select max(Regal) from Lagerplatz;", connect);
 
             com.Connection.Open();
@@ -192,7 +194,7 @@ namespace WarenhausManagement
         public static int Get_Auslastung(string _Username, string _Passwort, DateTime startDate, DateTime endDate, string regal)
         {
             int auslastung = 0;
-            SqlConnection connect = new SqlConnection("Server =  " + ServerIP + "; Database = WHM; Integrated Security=True;");
+            SqlConnection connect = new SqlConnection("Server =  " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
             SqlCommand com = new SqlCommand();
             com.Connection = connect;
             com.Connection.Open();
@@ -225,7 +227,7 @@ namespace WarenhausManagement
             List<string> mengen = new List<string>();
             List<List<string>> rn_values = new List<List<string>>();
 
-            SqlConnection connect = new SqlConnection("Server =  " + ServerIP + "; Database = WHM; Integrated Security=True;");
+            SqlConnection connect = new SqlConnection("Server =  " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
             SqlCommand com = new SqlCommand("select * from dbo.f_get_menge_ware('" + convertDate(startDate) + "', '" + convertDate(endDate) + "' );", connect);
             com.Connection.Open();
             SqlDataReader reader = com.ExecuteReader();

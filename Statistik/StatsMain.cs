@@ -36,7 +36,7 @@ namespace WarenhausManagement.Statistik
             try
             {
 
-                int regale = Datenbankanbindung.Get_Regale(user.GetUsername(), user.GetPassword());
+                int regale = Datenbankanbindung.Get_Regale(testUser, testPasswort);
 
                 cb_regal.Items.Add("Alle");
                 for (int i = 1; i <= regale; i++)
@@ -118,5 +118,6 @@ namespace WarenhausManagement.Statistik
             else if (cb_auswahl.SelectedIndex == 1) ArtikelLager(Datenbankanbindung.Get_Warenmenge(user.GetUsername(), user.GetPassword(), dt_endDate.Value, dt_startDate.Value));
             else new Message("Die Auswahl des Diagramms ist ungültig. Bitte ein anderes Diagramm wählen");
         }
+
     }
 }

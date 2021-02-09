@@ -66,11 +66,6 @@ namespace WarenhausManagement.GUI
         //    return isMember;
         //}
 
-        private void btn_Statistik_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btnEinbuchen_Click(object sender, EventArgs e)
         {
             Einbuchen = true;
