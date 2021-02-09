@@ -47,9 +47,8 @@
             this.l_message.AutoSize = true;
             this.l_message.Location = new System.Drawing.Point(45, 40);
             this.l_message.Name = "l_message";
-            this.l_message.Size = new System.Drawing.Size(35, 13);
+            this.l_message.Size = new System.Drawing.Size(0, 13);
             this.l_message.TabIndex = 1;
-            this.l_message.Text = "label1";
             // 
             // Message
             // 

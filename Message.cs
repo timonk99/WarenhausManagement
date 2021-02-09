@@ -16,6 +16,7 @@ namespace WarenhausManagement
         {
             InitializeComponent();
             this.l_message.Text = message;
+            this.Show();
         }
 
         private void b_ok_Click(object sender, EventArgs e)
