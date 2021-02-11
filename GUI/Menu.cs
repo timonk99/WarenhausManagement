@@ -39,16 +39,6 @@ namespace WarenhausManagement.GUI
             }
         }
 
-        private void btn_Einbuchen_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btn_Ausbuchen_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void pictureBox_Logout_Click(object sender, EventArgs e)
         {
             this.Close();

@@ -48,7 +48,7 @@
             this.lbl_User.AutoSize = true;
             this.lbl_User.BackColor = System.Drawing.Color.SteelBlue;
             this.lbl_User.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_User.Location = new System.Drawing.Point(261, 9);
+            this.lbl_User.Location = new System.Drawing.Point(235, 9);
             this.lbl_User.Name = "lbl_User";
             this.lbl_User.Size = new System.Drawing.Size(67, 19);
             this.lbl_User.TabIndex = 3;
