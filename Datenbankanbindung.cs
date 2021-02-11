@@ -10,7 +10,7 @@ namespace WarenhausManagement
 {
     public static class Datenbankanbindung
     {
-        private static string ServerIP = ConfigurationManager.AppSeetings("db");
+        private static string ServerIP = ConfigurationManager.AppSettings["db"];
         
 
         private static string convertDate(DateTime date)

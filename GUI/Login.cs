@@ -14,6 +14,7 @@ using System.DirectoryServices.ActiveDirectory;
 using System.DirectoryServices.Protocols;
 using System.DirectoryServices.AccountManagement;
 using System.Security;
+using System.Configuration;
 
 namespace WarenhausManagement
 {
@@ -21,6 +22,7 @@ namespace WarenhausManagement
     {
         private bool pwsichtbar = false;
         User user = new User();
+        private Exception message;
         public Login()
         {
             InitializeComponent();
@@ -38,7 +40,8 @@ namespace WarenhausManagement
 
             //LDAP Verbindung aufbauen
 
-            DirectoryEntry ldapConnection = new DirectoryEntry("WHM.local");
+            string ad = ConfigurationManager.AppSettings["ad"];
+            DirectoryEntry ldapConnection = new DirectoryEntry(ad);
             ldapConnection.Path = "LDAP://CN=DBUser,DC=WHM,DC=local";
             ldapConnection.AuthenticationType = AuthenticationTypes.Secure;
 
@@ -59,7 +62,8 @@ namespace WarenhausManagement
             catch (Exception e)
             {
                 bAuth = false;
-                lbl_Status.Text = "Benutzername oder Passwort falsch.";
+                lbl_Status.Text = e.Message;
+                message = e;
             }
             finally
             {
@@ -73,7 +77,7 @@ namespace WarenhausManagement
             }
             catch
             {
-                lbl_Status.Text = "Verbindung zu Domänen-Controller nicht möglich.";
+                lbl_Status.Text = message.Message;
             }
             return bAuth;
         }
@@ -145,7 +149,7 @@ namespace WarenhausManagement
                 }
                 catch (Exception d)
                 {
-                    lbl_Status.Text = "Verbindung zu Domäne fehlgeschlagen: " + d;
+                    lbl_Status.Text = d.Message;
                 }
 
                 bool AnmeldungGültig = LDAPConnection(AnmeldeName, AnmeldePw);
@@ -160,7 +164,7 @@ namespace WarenhausManagement
             }
             else
             {
-                lbl_Status.Text = "Eingaben nicht vollständig";
+                lbl_Status.Text = message.ToString();
             }
         }
 
