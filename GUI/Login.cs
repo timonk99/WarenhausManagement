@@ -21,6 +21,7 @@ namespace WarenhausManagement
     public partial class Login : Form
     {
         private bool pwsichtbar = false;
+        private bool pwfalsch = true;
         User user = new User();
         public Login()
         {
@@ -62,13 +63,17 @@ namespace WarenhausManagement
             {
                 lbl_Status.Text = e.Message;
                 bAuth = false;
+                if (e.Message == "Der Benutzername oder das Kennwort ist falsch.\r\n")
+                {
+                    pwfalsch = true;
+                }
             }
             finally
             {
                 entry.Close();
                 entry.Dispose();
             }
-            if (bAuth == true)
+            if (pwfalsch == false)
             {
                 //Testen ob Verbindung möglich
                 try
