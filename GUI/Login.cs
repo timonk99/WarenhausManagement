@@ -22,7 +22,6 @@ namespace WarenhausManagement
     {
         private bool pwsichtbar = false;
         User user = new User();
-        private Exception message;
         public Login()
         {
             InitializeComponent();
@@ -59,11 +58,9 @@ namespace WarenhausManagement
                 object nativeObject = entry.NativeObject;
                 bAuth = true;
             }
-            catch (Exception e)
+            catch 
             {
                 bAuth = false;
-                lbl_Status.Text = e.Message;
-                message = e;
             }
             finally
             {
@@ -75,9 +72,10 @@ namespace WarenhausManagement
             {
                 ldapConnection.RefreshCache();
             }
-            catch
+            catch (Exception e)
             {
-                lbl_Status.Text = message.Message;
+                lbl_Status.Text = "Domäne nicht vorhanden oder nicht verbunden";
+                MessageBox.Show(e.Message);
             }
             return bAuth;
         }
@@ -164,7 +162,7 @@ namespace WarenhausManagement
             }
             else
             {
-                lbl_Status.Text = message.ToString();
+               
             }
         }
 
