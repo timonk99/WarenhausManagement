@@ -72,6 +72,7 @@
             // lbl_Status
             // 
             this.lbl_Status.AutoSize = true;
+            this.lbl_Status.ForeColor = System.Drawing.Color.Red;
             this.lbl_Status.Location = new System.Drawing.Point(5, 321);
             this.lbl_Status.Name = "lbl_Status";
             this.lbl_Status.Size = new System.Drawing.Size(0, 13);

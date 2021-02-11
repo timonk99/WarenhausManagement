@@ -67,6 +67,10 @@ namespace WarenhausManagement
                 {
                     pwfalsch = true;
                 }
+                else
+                {
+                    pwfalsch = false;
+                }
             }
             finally
             {
@@ -83,7 +87,7 @@ namespace WarenhausManagement
                 catch (Exception e)
                 {
                     lbl_Status.Text = "Domäne nicht vorhanden oder nicht verbunden";
-                    MessageBox.Show(e.Message);
+                    MessageBox.Show(e.Message, "Achtung!");
                 }
             }
             return bAuth;
