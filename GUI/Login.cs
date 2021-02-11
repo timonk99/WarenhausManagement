@@ -58,8 +58,9 @@ namespace WarenhausManagement
                 object nativeObject = entry.NativeObject;
                 bAuth = true;
             }
-            catch 
+            catch (Exception e)
             {
+                lbl_Status.Text = e.Message;
                 bAuth = false;
             }
             finally
@@ -67,15 +68,18 @@ namespace WarenhausManagement
                 entry.Close();
                 entry.Dispose();
             }
-            //Testen ob Verbindung möglich
-            try
+            if (bAuth == true)
             {
-                ldapConnection.RefreshCache();
-            }
-            catch (Exception e)
-            {
-                lbl_Status.Text = "Domäne nicht vorhanden oder nicht verbunden";
-                MessageBox.Show(e.Message);
+                //Testen ob Verbindung möglich
+                try
+                {
+                    ldapConnection.RefreshCache();
+                }
+                catch (Exception e)
+                {
+                    lbl_Status.Text = "Domäne nicht vorhanden oder nicht verbunden";
+                    MessageBox.Show(e.Message);
+                }
             }
             return bAuth;
         }
