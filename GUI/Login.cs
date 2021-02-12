@@ -41,8 +41,9 @@ namespace WarenhausManagement
             //LDAP Verbindung aufbauen
 
             string ad = ConfigurationManager.AppSettings["ad"];
+            string ou = ConfigurationManager.AppSettings["ou"];
             DirectoryEntry ldapConnection = new DirectoryEntry(ad);
-            ldapConnection.Path = "LDAP://CN=DBUser,DC=WHM,DC=local";
+            ldapConnection.Path = "LDAP://CN="+ou+",DC=WHM,DC=local";
             ldapConnection.AuthenticationType = AuthenticationTypes.Secure;
 
             foreach (char c in password)

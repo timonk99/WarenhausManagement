@@ -88,8 +88,8 @@ namespace WarenhausManagement
 
         {
 
-            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User Id = " + _Username + "; Password = " + _Passwort);
-            SqlCommand NewCommand = new SqlCommand("exec dbo.Ausbuchen(" + WareID + ", " + LagerplatzID + ");", NewConnection);
+            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User Id = sa; Password=Ers1234Ers1234;");
+            SqlCommand NewCommand = new SqlCommand("exec dbo.Ausbuchen '" + WareID + "', " + LagerplatzID + ";", NewConnection);
             try
             {
 

@@ -42,25 +42,7 @@ namespace WarenhausManagement.GUI
 
             if (e.KeyCode == Keys.Enter)
             {
-                string wareID;
-                wareID = txtbx_ArtikelNr.Text;
-                if (wareID.Length == 12)
-                {
-                    wareID = wareID.Substring(8);
-                }
-                try
-                {
-                    ware.SetWareID(Convert.ToInt32(wareID));
-                    List<List<string>> DatenArtikel = new List<List<string>>();
-                    DatenArtikel = Datenbankanbindung.EinbuchenMethode(user.GetUsername(), user.GetPassword(), ware.GetWareID());
-                    txtbx_Bezeichnung.Text = DatenArtikel[0][0];
-                    txtbx_Speicher.Text = DatenArtikel[1][0];
-                    txtbx_Preis.Text = DatenArtikel[2][0];
-                }
-                catch
-                {
-                    lbl_Status.Text = "Fehlerhaftte Eingabe im Feld Artikel Nummer!";
-                }
+                WarePruefen();
             }
         }
 
@@ -68,14 +50,7 @@ namespace WarenhausManagement.GUI
         {
             if (e.KeyCode == Keys.Enter)
             {
-                string strlagerID;
-                strlagerID = txtbx_Lagerplatz.Text;
-                if (strlagerID.Length == 12)
-                {
-                    strlagerID = strlagerID.Substring(8);
-                }
-                strlagerID = "1" + strlagerID;
-                _LagerID = Convert.ToInt32(strlagerID);
+                LagerPruefen();
             }
         }
 
@@ -96,7 +71,7 @@ namespace WarenhausManagement.GUI
         {
             //Textboxen auslesen
             ware.SetWareBezeichnung(txtbx_Bezeichnung.Text);
-
+            LagerPruefen();
             if (checkBoxNeuerArtikel.Checked == true)
             {
                 try
@@ -120,9 +95,9 @@ namespace WarenhausManagement.GUI
                             if (ok == true)
                             {
                                 lbl_Status.Text = "Artikel erfolgreich angelegt und eingebucht";
+                                txtbx_ArtikelNr.Text = ware.GetWareID().ToString();
                             }
                         }
-
                     }
                 }
                 catch
@@ -162,7 +137,7 @@ namespace WarenhausManagement.GUI
             try //Eingabefehler abfangen
             {
                 ware.SetWareID(Convert.ToInt32(txtbx_ArtikelNr.Text));
-                _LagerID = Convert.ToInt32(txtbx_Lagerplatz.Text);
+                _LagerID = Convert.ToInt32(txtbx_Lagerplatz.Text = "1" + txtbx_Lagerplatz.Text);
             }
             catch
             {
@@ -183,6 +158,55 @@ namespace WarenhausManagement.GUI
         private void btnZuruck_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtbx_ArtikelNr_Leave(object sender, EventArgs e)
+        {
+            WarePruefen();
+        }
+        private void WarePruefen()
+        {
+            string wareID;
+            wareID = txtbx_ArtikelNr.Text;
+            if (wareID.Length == 12)
+            {
+                wareID = wareID.Substring(8);
+            }
+            try
+            {
+                ware.SetWareID(Convert.ToInt32(wareID));
+                List<List<string>> DatenArtikel = new List<List<string>>();
+                DatenArtikel = Datenbankanbindung.EinbuchenMethode(user.GetUsername(), user.GetPassword(), ware.GetWareID());
+                txtbx_Bezeichnung.Text = DatenArtikel[0][0];
+                txtbx_Speicher.Text = DatenArtikel[1][0];
+                txtbx_Preis.Text = DatenArtikel[2][0];
+            }
+            catch
+            {
+                lbl_Status.Text = "Fehlerhaftte Eingabe im Feld Artikel Nummer!";
+            }
+        }
+        private void LagerPruefen()
+        {
+            string strlagerID;
+            strlagerID = txtbx_Lagerplatz.Text;
+            if (strlagerID.Length == 12)
+            {
+                strlagerID = strlagerID.Substring(8);
+            }
+            if (strlagerID.Length == 4)
+            {
+                strlagerID = "1" + strlagerID;
+            }
+            try
+            {
+                _LagerID = Convert.ToInt32(strlagerID);
+            }
+            catch
+            {
+                lbl_Status.Text = "Fehlerhaftte Eingabe im Feld Lagerplatz!";
+            }
+            
         }
     }
 }

@@ -63,6 +63,7 @@
             this.txtbx_ArtikelNr.Size = new System.Drawing.Size(137, 27);
             this.txtbx_ArtikelNr.TabIndex = 0;
             this.txtbx_ArtikelNr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbx_ArtikelNr_KeyDown);
+            this.txtbx_ArtikelNr.Leave += new System.EventHandler(this.txtbx_ArtikelNr_Leave);
             // 
             // txtbx_Lagerplatz
             // 

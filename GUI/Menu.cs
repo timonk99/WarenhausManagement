@@ -37,6 +37,16 @@ namespace WarenhausManagement.GUI
             {
                 btnStatistik.Visible = false;
             }
+            else if (user.GetRolle() =="WHM_DB_Admin")
+            {
+                //darf alles sehen
+            }
+            else
+            {
+                btnEinbuchen.Visible = false;
+                btnAusbuchen.Visible = false;
+                btnStatistik.Visible = false;
+            }
         }
 
         private void pictureBox_Logout_Click(object sender, EventArgs e)
