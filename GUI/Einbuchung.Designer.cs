@@ -300,6 +300,7 @@
             this.Controls.Add(this.txtbx_Lagerplatz);
             this.Controls.Add(this.txtbx_ArtikelNr);
             this.Controls.Add(this.panel1);
+            this.MinimumSize = new System.Drawing.Size(747, 450);
             this.Name = "Buchung";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Einbuchung";
