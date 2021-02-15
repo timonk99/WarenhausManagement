@@ -209,5 +209,41 @@ namespace WarenhausManagement.GUI
             return erfolgreich;
             
         }
+
+        private void btnEinbuchen_MouseHover(object sender, EventArgs e)
+        {
+            btnEinbuchen.Font = new Font(btnEinbuchen.Font.Name, btnEinbuchen.Font.Size, FontStyle.Bold);
+            btnEinbuchen.BackColor = Color.SteelBlue;
+        }
+
+        private void btnEinbuchen_MouseLeave(object sender, EventArgs e)
+        {
+            btnEinbuchen.Font = new Font(btnEinbuchen.Font.Name, btnEinbuchen.Font.Size, FontStyle.Regular);
+            btnEinbuchen.BackColor = Color.LightSteelBlue;
+        }
+
+        private void btnAusbuchen_MouseHover(object sender, EventArgs e)
+        {
+            btnAusbuchen.Font = new Font(btnAusbuchen.Font.Name, btnAusbuchen.Font.Size, FontStyle.Bold);
+            btnAusbuchen.BackColor = Color.SteelBlue;
+        }
+
+        private void btnAusbuchen_MouseLeave(object sender, EventArgs e)
+        {
+            btnAusbuchen.Font = new Font(btnAusbuchen.Font.Name, btnAusbuchen.Font.Size, FontStyle.Regular);
+            btnAusbuchen.BackColor = Color.LightSteelBlue;
+        }
+
+        private void btnZuruck_MouseHover(object sender, EventArgs e)
+        {
+            btnZuruck.Font = new Font(btnZuruck.Font.Name, btnZuruck.Font.Size, FontStyle.Bold);
+            btnZuruck.BackColor = Color.SteelBlue;
+        }
+
+        private void btnZuruck_MouseLeave(object sender, EventArgs e)
+        {
+            btnZuruck.Font = new Font(btnZuruck.Font.Name, btnZuruck.Font.Size, FontStyle.Regular);
+            btnZuruck.BackColor = Color.White;
+        }
     }
 }

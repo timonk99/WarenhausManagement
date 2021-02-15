@@ -31,8 +31,6 @@ namespace WarenhausManagement.Statistik
         private void InitializeComponent()
         {
             this.c_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btn_close = new System.Windows.Forms.Button();
-            this.btn_load = new System.Windows.Forms.Button();
             this.cb_auswahl = new System.Windows.Forms.ComboBox();
             this.dt_endDate = new System.Windows.Forms.DateTimePicker();
             this.l_titel = new System.Windows.Forms.Label();
@@ -42,6 +40,8 @@ namespace WarenhausManagement.Statistik
             this.l_auswahl = new System.Windows.Forms.Label();
             this.l_regal = new System.Windows.Forms.Label();
             this.cb_regal = new System.Windows.Forms.ComboBox();
+            this.btn_close = new WarenhausManagement.Design.RoundedButton();
+            this.btn_load = new WarenhausManagement.Design.RoundedButton();
             ((System.ComponentModel.ISupportInitialize)(this.c_chart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,26 +52,6 @@ namespace WarenhausManagement.Statistik
             this.c_chart.Size = new System.Drawing.Size(400, 400);
             this.c_chart.TabIndex = 0;
             this.c_chart.Text = "Chart";
-            // 
-            // btn_close
-            // 
-            this.btn_close.Location = new System.Drawing.Point(418, 402);
-            this.btn_close.Name = "btn_close";
-            this.btn_close.Size = new System.Drawing.Size(75, 23);
-            this.btn_close.TabIndex = 1;
-            this.btn_close.Text = "Schließen";
-            this.btn_close.UseVisualStyleBackColor = true;
-            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
-            // 
-            // btn_load
-            // 
-            this.btn_load.Location = new System.Drawing.Point(418, 373);
-            this.btn_load.Name = "btn_load";
-            this.btn_load.Size = new System.Drawing.Size(75, 23);
-            this.btn_load.TabIndex = 2;
-            this.btn_load.Text = "Laden";
-            this.btn_load.UseVisualStyleBackColor = true;
-            this.btn_load.Click += new System.EventHandler(this.btn_load_Click);
             // 
             // cb_auswahl
             // 
@@ -164,11 +144,43 @@ namespace WarenhausManagement.Statistik
             this.cb_regal.Size = new System.Drawing.Size(121, 27);
             this.cb_regal.TabIndex = 10;
             // 
+            // btn_close
+            // 
+            this.btn_close.BackColor = System.Drawing.Color.White;
+            this.btn_close.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_close.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btn_close.Location = new System.Drawing.Point(440, 352);
+            this.btn_close.Name = "btn_close";
+            this.btn_close.Size = new System.Drawing.Size(154, 48);
+            this.btn_close.TabIndex = 20;
+            this.btn_close.Text = "Zurück";
+            this.btn_close.UseVisualStyleBackColor = false;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click_1);
+            this.btn_close.MouseLeave += new System.EventHandler(this.btn_close_MouseLeave);
+            this.btn_close.MouseHover += new System.EventHandler(this.btn_close_MouseHover);
+            // 
+            // btn_load
+            // 
+            this.btn_load.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn_load.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_load.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btn_load.Location = new System.Drawing.Point(440, 298);
+            this.btn_load.Name = "btn_load";
+            this.btn_load.Size = new System.Drawing.Size(154, 48);
+            this.btn_load.TabIndex = 19;
+            this.btn_load.Text = "Einbuchen";
+            this.btn_load.UseVisualStyleBackColor = false;
+            this.btn_load.Click += new System.EventHandler(this.btn_load_Click_1);
+            this.btn_load.MouseLeave += new System.EventHandler(this.btn_load_MouseLeave);
+            this.btn_load.MouseHover += new System.EventHandler(this.btn_load_MouseHover);
+            // 
             // StatsMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 436);
+            this.Controls.Add(this.btn_close);
+            this.Controls.Add(this.btn_load);
             this.Controls.Add(this.l_regal);
             this.Controls.Add(this.cb_regal);
             this.Controls.Add(this.l_auswahl);
@@ -178,8 +190,6 @@ namespace WarenhausManagement.Statistik
             this.Controls.Add(this.l_titel);
             this.Controls.Add(this.dt_endDate);
             this.Controls.Add(this.cb_auswahl);
-            this.Controls.Add(this.btn_load);
-            this.Controls.Add(this.btn_close);
             this.Controls.Add(this.c_chart);
             this.Name = "StatsMain";
             this.Text = "Statistik";
@@ -192,8 +202,6 @@ namespace WarenhausManagement.Statistik
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart c_chart;
-        private System.Windows.Forms.Button btn_close;
-        private System.Windows.Forms.Button btn_load;
         private System.Windows.Forms.ComboBox cb_auswahl;
         private System.Windows.Forms.DateTimePicker dt_endDate;
         private System.Windows.Forms.Label l_titel;
@@ -203,5 +211,7 @@ namespace WarenhausManagement.Statistik
         private System.Windows.Forms.Label l_auswahl;
         private System.Windows.Forms.Label l_regal;
         private System.Windows.Forms.ComboBox cb_regal;
+        private Design.RoundedButton btn_close;
+        private Design.RoundedButton btn_load;
     }
 }

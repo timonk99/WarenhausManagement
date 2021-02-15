@@ -248,6 +248,8 @@
             this.btnZuruck.Text = "Zurück";
             this.btnZuruck.UseVisualStyleBackColor = false;
             this.btnZuruck.Click += new System.EventHandler(this.btnZuruck_Click);
+            this.btnZuruck.MouseLeave += new System.EventHandler(this.btnZuruck_MouseLeave);
+            this.btnZuruck.MouseHover += new System.EventHandler(this.btnZuruck_MouseHover);
             // 
             // btnAusbuchen
             // 
@@ -261,6 +263,8 @@
             this.btnAusbuchen.Text = "Ausbuchen";
             this.btnAusbuchen.UseVisualStyleBackColor = false;
             this.btnAusbuchen.Click += new System.EventHandler(this.btnAusbuchen_Click);
+            this.btnAusbuchen.MouseLeave += new System.EventHandler(this.btnAusbuchen_MouseLeave);
+            this.btnAusbuchen.MouseHover += new System.EventHandler(this.btnAusbuchen_MouseHover);
             // 
             // btnEinbuchen
             // 
@@ -274,6 +278,8 @@
             this.btnEinbuchen.Text = "Einbuchen";
             this.btnEinbuchen.UseVisualStyleBackColor = false;
             this.btnEinbuchen.Click += new System.EventHandler(this.btnEinbuchen_Click);
+            this.btnEinbuchen.MouseLeave += new System.EventHandler(this.btnEinbuchen_MouseLeave);
+            this.btnEinbuchen.MouseHover += new System.EventHandler(this.btnEinbuchen_MouseHover);
             // 
             // Buchung
             // 

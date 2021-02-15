@@ -107,17 +107,41 @@ namespace WarenhausManagement.Statistik
                 new Message(e.Message);
             }
         }
-        private void btn_close_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
-        private void btn_load_Click(object sender, EventArgs e)
+        private void btn_load_Click_1(object sender, EventArgs e)
         {
             if (cb_auswahl.SelectedIndex == 0) PieAuslastung(Datenbankanbindung.Get_Auslastung(user.GetUsername(), user.GetPassword(), dt_endDate.Value, dt_startDate.Value, cb_regal.Text));
             else if (cb_auswahl.SelectedIndex == 1) ArtikelLager(Datenbankanbindung.Get_Warenmenge(user.GetUsername(), user.GetPassword(), dt_endDate.Value, dt_startDate.Value));
             else new Message("Die Auswahl des Diagramms ist ungültig. Bitte ein anderes Diagramm wählen");
         }
 
+        private void btn_close_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_load_MouseHover(object sender, EventArgs e)
+        {
+            btn_load.Font = new Font(btn_load.Font.Name, btn_load.Font.Size, FontStyle.Bold);
+            btn_load.BackColor = Color.SteelBlue;
+        }
+
+        private void btn_load_MouseLeave(object sender, EventArgs e)
+        {
+            btn_load.Font = new Font(btn_load.Font.Name, btn_load.Font.Size, FontStyle.Regular);
+            btn_load.BackColor = Color.LightSteelBlue;
+        }
+
+        private void btn_close_MouseHover(object sender, EventArgs e)
+        {
+            btn_close.Font = new Font(btn_close.Font.Name, btn_close.Font.Size, FontStyle.Bold);
+            btn_close.BackColor = Color.SteelBlue;
+        }
+
+        private void btn_close_MouseLeave(object sender, EventArgs e)
+        {
+            btn_close.Font = new Font(btn_close.Font.Name, btn_close.Font.Size, FontStyle.Regular);
+            btn_close.BackColor = Color.White;
+        }
     }
 }
