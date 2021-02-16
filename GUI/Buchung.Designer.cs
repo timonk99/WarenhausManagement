@@ -306,10 +306,10 @@
             this.Controls.Add(this.txtbx_Lagerplatz);
             this.Controls.Add(this.txtbx_ArtikelNr);
             this.Controls.Add(this.panel1);
-            this.MinimumSize = new System.Drawing.Size(747, 450);
+            this.MinimumSize = new System.Drawing.Size(650, 550);
             this.Name = "Buchung";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Einbuchung";
+            this.Text = "Buchung";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

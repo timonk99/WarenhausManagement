@@ -50,7 +50,7 @@ namespace WarenhausManagement.GUI
         {
             if (e.KeyCode == Keys.Enter)
             {
-                LagerPruefen();
+                //LagerPruefen();
             }
         }
 
@@ -113,7 +113,7 @@ namespace WarenhausManagement.GUI
                     try //Textboxen auf richtigen Inhalt prüfen -> Konvertieren
                     {
                         ware.SetWareID(Convert.ToInt32(txtbx_ArtikelNr.Text));
-                        _LagerID = Convert.ToInt32(txtbx_Lagerplatz.Text = "1" + txtbx_Lagerplatz.Text);
+                        //_LagerID = Convert.ToInt32(txtbx_Lagerplatz.Text = "1" + txtbx_Lagerplatz.Text);
                         erfolgreich = Datenbankanbindung.EinbuchenProzedur(user.GetUsername(), user.GetPassword(), ware.GetWareID(), _LagerID);
                     }
                     catch
@@ -177,6 +177,7 @@ namespace WarenhausManagement.GUI
                 txtbx_Bezeichnung.Text = DatenArtikel[0][0];
                 txtbx_Speicher.Text = DatenArtikel[1][0];
                 txtbx_Preis.Text = DatenArtikel[2][0];
+                txtbx_ArtikelNr.Text = ware.GetWareID().ToString();
             }
             catch
             {
@@ -185,23 +186,32 @@ namespace WarenhausManagement.GUI
         }
         private bool LagerPruefen()
         {
+            bool error = true;
             bool erfolgreich = true;
             string strlagerID;
             strlagerID = txtbx_Lagerplatz.Text;
             if (strlagerID.Length == 12)
             {
                 strlagerID = strlagerID.Substring(8);
+                error = false;
             }
             if (strlagerID.Length == 4)
             {
                 strlagerID = "1" + strlagerID;
+                error = false;
             }
             try
             {
                 _LagerID = Convert.ToInt32(strlagerID);
+                txtbx_Lagerplatz.Text = _LagerID.ToString();
 
             }
             catch
+            {
+                erfolgreich = false;
+                error = true;
+            }
+            if (error == true)
             {
                 erfolgreich = false;
                 lbl_Status.Text = "Fehlerhaftte Eingabe im Feld Lagerplatz!";

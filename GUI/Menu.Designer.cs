@@ -159,6 +159,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox_Logout);
             this.Controls.Add(this.panel1);
+            this.MinimumSize = new System.Drawing.Size(390, 324);
             this.Name = "Mainmenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hauptmenu";

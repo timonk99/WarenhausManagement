@@ -124,10 +124,4 @@
   <data name="Auge" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Auge.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Zentrales-Lager" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Zentrales-Lager.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="90619730-farbverlauf-weiße-licht-weichen-blauen-farbe-hintergrund" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\90619730-farbverlauf-weiße-licht-weichen-blauen-farbe-hintergrund.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

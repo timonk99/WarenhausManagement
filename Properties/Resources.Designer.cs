@@ -63,16 +63,6 @@ namespace WarenhausManagement.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _90619730_farbverlauf_weiße_licht_weichen_blauen_farbe_hintergrund {
-            get {
-                object obj = ResourceManager.GetObject("90619730-farbverlauf-weiße-licht-weichen-blauen-farbe-hintergrund", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Auge {
             get {
                 object obj = ResourceManager.GetObject("Auge", resourceCulture);
@@ -86,16 +76,6 @@ namespace WarenhausManagement.Properties {
         internal static System.Drawing.Bitmap Logout {
             get {
                 object obj = ResourceManager.GetObject("Logout", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Zentrales_Lager {
-            get {
-                object obj = ResourceManager.GetObject("Zentrales-Lager", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

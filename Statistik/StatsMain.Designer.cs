@@ -168,7 +168,7 @@ namespace WarenhausManagement.Statistik
             this.btn_load.Name = "btn_load";
             this.btn_load.Size = new System.Drawing.Size(154, 48);
             this.btn_load.TabIndex = 19;
-            this.btn_load.Text = "Einbuchen";
+            this.btn_load.Text = "Anzeigen";
             this.btn_load.UseVisualStyleBackColor = false;
             this.btn_load.Click += new System.EventHandler(this.btn_load_Click_1);
             this.btn_load.MouseLeave += new System.EventHandler(this.btn_load_MouseLeave);
@@ -192,6 +192,7 @@ namespace WarenhausManagement.Statistik
             this.Controls.Add(this.cb_auswahl);
             this.Controls.Add(this.c_chart);
             this.Name = "StatsMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Statistik";
             ((System.ComponentModel.ISupportInitialize)(this.c_chart)).EndInit();
             this.ResumeLayout(false);

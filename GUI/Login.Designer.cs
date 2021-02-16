@@ -80,7 +80,7 @@
             // 
             // pictureBoxPW
             // 
-            this.pictureBoxPW.Image = global::WarenhausManagement.Properties.Resources.Auge;
+            this.pictureBoxPW.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPW.Image")));
             this.pictureBoxPW.Location = new System.Drawing.Point(230, 239);
             this.pictureBoxPW.Name = "pictureBoxPW";
             this.pictureBoxPW.Size = new System.Drawing.Size(22, 20);
