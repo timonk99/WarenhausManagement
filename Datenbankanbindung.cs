@@ -17,7 +17,51 @@ namespace WarenhausManagement
         {
             return date.Year.ToString() + date.Month.ToString() + date.Day.ToString();
         }
-        //MOIN
+        public static int CheckSlot (string _Username, string _PAsswort, int LagerID)
+        {
+            int intreturn=0;
+            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
+            SqlCommand NewCommand = new SqlCommand("select * from f_check_slot("+ LagerID+")", NewConnection);
+            try
+            {
+
+                NewCommand.Connection.Open();
+                SqlDataReader Reader =  NewCommand.ExecuteReader();
+
+                    intreturn = (Reader.GetInt32(0));
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+            NewConnection.Close();
+            NewCommand.Connection.Close();
+            return intreturn;
+        }
+        public static int CheckSlotUebergrosse(string _Username, string _PAsswort, int LagerID)
+        {
+            int intreturn = 0;
+            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
+            SqlCommand NewCommand = new SqlCommand("select * from f_check_slot_size(" + LagerID + ")", NewConnection);
+            try
+            {
+
+                NewCommand.Connection.Open();
+                SqlDataReader Reader = NewCommand.ExecuteReader();
+
+                intreturn = (Reader.GetInt32(0));
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+            NewConnection.Close();
+            NewCommand.Connection.Close();
+            return intreturn;
+        }
+
         public static List<List<string>> EinbuchenMethode(string _Username, string _Passwort, int WareID)
         {
             List<string> beschreibung = new List<string>();
@@ -57,11 +101,11 @@ namespace WarenhausManagement
         }
 
 
-        public static bool EinbuchenProzedur(string _Username, string _Passwort, int WareID, int LagerplatzID)
+        public static bool EinbuchenProzedur(string _Username, string _Passwort, int WareID, int LagerplatzID, byte uebergrosse)
 
         {
             SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
-            SqlCommand NewCommand = new SqlCommand("exec p_insert_lagerprozess " + WareID + ", " + LagerplatzID + ";", NewConnection);
+            SqlCommand NewCommand = new SqlCommand("exec p_insert_lagerprozess " + WareID + ", " + LagerplatzID + ", "+uebergrosse+";", NewConnection);
             try
             {
 
@@ -111,7 +155,7 @@ namespace WarenhausManagement
 
             }
         }
-        public static bool NauerArtikel(string _Username, string _Passwort,string Warename, float Preis, int Warengröße)
+        public static bool NeuerArtikel(string _Username, string _Passwort,string Warename, float Preis, int Warengröße)
 
         {
             string preisString = Preis.ToString();
