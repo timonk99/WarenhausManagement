@@ -130,10 +130,12 @@
     <None Include="Resources\Auge.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Bilder\Zentrales-Lager.jpg" />
-    <None Include="Resources\90619730-farbverlauf-weiße-licht-weichen-blauen-farbe-hintergrund.jpg" />
     <None Include="Resources\Logout.jpg" />
-    <None Include="Resources\Zentrales-Lager.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Benutzer.png" />
+    <Content Include="Resources\Schloss.png" />
+    <Content Include="Resources\WHM2.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
