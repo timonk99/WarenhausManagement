@@ -44,14 +44,12 @@
             this.checkBoxNeuerArtikel = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox_Logout = new System.Windows.Forms.PictureBox();
             this.lbl_User = new System.Windows.Forms.Label();
             this.btnZuruck = new WarenhausManagement.Design.RoundedButton();
             this.btnAusbuchen = new WarenhausManagement.Design.RoundedButton();
             this.btnEinbuchen = new WarenhausManagement.Design.RoundedButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Logout)).BeginInit();
             this.SuspendLayout();
             // 
             // txtbx_ArtikelNr
@@ -204,25 +202,12 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel1.Controls.Add(this.pictureBox_Logout);
             this.panel1.Controls.Add(this.lbl_User);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(731, 45);
             this.panel1.TabIndex = 20;
-            // 
-            // pictureBox_Logout
-            // 
-            this.pictureBox_Logout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_Logout.BackColor = System.Drawing.Color.SteelBlue;
-            this.pictureBox_Logout.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Logout.Image")));
-            this.pictureBox_Logout.Location = new System.Drawing.Point(692, 9);
-            this.pictureBox_Logout.Name = "pictureBox_Logout";
-            this.pictureBox_Logout.Size = new System.Drawing.Size(29, 27);
-            this.pictureBox_Logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_Logout.TabIndex = 21;
-            this.pictureBox_Logout.TabStop = false;
             // 
             // lbl_User
             // 
@@ -313,7 +298,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Logout)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,6 +324,5 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lbl_User;
-        private System.Windows.Forms.PictureBox pictureBox_Logout;
     }
 }

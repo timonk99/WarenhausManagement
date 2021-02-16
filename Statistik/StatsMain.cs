@@ -22,6 +22,7 @@ namespace WarenhausManagement.Statistik
             InitializeComponent();
             Fill_cb_regal();
             this.user = user;
+            lbl_User.Text = user.GetUsername();
         }
 
         private void ClearChart()
