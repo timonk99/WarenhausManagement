@@ -249,7 +249,7 @@ namespace WarenhausManagement.GUI
             if (error == true)
             {
                 erfolgreich = false;
-                lbl_Status.Text = "Fehlerhaftte Eingabe im Feld Lagerplatz!";
+                lbl_Status.Text = "Fehlerhafte Eingabe im Feld Lagerplatz!";
             }
             return erfolgreich;
 
