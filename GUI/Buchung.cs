@@ -26,6 +26,9 @@ namespace WarenhausManagement.GUI
             if (Einbuchung == true)
             {
                 btnAusbuchen.Visible = false;
+                txtbx_Bezeichnung.ReadOnly = true;
+                txtbx_Preis.ReadOnly = true;
+                txtbx_Speicher.ReadOnly = true;
             }
             else
             {
@@ -59,10 +62,16 @@ namespace WarenhausManagement.GUI
             if (checkBoxNeuerArtikel.Checked == true)
             {
                 txtbx_ArtikelNr.ReadOnly = true;
+                txtbx_Bezeichnung.ReadOnly = false;
+                txtbx_Preis.ReadOnly = false;
+                txtbx_Speicher.ReadOnly = false;
             }
             else if (checkBoxNeuerArtikel.Checked == false)
             {
                 txtbx_ArtikelNr.ReadOnly = false;
+                txtbx_Bezeichnung.ReadOnly = true;
+                txtbx_Preis.ReadOnly = true;
+                txtbx_Speicher.ReadOnly = true;
             }
 
         }
@@ -202,6 +211,7 @@ namespace WarenhausManagement.GUI
         }
         private void WarePruefen()
         {
+            lbl_Status.Text = "";
             string wareID;
             wareID = txtbx_ArtikelNr.Text;
             if (wareID.Length == 12)
@@ -293,6 +303,21 @@ namespace WarenhausManagement.GUI
         {
             btnZuruck.Font = new Font(btnZuruck.Font.Name, btnZuruck.Font.Size, FontStyle.Regular);
             btnZuruck.BackColor = Color.White;
+        }
+
+        private void txtbx_Speicher_Leave(object sender, EventArgs e)
+        {
+            if (txtbx_Speicher.Text != "1" && txtbx_Speicher.Text != "2")
+            {
+                MessageBox.Show("Artikelgröße muss 1 oder 2 sein.", "Achtung!");
+                btnEinbuchen.Enabled = false;
+                txtbx_Speicher.BackColor = Color.Red;
+            }
+            else
+            {
+                btnEinbuchen.Enabled = true;
+                txtbx_Speicher.BackColor = Color.White;
+            }
         }
     }
 }

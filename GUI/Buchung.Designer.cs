@@ -144,6 +144,7 @@
             this.txtbx_Speicher.Name = "txtbx_Speicher";
             this.txtbx_Speicher.Size = new System.Drawing.Size(137, 27);
             this.txtbx_Speicher.TabIndex = 9;
+            this.txtbx_Speicher.Leave += new System.EventHandler(this.txtbx_Speicher_Leave);
             // 
             // label5
             // 
