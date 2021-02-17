@@ -10,7 +10,7 @@ namespace WarenhausManagement
     {
         private string _Username;
         private string _Password;
-        private string _Rolle;
+        private string _Role;
 
         public string GetUsername()
         {
@@ -30,11 +30,11 @@ namespace WarenhausManagement
         }
         public string GetRolle()
         {
-            return _Rolle;
+            return _Role;
         }
         public void SetRolle(string Rolle)
         {
-            _Rolle = Rolle;
+            _Role = Rolle;
         }
     }
 }
