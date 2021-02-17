@@ -114,9 +114,9 @@ namespace WarenhausManagement.GUI
                     ware.SetPreis(float.Parse(txtbx_Preis.Text));
                     ware.SetWareID(Convert.ToInt32(txtbx_ArtikelNr.Text));
                     int checkslot = Datenbankanbindung.CheckSlot(user.GetUsername(), user.GetPassword(), _LagerID);
-                    if (checkslot == 1)
+                    if (checkslot == 1)//wenn 1 dann ist Platz frei
                     {
-                        if (bytegr == 1)
+                        if (bytegr == 1)//wenn 1 dann Übergröße
                         {
                             int checkslotgr = Datenbankanbindung.CheckSlotUebergrosse(user.GetUsername(), user.GetPassword(), _LagerID);
                             if (checkslotgr == 1)
@@ -170,12 +170,16 @@ namespace WarenhausManagement.GUI
 
         private void btnAusbuchen_Click(object sender, EventArgs e)
         {
+            int uebergrosse = 0;
+            ware.SetSpeicherbedarf(Convert.ToInt32(txtbx_Speicher.Text));
+            if (ware.GetSpeicherbedarf() == 2)
+                uebergrosse = 1;
             bool lagererfolg = LagerPruefen();
             if (lagererfolg == true)
             {
                 bool erfolgreich = false;
                 //SQL Statement zum Ausbuchen
-                erfolgreich = Datenbankanbindung.AusbuchenProzedur(user.GetUsername(), user.GetPassword(), ware.GetWareID(), _LagerID);
+                erfolgreich = Datenbankanbindung.AusbuchenProzedur(user.GetUsername(), user.GetPassword(), ware.GetWareID(), _LagerID, uebergrosse);
                 if (erfolgreich == true)
                 {
                     lbl_Status.Text = "Ausbuchung erfolgreich";

@@ -19,16 +19,17 @@ namespace WarenhausManagement
         }
         public static int CheckSlot (string _Username, string _PAsswort, int LagerID)
         {
-            int intreturn=0;
+            byte intreturn=0;
             SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
-            SqlCommand NewCommand = new SqlCommand("select * from f_check_slot("+ LagerID+")", NewConnection);
+            SqlCommand NewCommand = new SqlCommand("select dbo.f_check_slot("+ LagerID+")", NewConnection);
             try
             {
 
                 NewCommand.Connection.Open();
                 SqlDataReader Reader =  NewCommand.ExecuteReader();
-
-                    intreturn = (Reader.GetInt32(0));
+                Reader.Read();
+                if (Reader.HasRows) 
+                    intreturn = Convert.ToByte((Reader.GetValue(0)));
 
             }
             catch (Exception e)
@@ -41,16 +42,18 @@ namespace WarenhausManagement
         }
         public static int CheckSlotUebergrosse(string _Username, string _PAsswort, int LagerID)
         {
-            int intreturn = 0;
+            byte intreturn = 0;
             SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
-            SqlCommand NewCommand = new SqlCommand("select * from f_check_slot_size(" + LagerID + ")", NewConnection);
+            SqlCommand NewCommand = new SqlCommand("select dbo.f_check_slot_size(" + LagerID + ")", NewConnection);
             try
             {
 
                 NewCommand.Connection.Open();
                 SqlDataReader Reader = NewCommand.ExecuteReader();
-
-                intreturn = (Reader.GetInt32(0));
+                Reader.Read();
+                if (Reader.HasRows)
+                    intreturn = Convert.ToByte((Reader.GetValue(0)));
+   
 
             }
             catch (Exception e)
@@ -128,31 +131,25 @@ namespace WarenhausManagement
             }
         }
 
-        public static bool AusbuchenProzedur(string _Username, string _Passwort, int WareID, int LagerplatzID)
+        public static bool AusbuchenProzedur(string _Username, string _Passwort, int WareID, int LagerplatzID, int uebergrosse)
 
         {
 
             SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User Id = sa; Password=Ers1234Ers1234;");
-            SqlCommand NewCommand = new SqlCommand("exec dbo.Ausbuchen '" + WareID + "', " + LagerplatzID + ";", NewConnection);
+            SqlCommand NewCommand = new SqlCommand("exec dbo.Ausbuchen '" + WareID + "', " + LagerplatzID + ", "+uebergrosse+";", NewConnection);
             try
             {
-
                 NewCommand.Connection.Open();
                 NewCommand.ExecuteNonQuery();
                 NewCommand.Connection.Close();
                 return true;
-
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-
                 NewConnection.Close();
-
-
                 NewCommand.Connection.Close();
                 return false;
-
             }
         }
         public static bool NeuerArtikel(string _Username, string _Passwort,string Warename, float Preis, int Warengröße)
