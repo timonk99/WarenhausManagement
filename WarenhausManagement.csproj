@@ -134,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Benutzer.png" />
+    <Content Include="Resources\Icon.ico" />
     <Content Include="Resources\Schloss.png" />
     <Content Include="Resources\WHM2.PNG" />
   </ItemGroup>

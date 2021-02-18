@@ -231,6 +231,7 @@ namespace WarenhausManagement.Statistik
             this.Controls.Add(this.dt_endDate);
             this.Controls.Add(this.cb_auswahl);
             this.Controls.Add(this.c_chart);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(650, 550);
             this.Name = "StatsMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
