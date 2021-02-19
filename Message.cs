@@ -16,6 +16,7 @@ namespace WarenhausManagement
         {
             InitializeComponent();
             this.l_message.Text = message;
+            this.TopLevel = true;
             this.Show();
         }
 

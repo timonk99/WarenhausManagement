@@ -41,9 +41,10 @@ namespace WarenhausManagement
             //LDAP Verbindung aufbauen
 
             string ad = ConfigurationManager.AppSettings["ad"];
-            string ou = ConfigurationManager.AppSettings["ou"];
+            string dcpre = ConfigurationManager.AppSettings["dcpre"];
+            string dcsuf = ConfigurationManager.AppSettings["dcsuf"];
             DirectoryEntry ldapConnection = new DirectoryEntry(ad);
-            ldapConnection.Path = "LDAP://CN="+ou+",DC=WHM,DC=local";
+            ldapConnection.Path = "LDAP://CN=Users,DC="+dcpre+",DC="+dcsuf+"";
             ldapConnection.AuthenticationType = AuthenticationTypes.Secure;
 
             foreach (char c in password)
@@ -56,7 +57,7 @@ namespace WarenhausManagement
 
             try
             {
-                entry = new DirectoryEntry(string.Concat(@"LDAP://WHM.local"), username, System.Runtime.InteropServices.Marshal.PtrToStringBSTR(pPwd));
+                entry = new DirectoryEntry(string.Concat(@"LDAP://"+dcpre+"."+dcsuf+""), username, System.Runtime.InteropServices.Marshal.PtrToStringBSTR(pPwd));
                 object nativeObject = entry.NativeObject;
                 bAuth = true;
             }
@@ -165,18 +166,12 @@ namespace WarenhausManagement
                 }
 
                 bool AnmeldungGültig = LDAPConnection(AnmeldeName, AnmeldePw);
-                //testzwecke
-                //AnmeldungGültig = true;
                 if (AnmeldungGültig == true)
                 {
                     Mainmenu hmenu = new Mainmenu(user);
                     this.Hide();
                     hmenu.Show();
                 }
-            }
-            else
-            {
-               
             }
         }
 

@@ -172,9 +172,8 @@ namespace WarenhausManagement.GUI
                     if (neuerstellt == true)
                         lbl_Status.Text = lbl_Status.Text + ", aber Einbuchung fehlgeschlagen.";
                     else
-                        lbl_Status.Text = lbl_Status.Text +"Einbuchung fehlgeschlagen";
+                        lbl_Status.Text = lbl_Status.Text + "Einbuchung fehlgeschlagen";
                 }
-
             }
         }
 
@@ -191,7 +190,7 @@ namespace WarenhausManagement.GUI
                 //SQL Statement zum Ausbuchen
                 erfolgreich = Datenbankanbindung.AusbuchenProzedur(user.GetUsername(), user.GetPassword(), ware.GetWareID(), _LagerID, uebergrosse);
                 int i = Datenbankanbindung.CheckAusbuchen(user.GetUsername(), user.GetPassword(), _LagerID);
-                if (erfolgreich == true && i ==1) //i == 1 -> Eintrag wurde gemacht
+                if (erfolgreich == true && i == 1) //i == 1 -> Eintrag wurde gemacht
                 {
                     lbl_Status.Text = "Ausbuchung erfolgreich";
                 }
@@ -259,7 +258,6 @@ namespace WarenhausManagement.GUI
             {
                 _LagerID = Convert.ToInt32(strlagerID);
                 txtbx_Lagerplatz.Text = _LagerID.ToString();
-
             }
             catch
             {
@@ -272,7 +270,6 @@ namespace WarenhausManagement.GUI
                 lbl_Status.Text = "Fehlerhafte Eingabe im Feld Lagerplatz!";
             }
             return erfolgreich;
-
         }
 
         private void btnEinbuchen_MouseHover(object sender, EventArgs e)

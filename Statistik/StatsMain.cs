@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Configuration;
 
 namespace WarenhausManagement.Statistik
 {
     public partial class StatsMain : Form
     {
-        public string testUser = "SA";
-        public string testPasswort = "Ers1234Ers1234";
+        string dbuser = ConfigurationManager.AppSettings["dbuser"];
+        string dbuserpw = ConfigurationManager.AppSettings["dbuserpw"];
 
         private User user;
         public StatsMain(User user)
@@ -37,7 +38,7 @@ namespace WarenhausManagement.Statistik
             try
             {
 
-                int regale = Datenbankanbindung.Get_Regale(testUser, testPasswort);
+                int regale = Datenbankanbindung.Get_Regale(dbuser, dbuserpw);
 
                 cb_regal.Items.Add("Alle");
                 for (int i = 1; i <= regale; i++)

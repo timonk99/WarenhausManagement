@@ -11,16 +11,37 @@ namespace WarenhausManagement
     public static class Datenbankanbindung
     {
         private static string ServerIP = ConfigurationManager.AppSettings["db"];
-        
+        private static string dcpre = ConfigurationManager.AppSettings["dcpre"];
+        private static string dbuser = ConfigurationManager.AppSettings["dbuser"];
+        private static string dbuserpw = ConfigurationManager.AppSettings["dbuserpw"];
+
 
         private static string convertDate(DateTime date)
         {
-            return date.Year.ToString() + date.Month.ToString() + date.Day.ToString();
+            String datestring = date.Year.ToString();
+            if(Convert.ToInt32(date.Month.ToString()) <= 9)
+            {
+                datestring = datestring + '0' + date.Month.ToString();
+            }
+            else
+            {
+                datestring = datestring + date.Month.ToString();
+            }
+
+            if (Convert.ToInt32(date.Day.ToString()) <= 9)
+            {
+                datestring = datestring + '0' + date.Day.ToString();
+            }
+            else
+            {
+                datestring = datestring + date.Day.ToString();
+            }
+            return datestring;
         }
         public static int CheckSlot (string _Username, string _PAsswort, int LagerID)
         {
             byte intreturn=0;
-            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
+            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = "+dcpre+"; User id="+dbuser+"; Password="+dbuserpw+";");
             SqlCommand NewCommand = new SqlCommand("select dbo.f_check_slot("+ LagerID+")", NewConnection);
             try
             {
@@ -43,7 +64,7 @@ namespace WarenhausManagement
         public static int CheckSlotUebergrosse(string _Username, string _PAsswort, int LagerID)
         {
             byte intreturn = 0;
-            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
+            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = " + dcpre + "; User id=" + dbuser + "; Password=" + dbuserpw + ";");
             SqlCommand NewCommand = new SqlCommand("select dbo.f_check_slot_size(" + LagerID + ")", NewConnection);
             try
             {
@@ -68,7 +89,7 @@ namespace WarenhausManagement
         public static int CheckAusbuchen(string _Username, string _Passwort, int LagerID)
         {
             byte intreturn = 0;
-            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
+            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = " + dcpre + "; User id=" + dbuser + "; Password=" + dbuserpw + ";");
             SqlCommand NewCommand = new SqlCommand("select dbo.f_check_ausbuchen(" + LagerID + ")", NewConnection);
             try
             {
@@ -96,7 +117,7 @@ namespace WarenhausManagement
             List<string> preis = new List<string>();
 
             List<List<string>> result = new List<List<string>>();
-            SqlConnection NewConnection = new SqlConnection("Server =  " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
+            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = " + dcpre + "; User id=" + dbuser + "; Password=" + dbuserpw + ";");
             try
             {
 
@@ -131,7 +152,7 @@ namespace WarenhausManagement
         public static bool EinbuchenProzedur(string _Username, string _Passwort, int WareID, int LagerplatzID, byte uebergrosse)
 
         {
-            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
+            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = " + dcpre + "; User id=" + dbuser + "; Password=" + dbuserpw + ";");
             SqlCommand NewCommand = new SqlCommand("exec p_insert_lagerprozess " + WareID + ", " + LagerplatzID + ", "+uebergrosse+";", NewConnection);
             try
             {
@@ -159,7 +180,7 @@ namespace WarenhausManagement
 
         {
 
-            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User Id = sa; Password=Ers1234Ers1234;");
+            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = " + dcpre + "; User id=" + dbuser + "; Password=" + dbuserpw + ";");
             SqlCommand NewCommand = new SqlCommand("exec dbo.Ausbuchen " + LagerplatzID + ", " + WareID + ", "+uebergrosse+";", NewConnection);
             try
             {
@@ -181,9 +202,9 @@ namespace WarenhausManagement
         {
             string preisString = Preis.ToString();
             preisString = preisString.Replace(',', '.');
-            
-            
-            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
+
+
+            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = " + dcpre + "; User id=" + dbuser + "; Password=" + dbuserpw + ";");
             SqlCommand NewCommand = new SqlCommand("exec dbo.NeuerArtikel'" + Warename + "', '"+preisString+"', "+Warengröße+";", NewConnection);
             try
             {
@@ -210,7 +231,7 @@ namespace WarenhausManagement
 
         {
 
-            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
+            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = " + dcpre + "; User id=" + dbuser + "; Password=" + dbuserpw + ";");
             SqlCommand NewCommand = new SqlCommand("select dbo.WareID ('" + Warename + "')", NewConnection);
             try
             {
@@ -244,7 +265,7 @@ namespace WarenhausManagement
         {
             int value = 0;
 
-            SqlConnection connect = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
+            SqlConnection connect = new SqlConnection("Server = " + ServerIP + "; Database = " + dcpre + "; User id=" + dbuser + "; Password=" + dbuserpw + ";");
             SqlCommand com = new SqlCommand("select max(Regal) from Lagerplatz;", connect);
 
             com.Connection.Open();
@@ -259,7 +280,7 @@ namespace WarenhausManagement
         public static int Get_Auslastung(string _Username, string _Passwort, DateTime startDate, DateTime endDate, string regal)
         {
             int auslastung = 0;
-            SqlConnection connect = new SqlConnection("Server =  " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
+            SqlConnection connect = new SqlConnection("Server = " + ServerIP + "; Database = " + dcpre + "; User id=" + dbuser + "; Password=" + dbuserpw + ";");
             SqlCommand com = new SqlCommand();
             com.Connection = connect;
             com.Connection.Open();
@@ -268,7 +289,7 @@ namespace WarenhausManagement
                 int regalAnzahl = Get_Regale(_Username, _Passwort);
                 for(int i = 1; i < regalAnzahl; i++)
                 {
-                    com.CommandText = ("select dbo.f_get_auslastung( '" + convertDate(startDate) + "', '" + convertDate(endDate) + "', " + i + " );");
+                    com.CommandText = ("select dbo.f_get_auslastung( '" + convertDate(endDate) + "', '" + convertDate(startDate) + "', " + i + " );");
                     SqlDataReader reader = com.ExecuteReader();
                     reader.Read();
                     auslastung += reader.GetInt32(0);
@@ -277,7 +298,7 @@ namespace WarenhausManagement
             }
             else
             {
-                com.CommandText = ("select dbo.f_get_auslastung( '" + convertDate(startDate) + "', '" + convertDate(endDate) + "', " + regal + " );");
+                com.CommandText = ("select dbo.f_get_auslastung( '" + convertDate(endDate) + "', '" + convertDate(startDate) + "', " + regal + " );");
                 SqlDataReader reader = com.ExecuteReader();
                 reader.Read();
                 auslastung = reader.GetInt32(0);
@@ -292,8 +313,8 @@ namespace WarenhausManagement
             List<string> mengen = new List<string>();
             List<List<string>> rn_values = new List<List<string>>();
 
-            SqlConnection connect = new SqlConnection("Server =  " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
-            SqlCommand com = new SqlCommand("select * from dbo.f_get_menge_ware('" + convertDate(startDate) + "', '" + convertDate(endDate) + "' );", connect);
+            SqlConnection connect = new SqlConnection("Server = " + ServerIP + "; Database = " + dcpre + "; User id=" + dbuser + "; Password=" + dbuserpw + ";");
+            SqlCommand com = new SqlCommand("select * from dbo.f_get_menge_ware('" + convertDate(endDate) + "', '" + convertDate(startDate) + "' );", connect);
             com.Connection.Open();
             SqlDataReader reader = com.ExecuteReader();
 

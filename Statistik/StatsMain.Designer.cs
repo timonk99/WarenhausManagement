@@ -8,6 +8,8 @@ namespace WarenhausManagement.Statistik
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private System.DateTime now = new System.DateTime();
+        
 
         /// <summary>
         /// Clean up any resources being used.
@@ -30,6 +32,7 @@ namespace WarenhausManagement.Statistik
         /// </summary>
         private void InitializeComponent()
         {
+            now = System.DateTime.Now;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatsMain));
             this.c_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.cb_auswahl = new System.Windows.Forms.ComboBox();
@@ -75,11 +78,11 @@ namespace WarenhausManagement.Statistik
             // 
             this.dt_endDate.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dt_endDate.Location = new System.Drawing.Point(418, 289);
-            this.dt_endDate.MaxDate = new System.DateTime(2020, 11, 27, 11, 10, 45, 462);
+            this.dt_endDate.MaxDate = now;
             this.dt_endDate.Name = "dt_endDate";
             this.dt_endDate.Size = new System.Drawing.Size(200, 27);
             this.dt_endDate.TabIndex = 4;
-            this.dt_endDate.Value = new System.DateTime(2020, 11, 27, 11, 10, 45, 462);
+            this.dt_endDate.Value = now;
             // 
             // l_titel
             // 
@@ -115,11 +118,11 @@ namespace WarenhausManagement.Statistik
             // 
             this.dt_startDate.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dt_startDate.Location = new System.Drawing.Point(418, 233);
-            this.dt_startDate.MaxDate = new System.DateTime(2020, 11, 27, 11, 10, 45, 468);
+            this.dt_startDate.MaxDate = now;
             this.dt_startDate.Name = "dt_startDate";
             this.dt_startDate.Size = new System.Drawing.Size(200, 27);
             this.dt_startDate.TabIndex = 7;
-            this.dt_startDate.Value = new System.DateTime(2020, 11, 27, 11, 10, 45, 468);
+            this.dt_startDate.Value = now;
             // 
             // l_auswahl
             // 
