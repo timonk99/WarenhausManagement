@@ -292,6 +292,7 @@
             this.Controls.Add(this.txtbx_Lagerplatz);
             this.Controls.Add(this.txtbx_ArtikelNr);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(650, 550);
             this.Name = "Buchung";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
