@@ -102,6 +102,7 @@ namespace WarenhausManagement.GUI
                             {
                                 neuerstellt = true;
                                 lbl_Status.Text = "Artikel erfolgreich angelegt ";
+                                txtbx_ArtikelNr.Text = ware.GetWareID().ToString(); ;
                             }
                         }
                     }
@@ -189,7 +190,8 @@ namespace WarenhausManagement.GUI
                 bool erfolgreich = false;
                 //SQL Statement zum Ausbuchen
                 erfolgreich = Datenbankanbindung.AusbuchenProzedur(user.GetUsername(), user.GetPassword(), ware.GetWareID(), _LagerID, uebergrosse);
-                if (erfolgreich == true)
+                int i = Datenbankanbindung.CheckAusbuchen(user.GetUsername(), user.GetPassword(), _LagerID);
+                if (erfolgreich == true && i ==1) //i == 1 -> Eintrag wurde gemacht
                 {
                     lbl_Status.Text = "Ausbuchung erfolgreich";
                 }
@@ -243,6 +245,10 @@ namespace WarenhausManagement.GUI
             {
                 strlagerID = strlagerID.Substring(8);
                 error = false;
+            }
+            if (strlagerID.Length == 5)
+            {
+                strlagerID = strlagerID.Substring(1);
             }
             if (strlagerID.Length == 4)
             {

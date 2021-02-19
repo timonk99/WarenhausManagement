@@ -70,7 +70,7 @@
             this.txtbx_Lagerplatz.Location = new System.Drawing.Point(91, 340);
             this.txtbx_Lagerplatz.Name = "txtbx_Lagerplatz";
             this.txtbx_Lagerplatz.Size = new System.Drawing.Size(137, 27);
-            this.txtbx_Lagerplatz.TabIndex = 1;
+            this.txtbx_Lagerplatz.TabIndex = 4;
             this.txtbx_Lagerplatz.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbx_Lagerplatz_KeyDown);
             // 
             // label1
@@ -123,7 +123,7 @@
             this.txtbx_Bezeichnung.Location = new System.Drawing.Point(91, 175);
             this.txtbx_Bezeichnung.Name = "txtbx_Bezeichnung";
             this.txtbx_Bezeichnung.Size = new System.Drawing.Size(137, 27);
-            this.txtbx_Bezeichnung.TabIndex = 7;
+            this.txtbx_Bezeichnung.TabIndex = 1;
             // 
             // label4
             // 
@@ -143,7 +143,7 @@
             this.txtbx_Speicher.Location = new System.Drawing.Point(91, 230);
             this.txtbx_Speicher.Name = "txtbx_Speicher";
             this.txtbx_Speicher.Size = new System.Drawing.Size(137, 27);
-            this.txtbx_Speicher.TabIndex = 9;
+            this.txtbx_Speicher.TabIndex = 2;
             this.txtbx_Speicher.Leave += new System.EventHandler(this.txtbx_Speicher_Leave);
             // 
             // label5
@@ -175,7 +175,7 @@
             this.txtbx_Preis.Location = new System.Drawing.Point(91, 285);
             this.txtbx_Preis.Name = "txtbx_Preis";
             this.txtbx_Preis.Size = new System.Drawing.Size(137, 27);
-            this.txtbx_Preis.TabIndex = 12;
+            this.txtbx_Preis.TabIndex = 3;
             // 
             // checkBoxNeuerArtikel
             // 
@@ -185,7 +185,7 @@
             this.checkBoxNeuerArtikel.Location = new System.Drawing.Point(258, 117);
             this.checkBoxNeuerArtikel.Name = "checkBoxNeuerArtikel";
             this.checkBoxNeuerArtikel.Size = new System.Drawing.Size(172, 23);
-            this.checkBoxNeuerArtikel.TabIndex = 15;
+            this.checkBoxNeuerArtikel.TabIndex = 20;
             this.checkBoxNeuerArtikel.Text = "neuen Artikel anlegen";
             this.checkBoxNeuerArtikel.UseVisualStyleBackColor = false;
             this.checkBoxNeuerArtikel.CheckedChanged += new System.EventHandler(this.checkBoxNeuerArtikel_CheckedChanged);

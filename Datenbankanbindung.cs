@@ -65,6 +65,30 @@ namespace WarenhausManagement
             return intreturn;
         }
 
+        public static int CheckAusbuchen(string _Username, string _Passwort, int LagerID)
+        {
+            byte intreturn = 0;
+            SqlConnection NewConnection = new SqlConnection("Server = " + ServerIP + "; Database = WHM; User id=sa; Password=Ers1234Ers1234;");
+            SqlCommand NewCommand = new SqlCommand("select dbo.f_check_ausbuchen(" + LagerID + ")", NewConnection);
+            try
+            {
+
+                NewCommand.Connection.Open();
+                SqlDataReader Reader = NewCommand.ExecuteReader();
+                Reader.Read();
+                if (Reader.HasRows)
+                    intreturn = Convert.ToByte((Reader.GetValue(0)));
+
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+            NewConnection.Close();
+            NewCommand.Connection.Close();
+            return intreturn;
+        }
         public static List<List<string>> EinbuchenMethode(string _Username, string _Passwort, int WareID)
         {
             List<string> beschreibung = new List<string>();
